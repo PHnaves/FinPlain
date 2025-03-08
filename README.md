@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📌 FinPlan – Seu Planejador Financeiro Simples e Inteligente
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🎯 Objetivo
+Criar uma aplicação web responsiva que ajude os usuários a organizarem suas finanças de forma prática, oferecendo controle de gastos, planejamento financeiro, alertas e recomendações personalizadas.
 
-## About Laravel
+## 💡 Diferencial Inovador
+A FinPlan se destaca no mercado com a funcionalidade exclusiva "Planejador Inteligente", que analisa automaticamente a renda e os gastos do usuário, sugerindo ajustes inteligentes:
+- **Desafios Financeiros:** Pequenas missões para incentivar a economia, como "Economize R$50 esta semana evitando compras desnecessárias".
+- **Projeção de Gastos Futuros:** Estimativa de gastos baseada nos padrões de consumo, oferecendo dicas personalizadas.
+- **Sistema de Recompensas:** Usuários que atingirem metas financeiras recebem badges e dicas exclusivas de investimentos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🔥 Funcionalidades Principais
+### 1️⃣ Cadastro de Usuário
+- Registro via e-mail e senha.
+- Definição do perfil financeiro (Básico, Moderado ou Gastador).
+- Cadastro completo: Renda mensal, despesas essenciais e não essenciais.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 2️⃣ Planejamento Financeiro
+- Criação de Metas: Exemplo: viagem, reserva de emergência, compra de um carro.
+- Barra de progresso mostrando a evolução.
+- Sugestões dinâmicas para alcançar metas mais rapidamente.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 3️⃣ Análise de Gastos Inteligente
+- Gráficos interativos mostrando onde o usuário mais gasta.
+- Comparação de gastos entre meses anteriores.
+- Sugestões personalizadas: "Você gastou 30% a mais com alimentação este mês".
+- Alertas financeiros caso os gastos ultrapassem limites definidos.
 
-## Learning Laravel
+### 4️⃣ Notificações e Alertas
+- Sistema interno de notificações (barras no topo da tela ou banners visíveis).
+- Envio de e-mails automáticos para avisos importantes.
+- Alertas sobre vencimento de contas e faturas.
+- Notificações sobre metas financeiras e hábitos de consumo.
+- Integração opcional com calendários (Google Calendar, Outlook) para lembretes.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 5️⃣ Sugestões de Investimentos Personalizadas
+- Sugestão de investimentos com base no perfil do usuário.
+- Integração com dados da Bolsa de Valores em tempo real.
+- Exibição de opções de renda fixa e variável.
+- Simulação de crescimento do patrimônio com base em aportes mensais.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🔄 Aplicações Concorrentes e Como Nos Destacamos
+| Aplicação Concorrente | Funcionalidades | Diferencial da FinPlan |
+|----------------------|----------------|------------------------|
+| Mobills | Controle de gastos e orçamento | Planejador Inteligente e Desafios Financeiros |
+| GuiaBolso | Conexão bancária automática | Foco em planejamento financeiro e recompensas |
+| Organizze | Gestão de despesas | Alertas inteligentes e projeção de gastos futuros |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠 Tecnologias Utilizadas
+- **Back-end:** PHP + Laravel Blade
+- **Front-end:** Tailwind CSS
+- **Banco de Dados:** MySQL
+- **Notificações Internas:** Laravel Notifications
+- **Envio de E-mails:** Laravel Mail
+- **Agendamento de Tarefas:** Laravel Jobs
 
-## Laravel Sponsors
+## 📩 Alternativas Gratuitas para Envio de E-mails
+Para evitar custos extras, as opções recomendadas são:
+1. Mailgun (plano gratuito inicial) – Simples de configurar no Laravel.
+2. Postmark – Ótimo para e-mails transacionais.
+3. Amazon SES (AWS) – Baixo custo e alta confiabilidade.
+4. SMTP do Gmail – Pode ser usado com autenticação segura.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🚀 Conclusão
+A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um sistema de desafios, metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 📅 Plano de Desenvolvimento (3 meses)
+### 🔥 Mês 1: Estruturação e Back-End
+✅ Semana 1:
+- [ ] Configurar ambiente de desenvolvimento (Laravel, MySQL, Tailwind).
+- [ ] Criar modelo de banco de dados (tabelas: usuários, despesas, metas, notificações).
+- [ ] Implementar autenticação de usuários (cadastro e login).
 
-## Contributing
+✅ Semana 2:
+- [ ] Criar sistema de cadastro completo (renda, despesas, perfil).
+- [ ] Implementar criação e gestão de metas financeiras.
+- [ ] Criar lógica para cálculos de progresso das metas.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+✅ Semana 3:
+- [ ] Criar sistema de despesas e análise básica de gastos.
+- [ ] Implementar gráficos interativos com base nos dados financeiros.
 
-## Code of Conduct
+✅ Semana 4:
+- [ ] Criar sistema de notificações internas no painel.
+- [ ] Implementar envio de e-mails de alerta (usando Laravel Mail, Mailgun ou Amazon SES).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 🚀 Mês 2: Front-End e Experiência do Usuário
+✅ Semana 5:
+- [ ] Criar páginas principais (dashboard, metas, despesas, investimentos).
+- [ ] Criar UI responsiva com Tailwind CSS.
 
-## Security Vulnerabilities
+✅ Semana 6:
+- [ ] Implementar gráficos interativos (Chart.js ou Laravel Charts).
+- [ ] Melhorar experiência do usuário nas interações.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+✅ Semana 7:
+- [ ] Criar página de notificações e alertas.
+- [ ] Implementar cálculos e projeções de gastos futuros.
 
-## License
+✅ Semana 8:
+- [ ] Criar sistema de desafios financeiros personalizados.
+- [ ] Refinar e testar funcionalidades existentes.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 🎯 Mês 3: Testes, Ajustes e Lançamento
+✅ Semana 9:
+- [ ] Revisão geral do código e otimizações.
+- [ ] Testes de usabilidade e ajustes de UI/UX.
+
+✅ Semana 10:
+- [ ] Implementação final do Planejador Inteligente.
+- [ ] Melhorias no sistema de sugestões de investimentos.
+
+✅ Semana 11:
+- [ ] Testes beta com usuários reais.
+- [ ] Correção de bugs e refinamentos finais.
+
+✅ Semana 12:
+- [ ] **Lançamento oficial da versão MVP! 🚀**
+
