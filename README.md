@@ -70,8 +70,8 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 ### 🔥 Mês 1: Estruturação e Back-End
 ✅ Semana 1:
 - [X] Configurar ambiente de desenvolvimento (Laravel, MySQL, Tailwind).
-- [ ] Criar modelo de banco de dados (tabelas: usuários, despesas, metas, notificações).
-- [ ] Implementar autenticação de usuários (cadastro e login).
+- [X] Criar modelo de banco de dados (tabelas: usuários, despesas, metas, notificações).
+- [X] Implementar autenticação de usuários (cadastro e login).
 
 ✅ Semana 2:
 - [ ] Criar sistema de cadastro completo (renda, despesas, perfil).
