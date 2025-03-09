@@ -16,13 +16,15 @@ return new class extends Migration
             // relacao com a table de users
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            
-            $table->string('titulo', 150); // Nome da meta (ex: "Comprar um carro")
+
+            $table->string('titulo', 150);
             $table->text('descricao')->nullable();
-            $table->decimal('valor_final', 10, 2); // Exemplo: R$ 50.000,00
-            $table->decimal('valor_atual', 10, 2)->default(0); // Quanto já foi poupado
-            $table->string('frequencia')->enum('semanal', 'mensal'); // Periodicidade dos depósitos
-            $table->decimal('valor_deposito', 10, 2); // Valor que o usuário quer poupar por período
+            $table->decimal('valor_final', 10, 2);
+            $table->decimal('valor_atual', 10, 2)->default(0);
+            $table->enum('periodicidade', ['semanal', 'mensal']);
+            $table->decimal('valor_periodico', 10, 2);
+            $table->enum('status', ['andamento', 'concluída', 'cancelada'])->default('andamento');
+
             $table->timestamps();
         });
     }
