@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class User extends Authenticatable
 {
@@ -46,4 +48,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function despesas(): HasMany
+    {
+        return $this->hasMany(Despesa::class, 'id_user');
+    }
+
+    public function metas()
+    {
+        return $this->hasMany(Meta::class, 'id_user');
+    }
+
 }
