@@ -14,16 +14,9 @@ class DespesaController extends Controller
     public function index()
     {
         $despesas = Despesa::all();
-        return view('despesa.index', compact('despesas'));
+        return view('despesas.index', compact('despesas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,50 +29,56 @@ class DespesaController extends Controller
             'recorrente' => 'boolean',
             'data_vencimento' => 'nullable|date',
         ]);
-
-        // Convertendo sim e nao os valores do select, para valores booleanos
-        $recorrente = $request->recorrente == "1" ? true : false;
-
+    
         Despesa::create([
             'id_user' => Auth::id(),
             'tipo' => $request->tipo,
             'valor' => $request->valor,
-            'recorrente' => $recorrente,
+            'recorrente' => $request->recorrente == "1",
             'data_vencimento' => $request->data_vencimento,
         ]);
-
-        return redirect()->route('despesa.index')->with('success', 'Despesa cadastrada com sucesso!');
+    
+        return redirect()->route('despesas.index')->with('success', 'Despesa cadastrada com sucesso!');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Despesa $despesa)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(Despesa $despesa)
+    {
+        return view('despesas.show', compact('despesa'));
+    }
+
     public function edit(Despesa $despesa)
     {
-        //
+        return view('despesas.edit', compact('despesa'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Despesa $despesa)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|string|max:100',
+            'valor' => 'required|numeric|min:0',
+            'recorrente' => 'boolean',
+            'data_vencimento' => 'nullable|date',
+        ]);
+    
+        $data = $request->only(['tipo', 'valor', 'data_vencimento']);
+        $data['recorrente'] = $request->recorrente == "1";
+    
+        $despesa->update($data);
+    
+        return redirect()->route('despesas.index')->with('success', 'Despesa atualizada com sucesso!');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Despesa $despesa)
     {
-        //
+        $despesa->delete();
+        return redirect()->route('despesas.index')->with('success', 'Despesa removida com sucesso!');
     }
+    
 }
