@@ -18,10 +18,6 @@
                     <p>Saldo Disponível: R$ {{ $saldo_disponivel }}</p>
                 </div>
 
-                <div>
-                    <h2>Gastos por Categoria</h2>
-                    <canvas id="gastosChart"></canvas>
-                </div>
 
                 <div>
                     <h2>Progresso das Metas</h2>
@@ -30,19 +26,6 @@
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
-                // Dados do gráfico de gastos por categoria
-                var ctx1 = document.getElementById('gastosChart').getContext('2d');
-                var gastosChart = new Chart(ctx1, {
-                    type: 'pie',
-                    data: {
-                        labels: @json($categorias),
-                        datasets: [{
-                            data: @json($valores),
-                            backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0']
-                        }]
-                    }
-                });
-
                 // Dados do gráfico de progresso das metas
                 var ctx2 = document.getElementById('metasChart').getContext('2d');
                 var metasChart = new Chart(ctx2, {
@@ -54,9 +37,24 @@
                             data: @json($metas_progresso),
                             backgroundColor: '#4caf50'
                         }]
+                    },
+                    options: {
+                        onClick: function(e) {
+                            // Pega o elemento clicado
+                            var activePoints = metasChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
+                            if (activePoints.length > 0) {
+                                var clickedIndex = activePoints[0].index;
+                                // Redireciona para a página de detalhes da meta
+                                var metasTitulos = @json($metas_titulos); // O título da meta
+                                var metasIds = @json($metas_ids); // IDs das metas para redirecionamento correto
+                                window.location.href = "/meta/" + metasIds[clickedIndex] + "/show"; // Ajuste conforme a sua rota
+                            }
+                        }
                     }
                 });
             </script>
+            
+            
 
 
 
