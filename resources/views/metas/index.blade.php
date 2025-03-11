@@ -21,6 +21,7 @@
                                 <strong>{{ $meta->titulo }}</strong> - R$ {{ $meta->valor_atual }} / R$ {{ $meta->valor_final }}
                                 <progress value="{{ $meta->valor_atual }}" max="{{ $meta->valor_final }}"></progress>
                                 <span>Status: {{ ucfirst($meta->status) }}</span>
+                                <a href="{{ route('metas.show' , $meta->id) }}">Detalhes</a>
                             </li>
                         @endforeach
                     </ul>

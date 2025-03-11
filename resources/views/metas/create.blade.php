@@ -16,38 +16,7 @@
                     @endif
 
                     <form action="{{ route('metas.store') }}" method="POST">
-                        @csrf
-                        
-                        <input type="text" name="titulo" placeholder="Título da Meta" required>
-                        @error('titulo') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <textarea name="descricao" placeholder="Descrição (opcional)"></textarea>
-                        @error('descricao') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <input type="number" name="valor_final" placeholder="Valor Final (R$)" required>
-                        @error('valor_final') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <input type="number" name="valor_atual" placeholder="Valor atual já guardado (R$)">
-                        @error('valor_atual') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <input type="number" name="valor_periodico" placeholder="Valor a Guardar por Período (R$)" required>
-                        @error('valor_periodico') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <label for="periodicidade">Periodicidade:</label>
-                        <select name="periodicidade" id="periodicidade" required>
-                            <option value="semanal">Semanal</option>
-                            <option value="mensal">Mensal</option>
-                        </select>
-                        @error('periodicidade') <p class="text-red-500">{{ $message }}</p> @enderror
-
-                        <label for="status">Status:</label>
-                        <select name="status" id="status" required>
-                            <option value="andamento">Em andamento</option>
-                            <option value="concluída">Concluída</option>
-                            <option value="cancelada">Cancelada</option>
-                        </select>
-
-                        <button type="submit">Salvar Meta</button>
+                        @include('metas.components.form')
                     </form>
                 </div>
             </div>
