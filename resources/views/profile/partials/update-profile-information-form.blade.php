@@ -47,6 +47,28 @@
             @endif
         </div>
 
+        <!-- Select From TypeUser -->
+        <div class="mt-4">
+            <x-input-label for="typeUser" :value="__('Tipo de Usuário')" />
+
+            <select id="typeUser" name="typeUser" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <option value="" disabled {{ old('typeUser', $user->typeUser) == null ? 'selected' : '' }}>Selecione um tipo de usuário</option>
+                <option value="basico" {{ old('typeUser', $user->typeUser) == 'basico' ? 'selected' : '' }}>Básico</option>
+                <option value="moderado" {{ old('typeUser', $user->typeUser) == 'moderado' ? 'selected' : '' }}>Moderado</option>
+                <option value="gastador" {{ old('typeUser', $user->typeUser) == 'gastador' ? 'selected' : '' }}>Gastador</option>
+            </select>
+            
+
+            <x-input-error class="mt-2" :messages="$errors->get('typeUser')" />
+        </div>
+
+        <!-- Renda do usuario -->
+        <div class="mt-4">
+            <x-input-label for="renda" :value="__('Renda')" />
+            <x-text-input id="renda" name="renda" type="number" class="mt-1 block w-full" :value="old('renda', $user->renda)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('renda')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
