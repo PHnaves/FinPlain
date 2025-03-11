@@ -11,6 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
         $user = Auth::user();
 
         if (!$user) {
@@ -34,6 +35,10 @@ class DashboardController extends Controller
 
         // Gráfico de Progresso das Metas
         $metas = Meta::where('id_user', $user->id)->get();
+
+        // pegar os ids das metas
+        $metas_ids = Meta::pluck('id');          // Pega os IDs das metas
+
         $metas_titulos = $metas->pluck('titulo');
         $metas_progresso = $metas->map(function ($meta) {
             return $meta->valor_final > 0 ? ($meta->valor_atual / $meta->valor_final * 100) : 0;
@@ -42,7 +47,8 @@ class DashboardController extends Controller
         return view('dashboard', compact(
             'total_gastos', 'saldo_disponivel', 
             'categorias', 'valores', 
-            'metas_titulos', 'metas_progresso'
+            'metas_titulos', 'metas_progresso',
+            'metas_ids'
         ));
     }
 }
