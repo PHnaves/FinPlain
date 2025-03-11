@@ -17,7 +17,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('renda', RendaController::class)->only(['index', 'store']);
     Route::resource('despesa', DespesaController::class)->only(['index', 'store']);
 });
 
