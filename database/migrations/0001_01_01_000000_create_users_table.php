@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('typeUser')->enum('basico', 'moderado', 'gastador');
+            $table->decimal('renda', 10, 2);
             $table->rememberToken();
             $table->timestamps();
         });
