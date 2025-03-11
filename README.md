@@ -74,7 +74,7 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 - [X] Implementar autenticação de usuários (cadastro e login).
 
 ✅ Semana 2:
-- [ ] Criar sistema de cadastro completo (renda, despesas, perfil).
+- [X] Criar sistema de cadastro completo (renda, despesas, perfil).
 - [ ] Implementar criação e gestão de metas financeiras.
 - [ ] Criar lógica para cálculos de progresso das metas.
 
