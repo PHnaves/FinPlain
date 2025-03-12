@@ -60,4 +60,9 @@ class User extends Authenticatable
         return $this->hasMany(Meta::class, 'id_user');
     }
 
+    public function notificacoes()
+    {
+        return $this->hasMany(Notificacao::class, 'id_user'); // Ajuste para o nome correto da FK
+    }
+
 }
