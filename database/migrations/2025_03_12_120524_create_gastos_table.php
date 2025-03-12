@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('gastos', function (Blueprint $table) {
             $table->id();
+            // relacao com a table de users
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->string('descricao', 150);
+            $table->decimal('valor', 10, 2);
+            $table->enum('necessario', ['sim', 'nao']);
             $table->timestamps();
         });
     }
