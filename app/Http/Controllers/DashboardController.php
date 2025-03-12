@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gasto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Despesa;
 use App\Models\Meta;
 
 class DashboardController extends Controller
@@ -18,21 +18,6 @@ class DashboardController extends Controller
             return redirect()->route('login')->with('error', 'Usuário não autenticado.');
         }
 
-        // Cálculo do total de gastos diretamente no banco
-        $total_gastos = Despesa::where('id_user', $user->id)->sum('valor');
-
-        // Saldo disponível (considerando metas)
-        $saldo_disponivel = $user->saldo - $total_gastos;
-
-        // Gráfico de Gastos por Categoria
-        $gastos_por_categoria = Despesa::where('id_user', $user->id)
-            ->selectRaw('tipo as categoria, SUM(valor) as total')
-            ->groupBy('tipo')
-            ->get();
-
-        $categorias = $gastos_por_categoria->pluck('categoria');
-        $valores = $gastos_por_categoria->pluck('total');
-
         // Gráfico de Progresso das Metas
         $metas = Meta::where('id_user', $user->id)->get();
 
@@ -44,11 +29,16 @@ class DashboardController extends Controller
             return $meta->valor_final > 0 ? ($meta->valor_atual / $meta->valor_final * 100) : 0;
         });
 
+        // Gráfico de Gastos
+        $gastos = Gasto::where('id_user', $user->id)->get();
+        $gastos_ids = $gastos->pluck('id');
+        $gastos_titulos = $gastos->pluck('descricao');
+        $gastos_valores = $gastos->pluck('valor');
+        $gastos_necessarios = $gastos->pluck('necessario'); // Assume que "tipo" pode ser 'necessario' ou 'nao_necessario'
+
         return view('dashboard', compact(
-            'total_gastos', 'saldo_disponivel', 
-            'categorias', 'valores', 
-            'metas_titulos', 'metas_progresso',
-            'metas_ids'
+            'metas_titulos', 'metas_progresso', 'metas_ids',
+            'gastos_titulos', 'gastos_valores', 'gastos_necessarios', 'gastos_ids'
         ));
     }
 }
