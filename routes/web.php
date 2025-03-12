@@ -6,6 +6,12 @@ use App\Http\Controllers\GastoController;
 use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NotificacaoController;
+
+
+Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
+
+Route::get('/notificacoes', [NotificacaoController::class, 'index'])->name('notificacoes');
 
 // GASTOS
 Route::middleware(['auth'])->group(function () {
