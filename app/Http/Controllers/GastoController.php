@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gasto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Events\GastoExcedido;
 
 class GastoController extends Controller
 {
@@ -13,10 +14,10 @@ class GastoController extends Controller
      */
     public function index()
     {
-        $gastos = Gasto::all();
+        // Pega apenas os gastos do usuário logado
+        $gastos = Gasto::where('id_user', Auth::id())->get();
         return view('gastos.index', compact('gastos'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -28,17 +29,27 @@ class GastoController extends Controller
             'valor' => 'required|numeric|min:0',
             'necessario' => 'required|in:sim,nao',
         ]);
-
-        Gasto::create([
+    
+        $user = Auth::user(); 
+        $renda = $user->renda; 
+        $limite = $renda * 0.5;
+    
+        // Criando o gasto e armazenando na variável
+        $gasto = Gasto::create([
             'id_user' => Auth::id(),
             'descricao' => $request->descricao,
             'valor' => $request->valor,
             'necessario' => $request->necessario,
         ]);
-
+    
+        // Garantindo que só dispare o evento uma vez
+        if ($gasto->valor > $limite) {
+            event(new GastoExcedido($user, $gasto));
+        }
+    
         return redirect()->route('gastos.index');
     }
-
+    
 
     /**
      * Show the form for editing the specified resource.
