@@ -39,13 +39,6 @@ A FinPlan se destaca no mercado com a funcionalidade exclusiva "Planejador Intel
 - Exibição de opções de renda fixa e variável.
 - Simulação de crescimento do patrimônio com base em aportes mensais.
 
-## 🔄 Aplicações Concorrentes e Como Nos Destacamos
-| Aplicação Concorrente | Funcionalidades | Diferencial da FinPlan |
-|----------------------|----------------|------------------------|
-| Mobills | Controle de gastos e orçamento | Planejador Inteligente e Desafios Financeiros |
-| GuiaBolso | Conexão bancária automática | Foco em planejamento financeiro e recompensas |
-| Organizze | Gestão de despesas | Alertas inteligentes e projeção de gastos futuros |
-
 ## 🛠 Tecnologias Utilizadas
 - **Back-end:** PHP + Laravel Blade
 - **Front-end:** Tailwind CSS
@@ -79,7 +72,7 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 - [X] Criar lógica para cálculos de progresso das metas.
 
 ✅ Semana 3:
-- [ ] Criar sistema de despesas e análise básica de gastos.
+- [X] Criar sistema de despesas e análise básica de gastos.
 - [X] Implementar gráficos interativos com base nos dados financeiros.
 
 ✅ Semana 4:
