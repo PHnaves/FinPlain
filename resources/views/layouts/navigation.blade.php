@@ -20,11 +20,16 @@
                     <x-nav-link :href="route('despesas.index')" :active="request()->routeIs('despesas.index')">
                         {{ __('Despesas') }}
                     </x-nav-link>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('metas.index')" :active="request()->routeIs('metas.index')">
-                            {{ __('Metas') }}
-                        </x-nav-link>
-                    </div>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('metas.index')" :active="request()->routeIs('metas.index')">
+                        {{ __('Metas') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.index')">
+                        {{ __('Gastos') }}
+                    </x-nav-link>
                 </div>
             </div>
 
