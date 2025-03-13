@@ -24,5 +24,16 @@ class NotificacaoController extends Controller
         }
         return redirect()->route('notificacoes');
     }
+
+    public function destroy(Notificacao $notificacao){
+        // verifica se a notificacao foi lida
+        if ($notificacao->lida){
+            $notificacao->delete();
+            return redirect()->route('notificacoes');
+        }
+
+        return route('notificacoes');
+
+    }
 }
 
