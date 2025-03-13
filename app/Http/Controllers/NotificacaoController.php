@@ -10,7 +10,9 @@ class NotificacaoController extends Controller
 {
     public function index()
     {
-        $notificacoes = Auth::user()->notificacoes()->orderBy('created_at', 'desc')->get();
+        $user = Auth::user();
+        $notificacoes = $user->notificacoes()->orderBy('created_at', 'desc')->get();
+    
         return view('notificacoes', compact('notificacoes'));
     }
 
