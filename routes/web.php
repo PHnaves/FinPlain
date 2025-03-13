@@ -10,8 +10,8 @@ use App\Http\Controllers\NotificacaoController;
 
 
 Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
-
 Route::get('/notificacoes', [NotificacaoController::class, 'index'])->name('notificacoes');
+Route::delete('/notificacoes/{notificacao}', [NotificacaoController::class, 'destroy'])->name('notificacoes.destroy');
 
 // GASTOS
 Route::middleware(['auth'])->group(function () {
