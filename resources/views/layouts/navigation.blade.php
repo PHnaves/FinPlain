@@ -35,7 +35,9 @@
                     <x-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
                         {{ __('Gastos') }}
                         <i class="bi bi-bell"></i>
-                        <span id="contador-notificacoes">{{ $notificacoes_nao_lidas ?? 0 }}</span>
+                        @if($naoLidas > 0)
+                            <span id="contador-notificacoes">{{ $naoLidas }}</span>
+                        @endif
                     </x-nav-link>
                 </div>
             </div>
