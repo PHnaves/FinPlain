@@ -19,6 +19,13 @@
                         @if(!$notificacao->lida)
                             <a href="{{ route('marcar_notificacao_lida', $notificacao->id) }}">Marcar como lida</a>
                         @endif
+                        @if ($notificacao->lida)
+                            <form action="{{ route('notificacoes.destroy', $notificacao->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button>Excluir Notificação</button>
+                            </form>
+                        @endif
                     </div>
                 @endforeach
 
