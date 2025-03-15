@@ -76,7 +76,7 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 - [X] Implementar gráficos interativos com base nos dados financeiros.
 
 ✅ Semana 4:
-- [ ] Criar sistema de notificações internas no painel.
+- [X] Criar sistema de notificações internas no painel.
 - [ ] Implementar envio de e-mails de alerta (usando Laravel Mail, Mailgun ou Amazon SES).
 
 ### 🚀 Mês 2: Front-End e Experiência do Usuário
