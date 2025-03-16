@@ -7,6 +7,14 @@ use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificacaoController;
+use App\Mail\NotificacoesEmail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TesteMail;
+
+Route::get('/enviar-email', function () {
+    Mail::to('pnaves001@gmail.com')->send(new NotificacoesEmail());
+    return 'E-mail enviado com sucesso!';
+});
 
 
 Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
