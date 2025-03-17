@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Meta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;//para verificar se o usuario esta logado/autenticado
+use Carbon\Carbon;// para manipular datas
 
 class MetaController extends Controller
 {
@@ -75,8 +76,33 @@ class MetaController extends Controller
      */
     public function show(Meta $meta)
     {
-        return view('metas.show', compact('meta'));
+        // Calcula quantos depósitos ainda são necessários para concluir a meta
+        if ($meta->valor_atual >= $meta->valor_final) {
+            $numero_depositos = 0;
+            $data_conclusao = Carbon::now()->format('d/m/Y');
+            $mensagem = "Sua Meta já foi atingida! Parabens, continue assim.";
+        } else {
+            $numero_depositos = ceil(($meta->valor_final - $meta->valor_atual) / $meta->valor_periodico);
+    
+            // Define o intervalo de dias baseado na periodicidade
+            $intervalo = match ($meta->periodicidade) {
+                'semanal' => 7,
+                'mensal' => 30,
+                default => null
+            };
+    
+            if (!$intervalo) {
+                return redirect()->route('metas.index')->with('error', 'Periodicidade inválida.');
+            }
+    
+            // Calcula a data estimada para conclusão
+            $data_conclusao = Carbon::now()->addDays($numero_depositos * $intervalo)->format('d/m/Y');
+            $mensagem = "Você atingirá sua meta em aproximadamente $numero_depositos depósitos. Continue firme e forte!";
+        }
+    
+        return view('metas.show', compact('meta', 'numero_depositos', 'data_conclusao', 'mensagem'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
