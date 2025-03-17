@@ -109,7 +109,7 @@
 
             </script>
 
-                // Script do Easy Peasy Bot
+                {{-- Script do Easy Peasy Bot --}}
                 <script src="https://bots.easy-peasy.ai/chat.min.js"
                     data-chat-url="https://bots.easy-peasy.ai/bot/efb32a87-79f0-4547-b415-5b176ecd7bfe"
                     data-btn-position="bottom-right"
