@@ -77,7 +77,9 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 
 ✅ Semana 4:
 - [X] Criar sistema de notificações internas no painel.
-- [ ] Implementar envio de e-mails de alerta (usando Laravel Mail, Mailgun ou Amazon SES).
+- [ ] Implementar envio de e-mails de alerta (obtei por utilizar o brevo, pois o projeto inicialmente não ira precisar de uma quantidade de email muito grande).
+- [ ] Implementar jobs e queues para envio de emails constante e a longo prazo.
+OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi preciso configura-lo e alimenta-lo para ele conseguir da dicas financeiras mais dinamicas.
 
 ### 🚀 Mês 2: Front-End e Experiência do Usuário
 ✅ Semana 5:
