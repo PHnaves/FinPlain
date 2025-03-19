@@ -2,8 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Mail\DepositoMetaMail;
 use App\Models\Meta;
+use App\Models\User;
+use App\Mail\EmailMeta;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,15 +17,20 @@ class EnviarEmailDepositoMeta implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $meta;
-
-    public function __construct(Meta $meta)
-    {
-        $this->meta = $meta;
-    }
+    public function __construct() {}
 
     public function handle()
     {
-        Mail::to($this->meta->user->email)->send(new DepositoMetaMail($this->meta));
+        // Buscar metas com depósito semanal ou mensal
+        $metas = Meta::where(function ($query) {
+            $query->where('frequencia', 'semanal')->whereDay('updated_at', now()->dayOfWeek)
+                  ->orWhere('frequencia', 'mensal')->whereDay('updated_at', now()->day);
+        })->get();
+
+        foreach ($metas as $meta) {
+            $user = User::find($meta->id_user);
+            Mail::to($user->email)->send(new EmailMeta($user, $meta));
+        }
     }
 }
+
