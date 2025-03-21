@@ -2,28 +2,62 @@
 
 namespace App\Mail;
 
+use App\Models\Meta;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class EmailMeta extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-    public $meta;
+    /**
+     * Create a new message instance.
+     */
 
-    public function __construct($user, $meta)
+    public function __construct(
+        protected User $user, protected Meta $meta
+    )
     {
-        $this->user = $user;
-        $this->meta = $meta;
+        
     }
 
-    public function build()
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
     {
-        return $this->subject('💰 Lembrete: Depósito para Meta')
-                    ->markdown('emails.meta');
+        return new Envelope(
+            subject: '💰 Lembrete: Depósito para Meta',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'emails.meta',
+            with: [
+                'user' => $this->user,
+                'meta' => $this->meta,
+            ]
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
     }
 }
 
