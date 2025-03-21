@@ -2,27 +2,57 @@
 
 namespace App\Mail;
 
+use App\Models\Despesa;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class EmailVencimento extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
-    public $despesa;
-
-    public function __construct($user, $despesa)
+    public function __construct(
+        protected User $user, protected Despesa $despesa
+    )
     {
-        $this->user = $user;
-        $this->despesa = $despesa;
+
     }
 
-    public function build()
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
     {
-        return $this->subject('🔔 Lembrete: Despesa Vencendo!')
-                    ->markdown('emails.vencimento');
+        return new Envelope(
+            subject: '🔔 Lembrete: Despesa Vencendo!',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'emails.vencimento',
+            with: [
+                'user' => $this->user,
+                'despesa' => $this->despesa,
+            ]
+        );
+    }
+
+    /**
+     * Get the attachments for the message.
+     *
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     */
+    public function attachments(): array
+    {
+        return [];
     }
 }
