@@ -49,6 +49,11 @@ class GastoController extends Controller
     
         return redirect()->route('gastos.index');
     }
+
+    public function show(Gasto $gasto)
+    {
+        return view('gastos.show', compact('gasto'));
+    }
     
 
     /**
