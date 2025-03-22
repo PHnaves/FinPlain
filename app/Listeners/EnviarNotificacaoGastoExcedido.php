@@ -18,7 +18,7 @@ class EnviarNotificacaoGastoExcedido
             ->where('mensagem', "Atenção! Sua despesa '{$gasto->descricao}' ultrapassou 50% da sua renda!")
             ->exists();
     
-        if (!$existeNotificacao) {
+        if (!$existeNotificacao && $gasto->necessario == 'nao') {
             Notificacao::create([
                 'id_user' => $user->id,
                 'mensagem' => "Atenção! Sua despesa '{$gasto->descricao}' ultrapassou 50% da sua renda!",
