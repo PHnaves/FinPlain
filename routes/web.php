@@ -18,6 +18,7 @@ Route::delete('/notificacoes/{notificacao}', [NotificacaoController::class, 'des
 Route::middleware(['auth'])->group(function () {
     Route::get('/gasto', [GastoController::class, 'index'])->name('gastos.index'); // Listar gastos
     Route::post('/gasto', [GastoController::class, 'store'])->name('gastos.store'); // Criar gasto
+    Route::get('/gasto/{gasto}/show', [GastoController::class, 'show'])->name('gastos.show');
     Route::get('/gasto/{gasto}/edit', [GastoController::class, 'edit'])->name('gastos.edit'); // Ver detalhes da gasto
     Route::patch('/gasto/{gasto}', [GastoController::class, 'update'])->name('gastos.update'); // Atualizar gasto
     Route::delete('/gasto/{gasto}', [GastoController::class, 'destroy'])->name('gastos.destroy'); // Deletar gasto
