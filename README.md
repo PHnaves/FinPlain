@@ -47,12 +47,13 @@ A FinPlan se destaca no mercado com a funcionalidade exclusiva "Planejador Intel
 - **Envio de E-mails:** Laravel Mail
 - **Agendamento de Tarefas:** Laravel Jobs
 
-## 📩 Alternativas Gratuitas para Envio de E-mails
+## 📩 Para o Envio de E-mails
 Para evitar custos extras, as opções recomendadas são:
 1. Mailgun (plano gratuito inicial) – Simples de configurar no Laravel.
 2. Postmark – Ótimo para e-mails transacionais.
 3. Amazon SES (AWS) – Baixo custo e alta confiabilidade.
 4. SMTP do Gmail – Pode ser usado com autenticação segura.
+5. Brevo - É a que esta sendo usada no momento no projeto, mas pode haver troca se houver necessidade.
 
 ## 🚀 Conclusão
 A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um sistema de desafios, metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
