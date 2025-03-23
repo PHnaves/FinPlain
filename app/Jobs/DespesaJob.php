@@ -25,7 +25,7 @@ class DespesaJob implements ShouldQueue
         $amanha = Carbon::tomorrow();
 
         // busca todas as despesas que vencem amanha
-        $despesas = Despesa::whereDate('data_vencimento' === $amanha)->get();
+        $despesas = Despesa::whereDate('data_vencimento', $amanha)->get();
 
         // envia o email para cada usuario com a sua despesa correspondente
         foreach ($despesas as $despesa) {

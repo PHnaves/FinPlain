@@ -6,7 +6,6 @@ use App\Models\Meta;
 use App\Models\User;
 use App\Mail\EmailMeta;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,11 +21,11 @@ class MetaJob implements ShouldQueue
 
     public function handle()
     {
-        // obtem a data atual
+        // Obtém a data atual
         $hoje = Carbon::now();
 
-        // busca todas as metas que precisam de um lembrete hoje
-        $metas = Meta::where('status' === 'andamento')
+        // Busca todas as metas que precisam de um lembrete hoje
+        $metas = Meta::where('status', 'andamento')
             ->where(function ($query) use ($hoje) {
                 $query->where(function ($q) use ($hoje) {
                     // Enviar se a periodicidade for semanal e hoje for o mesmo dia da semana da criação
@@ -40,7 +39,7 @@ class MetaJob implements ShouldQueue
             })
             ->get();
 
-        // envia o email para cada usuario com a meta correspondente
+        // Envia o email para cada usuário com a meta correspondente
         foreach ($metas as $meta) {
             $user = User::find($meta->id_user);
             if ($user) {
@@ -49,4 +48,3 @@ class MetaJob implements ShouldQueue
         }
     }
 }
-
