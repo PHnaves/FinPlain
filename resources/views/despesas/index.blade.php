@@ -21,11 +21,6 @@
                         @foreach($despesas as $despesa)
                             <li>
                                 {{ $despesa->tipo }} - R$ {{ $despesa->valor }}  
-                                @if($despesa->recorrente)
-                                    <span style="color: green;">(Recorrente)</span>
-                                @else
-                                    <span style="color: red;">(Não Recorrente)</span>
-                                @endif
                                 
                                 <a href="{{ route('despesas.show' , $despesa->id) }}">Detalhes</a>
                             </li>

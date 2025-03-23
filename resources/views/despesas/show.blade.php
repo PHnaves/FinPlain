@@ -12,11 +12,17 @@
 
 
                     <h1>Detalhe Das Despesas</h1>
-                                        <!-- Informações do produto -->
+                    <!-- Informações do produto -->
                     <div class="flex flex-col space-y-4 w-full">
-                        <h2 class="text-3xl font-bold text-gray-800">{{ $despesa->tipo }}</h2>
-                        <p class="text-lg text-gray-600">{{ $despesa->valor }}</p>
-                        <span class="text-2xl font-bold text-blue-600">{{ $despesa->recorrente}} </span>
+                        <h2 class="text-3xl font-bold text-gray-500">{{ $despesa->tipo }}</h2>
+                        <p class="text-lg text-gray-500">{{ $despesa->valor }}</p>
+                        <span class="text-2xl font-bold">
+                            @if($despesa->recorrente)
+                                <span class="text-green-500">Recorrente</span>
+                            @else
+                                <span class="text-red-500">Não Recorrente</span>
+                            @endif
+                        </span>
                         <div class="text-gray-500 text-sm">
                             <p>Postado em: {{ $despesa->created_at }}</p>
                             {{-- logica para mostrar se a Despesa foi editada ou nao --}}
