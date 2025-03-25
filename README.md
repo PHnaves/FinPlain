@@ -3,41 +3,31 @@
 ## 🎯 Objetivo
 Criar uma aplicação web responsiva que ajude os usuários a organizarem suas finanças de forma prática, oferecendo controle de gastos, planejamento financeiro, alertas e recomendações personalizadas.
 
-## 💡 Diferencial Inovador
-A FinPlan se destaca no mercado com a funcionalidade exclusiva "Planejador Inteligente", que analisa automaticamente a renda e os gastos do usuário, sugerindo ajustes inteligentes:
-- **Desafios Financeiros:** Pequenas missões para incentivar a economia, como "Economize R$50 esta semana evitando compras desnecessárias".
-- **Projeção de Gastos Futuros:** Estimativa de gastos baseada nos padrões de consumo, oferecendo dicas personalizadas.
-- **Sistema de Recompensas:** Usuários que atingirem metas financeiras recebem badges e dicas exclusivas de investimentos.
+🔥 Funcionalidades
 
-## 🔥 Funcionalidades Principais
-### 1️⃣ Cadastro de Usuário
-- Registro via e-mail e senha.
-- Definição do perfil financeiro (Básico, Moderado ou Gastador).
-- Cadastro completo: Renda mensal, despesas essenciais e não essenciais.
+1️⃣ Cadastro de Usuário
+Registro via e-mail e senha.
+Definição do perfil financeiro (Básico, Moderado ou Arrojado).
 
-### 2️⃣ Planejamento Financeiro
-- Criação de Metas: Exemplo: viagem, reserva de emergência, compra de um carro.
-- Barra de progresso mostrando a evolução.
-- Sugestões dinâmicas para alcançar metas mais rapidamente.
+2️⃣ Planejamento Financeiro
+Criação de Metas (ex: viagem, reserva de emergência).
+Barra de progresso para acompanhar evolução.
+Sugestões para alcançar metas rapidamente.
 
-### 3️⃣ Análise de Gastos Inteligente
-- Gráficos interativos mostrando onde o usuário mais gasta.
-- Comparação de gastos entre meses anteriores.
-- Sugestões personalizadas: "Você gastou 30% a mais com alimentação este mês".
-- Alertas financeiros caso os gastos ultrapassem limites definidos.
+3️⃣ Análise de Gastos
+Gráficos interativos com categorias de despesas.
+Comparação entre meses anteriores.
+Alertas para gastos excessivos.
 
-### 4️⃣ Notificações e Alertas
-- Sistema interno de notificações (barras no topo da tela ou banners visíveis).
-- Envio de e-mails automáticos para avisos importantes.
-- Alertas sobre vencimento de contas e faturas.
-- Notificações sobre metas financeiras e hábitos de consumo.
-- Integração opcional com calendários (Google Calendar, Outlook) para lembretes.
+4️⃣ Notificações e Alertas
+Notificações no painel e envio de e-mails.
+Lembretes de vencimento de contas e metas financeiras.
+Integração opcional com Google Calendar e Outlook.
 
-### 5️⃣ Sugestões de Investimentos Personalizadas
-- Sugestão de investimentos com base no perfil do usuário.
-- Integração com dados da Bolsa de Valores em tempo real.
-- Exibição de opções de renda fixa e variável.
-- Simulação de crescimento do patrimônio com base em aportes mensais.
+5️⃣ Sugestões de Investimentos
+Recomendação de investimentos baseada no perfil.
+Integração com dados da Bolsa de Valores.
+Simulação de crescimento patrimonial.
 
 ## 🛠 Tecnologias Utilizadas
 - **Back-end:** PHP + Laravel Blade
@@ -56,7 +46,7 @@ Para evitar custos extras, as opções recomendadas são:
 5. Brevo - É a que esta sendo usada no momento no projeto, mas pode haver troca se houver necessidade.
 
 ## 🚀 Conclusão
-A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um sistema de desafios, metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
+A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
 
 ---
 
@@ -83,22 +73,22 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 
 OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi preciso configura-lo e alimenta-lo para ele conseguir da dicas financeiras mais dinamicas.
 
-### 🚀 Mês 2: Front-End e Experiência do Usuário
 ✅ Semana 5:
+- [ ] Integração com dados da Bolsa de Valores via APIs externas.
+- [ ] Recomendação de investimentos baseada no perfil.
+
+### 🚀 Mês 2: Front-End e Experiência do Usuário
+✅ Semana 6:
 - [ ] Criar páginas principais (dashboard, metas, despesas, investimentos).
 - [ ] Criar UI responsiva com Tailwind CSS.
 
-✅ Semana 6:
+✅ Semana 7:
 - [ ] Implementar gráficos interativos (Chart.js ou Laravel Charts).
 - [ ] Melhorar experiência do usuário nas interações.
 
-✅ Semana 7:
+✅ Semana 8:
 - [ ] Criar página de notificações e alertas.
 - [ ] Implementar cálculos e projeções de gastos futuros.
-
-✅ Semana 8:
-- [ ] Criar sistema de desafios financeiros personalizados.
-- [ ] Refinar e testar funcionalidades existentes.
 
 ### 🎯 Mês 3: Testes, Ajustes e Lançamento
 ✅ Semana 9:
