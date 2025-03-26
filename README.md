@@ -74,8 +74,8 @@ A FinPlan se diferencia por trazer não apenas um controle financeiro tradiciona
 OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi preciso configura-lo e alimenta-lo para ele conseguir da dicas financeiras mais dinamicas.
 
 ✅ Semana 5:
-- [ ] Integração com dados da Bolsa de Valores via APIs externas.
-- [ ] Recomendação de investimentos baseada no perfil.
+- [X] Recomendação de investimentos baseada no perfil.
+- [ ] Implementar possibilidade do usuario gerar PDFs de gastos para ter melhor visao, ele podera selecionar o periodo que deseja gerar.
 
 ### 🚀 Mês 2: Front-End e Experiência do Usuário
 ✅ Semana 6:
