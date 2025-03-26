@@ -3,11 +3,14 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\GastoController;
+use App\Http\Controllers\InvestimentoController;
 use App\Http\Controllers\LembreteController;
 use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificacaoController;
+
+Route::get('/investimentos', [InvestimentoController::class, 'index'])->name('investimentos');
 
 Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
 Route::get('/notificacoes', [NotificacaoController::class, 'index'])->name('notificacoes');
