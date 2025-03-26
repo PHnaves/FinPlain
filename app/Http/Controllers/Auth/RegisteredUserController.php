@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'typeUser' => ['required', 'in:basico,moderado,gastador'],//validacao enum
+            'typeUser' => ['required', 'in:conservador,moderado,arrojado'],//validacao enum
             'renda' => ['required', 'numeric', 'min:0'],
         ]);
 

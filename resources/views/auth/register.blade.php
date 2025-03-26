@@ -45,9 +45,9 @@
 
             <select id="typeUser" name="typeUser" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
                 <option value="" disabled selected>Selecione um tipo de usuário</option>
-                <option value="basico">Basico</option>
+                <option value="conservdor">Conservador</option>
                 <option value="moderado">Moderado</option>
-                <option value="gastador">Gastador</option>
+                <option value="arrojado">Arrojado</option>
             </select>
 
             <x-input-error :messages="$errors->get('typeUser')" class="mt-2" />

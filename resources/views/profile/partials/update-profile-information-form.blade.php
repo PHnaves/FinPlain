@@ -53,9 +53,9 @@
 
             <select id="typeUser" name="typeUser" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
                 <option value="" disabled {{ old('typeUser', $user->typeUser) == null ? 'selected' : '' }}>Selecione um tipo de usuário</option>
-                <option value="basico" {{ old('typeUser', $user->typeUser) == 'basico' ? 'selected' : '' }}>Básico</option>
+                <option value="conservador" {{ old('typeUser', $user->typeUser) == 'conservador' ? 'selected' : '' }}>Conservador</option>
                 <option value="moderado" {{ old('typeUser', $user->typeUser) == 'moderado' ? 'selected' : '' }}>Moderado</option>
-                <option value="gastador" {{ old('typeUser', $user->typeUser) == 'gastador' ? 'selected' : '' }}>Gastador</option>
+                <option value="arrojado" {{ old('typeUser', $user->typeUser) == 'arrojado' ? 'selected' : '' }}>Arrojado</option>
             </select>
             
 
