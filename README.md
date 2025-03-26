@@ -75,7 +75,7 @@ OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi pre
 
 ✅ Semana 5:
 - [X] Recomendação de investimentos baseada no perfil.
-- [ ] Implementar possibilidade do usuario gerar PDFs de gastos para ter melhor visao, ele podera selecionar o periodo que deseja gerar.
+- [X] Implementar possibilidade do usuario gerar PDFs de gastos para ter melhor visao, ele podera selecionar o periodo que deseja gerar.
 
 ### 🚀 Mês 2: Front-End e Experiência do Usuário
 ✅ Semana 6:
