@@ -9,6 +9,10 @@ use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\RelatorioController;
+
+
+Route::get('/relatorio', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
 
 Route::get('/investimentos', [InvestimentoController::class, 'index'])->name('investimentos');
 
