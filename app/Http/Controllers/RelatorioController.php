@@ -8,21 +8,51 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class RelatorioController extends Controller
 {
-    public function gerarPDF()
+    public function index()
     {
-        // Busca os gastos do banco de dados
-        $gastos = Gasto::orderBy('created_at', 'desc')->get();
-        
-        // Calcula o total
+        return view('relatorios.index');
+    }
+
+    public function gerarPDF(Request $request)
+    {
+        $query = Gasto::query();
+
+        if ($request->filled('data_inicio') && $request->filled('data_fim')) {
+            $query->whereBetween('created_at', [$request->data_inicio, $request->data_fim]);
+        }
+
+        if ($request->filled('tipo')) {
+            $query->where('necessario', $request->tipo === 'entrada' ? 'sim' : 'nao');
+        }
+
+        $gastos = $query->get();
         $total = $gastos->sum('valor');
         
-        // Gera o PDF
         $pdf = Pdf::loadView('pdf.relatorio', [
             'gastos' => $gastos,
-            'total' => $total
+            'total' => $total,
+            'data_inicio' => $request->data_inicio ?? 'Início',
+            'data_fim' => $request->data_fim ?? 'Fim'
         ]);
         
-        // Faz o download do PDF
         return $pdf->download('relatorio.pdf');
+    }
+
+    public function filtarGastos(Request $request)
+    {
+        $query = Gasto::query();
+
+        if ($request->filled('data_inicio') && $request->filled('data_fim')) {
+            $query->whereBetween('created_at', [$request->data_inicio, $request->data_fim]);
+        }
+
+        if ($request->filled('tipo')) {
+            $query->where('necessario', $request->tipo === 'entrada' ? 'sim' : 'nao');
+        }
+
+        $gastos = $query->get();
+        $total = $gastos->sum('valor');
+
+        return view('relatorios.index', compact('gastos', 'total'));
     }
 }
