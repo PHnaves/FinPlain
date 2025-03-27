@@ -22,10 +22,18 @@
             margin-top: 20px;
             font-weight: bold;
         }
+        .periodo {
+            margin-bottom: 20px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <h1>Relatório de Gastos</h1>
+    
+    <div class="periodo">
+        Período: {{ $data_inicio }} até {{ $data_fim }}
+    </div>
     
     <table class="table">
         <thead>
