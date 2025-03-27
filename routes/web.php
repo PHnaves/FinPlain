@@ -14,6 +14,7 @@ use App\Http\Controllers\RelatorioController;
 
 Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
 Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
+Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
 
 Route::get('/investimentos', [InvestimentoController::class, 'index'])->name('investimentos');
 
