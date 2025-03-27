@@ -26,8 +26,8 @@
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Tipo:</label>
                                     <select name="tipo" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600">
                                         <option value="">Todos</option>
-                                        <option value="entrada">Necessários</option>
-                                        <option value="saida">Não Necessários</option>
+                                        <option value="1">Necessários</option>
+                                        <option value="0">Não Necessários</option>
                                     </select>
                                 </div>
                             </div>
@@ -83,9 +83,9 @@
 
                             <div class="mt-6 flex justify-end">
                                 <form action="{{ route('relatorio.gerar') }}" method="GET">
-                                    <input type="hidden" name="data_inicio" value="{{ request('data_inicio') }}">
-                                    <input type="hidden" name="data_fim" value="{{ request('data_fim') }}">
-                                    <input type="hidden" name="tipo" value="{{ request('tipo') }}">
+                                    <input type="hidden" name="data_inicio" value="{{ request('data_inicio') ?? '' }}">
+                                    <input type="hidden" name="data_fim" value="{{ request('data_fim') ?? '' }}">
+                                    <input type="hidden" name="tipo" value="{{ request('tipo') ?? '' }}">
                                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                                         Gerar PDF
                                     </button>
