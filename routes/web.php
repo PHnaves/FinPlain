@@ -12,7 +12,8 @@ use App\Http\Controllers\NotificacaoController;
 use App\Http\Controllers\RelatorioController;
 
 
-Route::get('/relatorio', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
+Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
+Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
 
 Route::get('/investimentos', [InvestimentoController::class, 'index'])->name('investimentos');
 
