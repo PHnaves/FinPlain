@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('descricao');
             $table->string('tipo'); // Ex: Ações, Fundos Imobiliários, Renda Fixa
             $table->string('perfil_recomendado')->enum('conservador', 'moderado', 'arrojado'); // Ex: Conservador, Moderado, Arrojado
-            $table->string('prazo')->enum('curto', 'medio', 'longo'); // Ex: Curto, Médio, Longo prazo
-            $table->decimal('valor_recomendado', 10, 2); // Ex: Valor sugerido para investimento
+            $table->date('data_validade');
+            $table->decimal('valor_minimo', 10, 2); // Ex: Valor sugerido para investimento
             $table->timestamps();
         });
     }
