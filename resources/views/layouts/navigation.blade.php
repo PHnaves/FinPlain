@@ -99,6 +99,24 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('despesas.index')" :active="request()->routeIs('despesas.index')">
+                {{ __('Despesas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('metas.index')" :active="request()->routeIs('metas.index')">
+                {{ __('Metas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.index')">
+                {{ __('Gastos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('investimentos')" :active="request()->routeIs('investimentos')">
+                {{ __('Investimentos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
+                {{ __('Notificações') }}
+                @if($naoLidas > 0)
+                    <span id="contador-notificacoes">{{ $naoLidas }}</span>
+                @endif
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
