@@ -25,8 +25,8 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
-            'typeUser' => ['required', 'string', 'in:conservador,moderado,arrojado'],
-            'renda' => ['required', 'numeric', 'min:0'],
+            'type_user' => ['required', 'string', 'in:conservador,moderado,arrojado'],
+            'rent' => ['required', 'numeric', 'min:0'],
         ];
     }
 }

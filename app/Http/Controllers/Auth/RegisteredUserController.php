@@ -33,16 +33,16 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'typeUser' => ['required', 'in:conservador,moderado,arrojado'],//validacao enum
-            'renda' => ['required', 'numeric', 'min:0'],
+            'type_user' => ['required', 'in:conservador,moderado,arrojado'],//validacao enum
+            'rent' => ['required', 'numeric', 'min:0'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'typeUser' => $request->typeUser,
-            'renda' => $request->renda
+            'type_user' => $request->type_user,
+            'rent' => $request->rent
         ]);
 
         event(new Registered($user));

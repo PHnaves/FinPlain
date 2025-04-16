@@ -39,29 +39,29 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Select From TypeUser -->
+        <!-- Select From Type_user -->
         <div class="mt-4">
-            <x-input-label for="typeUser" :value="__('Tipo de Usuário')" />
+            <x-input-label for="type_user" :value="__('Tipo de Usuário')" />
 
-            <select id="typeUser" name="typeUser" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+            <select id="type_user" name="type_user" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
                 <option value="" disabled selected>Selecione um tipo de usuário</option>
                 <option value="conservador">Conservador</option>
                 <option value="moderado">Moderado</option>
                 <option value="arrojado">Arrojado</option>
             </select>
 
-            <x-input-error :messages="$errors->get('typeUser')" class="mt-2" />
+            <x-input-error :messages="$errors->get('type_user')" class="mt-2" />
         </div>
 
-        <!-- Renda do usuario -->
+        <!-- Select From Rent -->
         <div class="mt-4">
-            <x-input-label for="renda" :value="__('Valor Somado de Suas Rendas Fixas')" />
+            <x-input-label for="rent" :value="__('Valor Somado de Suas Rendas Fixas')" />
 
-            <x-text-input id="renda" class="block mt-1 w-full"
+            <x-text-input id="rent" class="block mt-1 w-full"
                             type="number"
-                            name="renda" required />
+                            name="rent" required />
 
-            <x-input-error :messages="$errors->get('renda')" class="mt-2" />
+            <x-input-error :messages="$errors->get('rent')" class="mt-2" />
         </div>
 
 

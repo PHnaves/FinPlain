@@ -47,26 +47,26 @@
             @endif
         </div>
 
-        <!-- Select From TypeUser -->
+        <!-- Select From type_user -->
         <div class="mt-4">
-            <x-input-label for="typeUser" :value="__('Tipo de Usuário')" />
+            <x-input-label for="type_user" :value="__('Tipo de Usuário')" />
 
-            <select id="typeUser" name="typeUser" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
-                <option value="" disabled {{ old('typeUser', $user->typeUser) == null ? 'selected' : '' }}>Selecione um tipo de usuário</option>
-                <option value="conservador" {{ old('typeUser', $user->typeUser) == 'conservador' ? 'selected' : '' }}>Conservador</option>
-                <option value="moderado" {{ old('typeUser', $user->typeUser) == 'moderado' ? 'selected' : '' }}>Moderado</option>
-                <option value="arrojado" {{ old('typeUser', $user->typeUser) == 'arrojado' ? 'selected' : '' }}>Arrojado</option>
+            <select id="type_user" name="type_user" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <option value="" disabled {{ old('type_user', $user->type_user) == null ? 'selected' : '' }}>Selecione um tipo de usuário</option>
+                <option value="conservador" {{ old('type_user', $user->type_user) == 'conservador' ? 'selected' : '' }}>Conservador</option>
+                <option value="moderado" {{ old('type_user', $user->type_user) == 'moderado' ? 'selected' : '' }}>Moderado</option>
+                <option value="arrojado" {{ old('type_user', $user->type_user) == 'arrojado' ? 'selected' : '' }}>Arrojado</option>
             </select>
             
 
-            <x-input-error class="mt-2" :messages="$errors->get('typeUser')" />
+            <x-input-error class="mt-2" :messages="$errors->get('type_user')" />
         </div>
 
-        <!-- Renda do usuario -->
+        <!-- Select From Rent -->
         <div class="mt-4">
-            <x-input-label for="renda" :value="__('Renda')" />
-            <x-text-input id="renda" name="renda" type="number" class="mt-1 block w-full" :value="old('renda', $user->renda)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('renda')" />
+            <x-input-label for="rent" :value="__('Renda')" />
+            <x-text-input id="rent" name="rent" type="number" class="mt-1 block w-full" :value="old('rent', $user->rent)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('rent')" />
         </div>
 
         <div class="flex items-center gap-4">
