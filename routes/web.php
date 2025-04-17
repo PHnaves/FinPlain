@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\GastoController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\InvestimentoController;
 use App\Http\Controllers\LembreteController;
 use App\Http\Controllers\MetaController;
@@ -39,13 +40,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // METAS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/meta', [MetaController::class, 'index'])->name('metas.index'); // Listar metas
-    Route::get('/meta/create', [MetaController::class, 'create'])->name('metas.create');
-    Route::post('/meta', [MetaController::class, 'store'])->name('metas.store'); // Criar meta
-    Route::get('/meta/{meta}/show', [MetaController::class, 'show'])->name('metas.show'); // Ver detalhes da meta
-    Route::get('/meta/{meta}/edit', [MetaController::class, 'edit'])->name('metas.edit'); // Ver detalhes da meta
-    Route::patch('/meta/{meta}', [MetaController::class, 'update'])->name('metas.update'); // Atualizar meta
-    Route::delete('/meta/{meta}', [MetaController::class, 'destroy'])->name('metas.destroy'); // Deletar meta
+    Route::get('/meta', [GoalController::class, 'index'])->name('metas.index'); // Listar metas
+    Route::get('/meta/create', [GoalController::class, 'create'])->name('metas.create');
+    Route::post('/meta', [GoalController::class, 'store'])->name('metas.store'); // Criar meta
+    Route::get('/meta/{goal}/show', [GoalController::class, 'show'])->name('metas.show'); // Ver detalhes da meta
+    Route::get('/meta/{goal}/edit', [GoalController::class, 'edit'])->name('metas.edit'); // Ver detalhes da meta
+    Route::patch('/meta/{goal}', [GoalController::class, 'update'])->name('metas.update'); // Atualizar meta
+    Route::delete('/meta/{goal}', [GoalController::class, 'destroy'])->name('metas.destroy'); // Deletar meta
 });
 
 // DESPESAS

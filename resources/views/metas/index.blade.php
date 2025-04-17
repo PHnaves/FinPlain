@@ -16,12 +16,12 @@
                     <a href="{{ route('metas.create') }}">Criar Nova Meta</a>
 
                     <ul>
-                        @foreach($metas as $meta)
+                        @foreach($goals as $goal)
                             <li>
-                                <strong>{{ $meta->titulo }}</strong> - R$ {{ $meta->valor_atual }} / R$ {{ $meta->valor_final }}
-                                <progress value="{{ $meta->valor_atual }}" max="{{ $meta->valor_final }}"></progress>
-                                <span>Status: {{ ucfirst($meta->status) }}</span>
-                                <a href="{{ route('metas.show' , $meta->id) }}">Detalhes</a>
+                                <strong>{{ $goal->goal_title }}</strong> - R$ {{ $goal->current_value }} / R$ {{ $goal->target_value }}
+                                <progress value="{{ $goal->current_value }}" max="{{ $goal->target_value }}"></progress>
+                                <span>Status: {{ ucfirst($goal->status) }}</span>
+                                <a href="{{ route('metas.show' , $goal->id) }}">Detalhes</a>
                             </li>
                         @endforeach
                     </ul>

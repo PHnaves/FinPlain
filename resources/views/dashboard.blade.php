@@ -15,7 +15,7 @@
 
                 <div>
                     <h2>Progresso das Metas</h2>
-                    <canvas id="metasChart"></canvas>
+                    <canvas id="goalsChart"></canvas>
                 </div>
 
                 <div>
@@ -26,27 +26,27 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
                 // Dados do gráfico de progresso das metas
-                var ctx2 = document.getElementById('metasChart').getContext('2d');
-                var metasChart = new Chart(ctx2, {
+                var ctx2 = document.getElementById('goalsChart').getContext('2d');
+                var goalsChart = new Chart(ctx2, {
                     type: 'bar',
                     data: {
-                        labels: @json($metas_titulos),
+                        labels: @json($goal_title),
                         datasets: [{
                             label: 'Progresso (%)',
-                            data: @json($metas_progresso),
+                            data: @json($goal_progress),
                             backgroundColor: '#4caf50'
                         }]
                     },
                     options: {
                         onClick: function(e) {
                             // Pega o elemento clicado
-                            var activePoints = metasChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
+                            var activePoints = goalsChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
                             if (activePoints.length > 0) {
                                 var clickedIndex = activePoints[0].index;
                                 // Redireciona para a página de detalhes da meta
-                                var metasTitulos = @json($metas_titulos); // O título da meta
-                                var metasIds = @json($metas_ids); // IDs das metas para redirecionamento correto
-                                window.location.href = "/meta/" + metasIds[clickedIndex] + "/show"; // Ajuste conforme a sua rota
+                                var goalsTitles = @json($goal_title); // O título da meta
+                                var goalsIds = @json($goal_ids); // IDs das metas para redirecionamento correto
+                                window.location.href = "/goal/" + goalsIds[clickedIndex] + "/show"; // Ajuste conforme a sua rota
                             }
                         }
                     }

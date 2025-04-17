@@ -55,9 +55,9 @@ class User extends Authenticatable //implements MustVerifyEmail
         return $this->hasMany(Despesa::class, 'id_user');
     }
 
-    public function metas()
+    public function goals()
     {
-        return $this->hasMany(Meta::class, 'id_user');
+        return $this->hasMany(Goal::class, 'user_id');
     }
 
     public function notificacoes()

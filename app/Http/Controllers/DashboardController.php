@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gasto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Meta;
+use App\Models\Goal;
 
 class DashboardController extends Controller
 {
@@ -19,14 +19,14 @@ class DashboardController extends Controller
         }
 
         // Gráfico de Progresso das Metas
-        $metas = Meta::where('id_user', $user->id)->get();
+        $goals = Goal::where('user_id', $user->id)->get();
 
-        // pegar os ids das metas
-        $metas_ids = Meta::pluck('id');          // Pega os IDs das metas
+        // pegar os ids das goals
+        $goal_ids = Goal::pluck('id');
 
-        $metas_titulos = $metas->pluck('titulo');
-        $metas_progresso = $metas->map(function ($meta) {
-            return $meta->valor_final > 0 ? ($meta->valor_atual / $meta->valor_final * 100) : 0;
+        $goal_title = $goals->pluck('goal_title');
+        $goal_progress = $goals->map(function ($goal) {
+            return $goal->target_value > 0 ? ($goal->valor_atual / $goal->target_value * 100) : 0;
         });
 
         // Gráfico de Gastos
@@ -37,7 +37,7 @@ class DashboardController extends Controller
         $gastos_necessarios = $gastos->pluck('necessario'); // Assume que "tipo" pode ser 'necessario' ou 'nao_necessario'
 
         return view('dashboard', compact(
-            'metas_titulos', 'metas_progresso', 'metas_ids',
+            'goal_title', 'goal_progress', 'goal_ids',
             'gastos_titulos', 'gastos_valores', 'gastos_necessarios', 'gastos_ids'
         ));
     }

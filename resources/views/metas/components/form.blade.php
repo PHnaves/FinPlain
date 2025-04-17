@@ -1,29 +1,47 @@
 @csrf
 
-<input type="text" name="titulo" placeholder="Título da Meta" value="{{ old('titulo', $meta->titulo ?? '') }}" required>
+<input type="text" name="goal_title" placeholder="Título da Meta" value="{{ old('goal_title', $goal->goal_title ?? '') }}" required>
 
-<textarea name="descricao" placeholder="Descrição (opcional)">{{ old('descricao', $meta->descricao ?? '') }}</textarea>
+<textarea name="goal_description" placeholder="Descrição (opcional)">{{ old('goal_description', $goal->goal_description ?? '') }}</textarea>
 
-<input type="number" name="valor_final" placeholder="Valor Final (R$)" value="{{ old('valor_final', $meta->valor_final ?? '') }}" required>
+<label for="goal_category">Categoria</label>
+<input list="goal_categories"
+       name="goal_category"
+       id="goal_category"
+       placeholder="Escolha ou crie uma categoria"
+       value="{{ old('goal_category', $goal->goal_category ?? '') }}"
+       required>
 
-<input type="number" name="valor_atual" placeholder="Valor atual já guardado (R$)" value="{{ old('valor_atual', $meta->valor_atual ?? '') }}">
+<datalist id="goal_categories">
+    @foreach ($goal_categories as $goal_category)
+        <option value="{{ $goal_category }}">
+    @endforeach
+</datalist>
 
-<input type="number" name="valor_periodico" placeholder="Valor a Guardar por Período (R$)" value="{{ old('valor_periodico', $meta->valor_periodico ?? '') }}" required>
 
-<label for="periodicidade">Periodicidade:</label>
-<select name="periodicidade" id="periodicidade" required>
-    <option value="semanal" {{ old('periodicidade', $meta->periodicidade ?? '') == 'semanal' ? 'selected' : '' }}>Semanal</option>
-    <option value="mensal" {{ old('periodicidade', $meta->periodicidade ?? '') == 'mensal' ? 'selected' : '' }}>Mensal</option>
+<input type="number" name="target_value" placeholder="Valor Final (R$)" value="{{ old('target_value', $goal->target_value ?? '') }}" required>
+
+<input type="number" name="current_value" placeholder="Valor atual já guardado (R$)" value="{{ old('current_value', $goal->current_value ?? '') }}">
+
+<label for="frequency">Frequencia:</label>
+<select name="frequency" id="frequency" required>
+    <option value="semanal" {{ old('frequency', $goal->frequency ?? '') == 'semanal' ? 'selected' : '' }}>Semanal</option>
+    <option value="mensal" {{ old('frequency', $goal->frequency ?? '') == 'mensal' ? 'selected' : '' }}>Mensal</option>
 </select>
 
-<!-- Exibir o campo de "Status" apenas se estamos editando uma meta -->
-@if(isset($meta->id))
+<input type="number" name="recurring_value" placeholder="Valor a Guardar por Período (R$)" value="{{ old('recurring_value', $goal->recurring_value ?? '') }}" required>
+
+<!-- Exibir o campo de "Status" apenas se estamos editando uma goal -->
+@if(isset($goal->id))
     <label for="status">Status:</label>
     <select name="status" id="status" required>
-        <option value="andamento" {{ old('status', $meta->status ?? '') == 'andamento' ? 'selected' : '' }}>Em andamento</option>
-        <option value="concluída" {{ old('status', $meta->status ?? '') == 'concluída' ? 'selected' : '' }}>Concluída</option>
-        <option value="cancelada" {{ old('status', $meta->status ?? '') == 'cancelada' ? 'selected' : '' }}>Cancelada</option>
+        <option value="andamento" {{ old('status', $goal->status ?? '') == 'andamento' ? 'selected' : '' }}>Em andamento</option>
+        <option value="concluída" {{ old('status', $goal->status ?? '') == 'concluída' ? 'selected' : '' }}>Concluída</option>
+        <option value="cancelada" {{ old('status', $goal->status ?? '') == 'cancelada' ? 'selected' : '' }}>Cancelada</option>
     </select>
 @endif
+
+{{-- data final --}}
+<input type="date" name="end_date" value="{{ old('end_date', $goal->end_date ?? '') }}">
 
 <button type="submit">Salvar Meta</button>

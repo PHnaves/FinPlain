@@ -5,20 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Meta extends Model
+class Goal extends Model
 {
 
     use HasFactory;
     
     protected $fillable = [
-        'id_user',
-        'titulo',
-        'descricao',
-        'valor_final',
-        'valor_atual',
-        'periodicidade',
-        'valor_periodico',
+        'user_id',
+        'goal_title',
+        'goal_description',
+        'goal_category',
+        'target_value',
+        'current_value',
+        'frequency',
+        'recurring_value',
         'status',
+        'end_date',
     ];
 
     // Relacionamento com o usuário
