@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DespesaController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\InvestimentoController;
@@ -51,12 +52,12 @@ Route::middleware(['auth'])->group(function () {
 
 // DESPESAS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/despesa', [DespesaController::class, 'index'])->name('despesas.index'); // Listar despesas
-    Route::post('/despesa', [DespesaController::class, 'store'])->name('despesas.store'); // Criar despesa
-    Route::get('/despesa/{despesa}/show', [DespesaController::class, 'show'])->name('despesas.show'); // Ver detalhes da despesa
-    Route::get('/despesa/{despesa}/edit', [DespesaController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
-    Route::patch('/despesa/{despesa}', [DespesaController::class, 'update'])->name('despesas.update'); // Atualizar despesa
-    Route::delete('/despesa/{despesa}', [DespesaController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
+    Route::get('/despesa', [ExpenseController::class, 'index'])->name('despesas.index'); // Listar despesas
+    Route::post('/despesa', [ExpenseController::class, 'store'])->name('despesas.store'); // Criar despesa
+    Route::get('/despesa/{expense}/show', [ExpenseController::class, 'show'])->name('despesas.show'); // Ver detalhes da despesa
+    Route::get('/despesa/{expense}/edit', [ExpenseController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
+    Route::patch('/despesa/{expense}', [ExpenseController::class, 'update'])->name('despesas.update'); // Atualizar despesa
+    Route::delete('/despesa/{expense}', [ExpenseController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
 });
 
 
