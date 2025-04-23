@@ -1,16 +1,15 @@
 <?php
 
-use App\Jobs\MetaJob;
-use App\Jobs\DespesaJob;
+use App\Jobs\ExpenseJob;
+use App\Jobs\GoalJob;
 use Illuminate\Foundation\Console\ClosureCommand;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule; // Importação correta
 
-// Agendando Jobs corretamente
-Schedule::job(new MetaJob())->dailyAt('11:00');
-Schedule::job(new DespesaJob())->dailyAt('11:00');
-
+// Agendando os Jobs corretamente para envio de e-mails
+Schedule::job(new GoalJob())->dailyAt('11:00'); // Agendando o GoalJob
+Schedule::job(new ExpenseJob())->dailyAt('11:00'); // Agendando o ExpenseJob
 
 // Comando Artisan padrão
 Artisan::command('inspire', function () {
