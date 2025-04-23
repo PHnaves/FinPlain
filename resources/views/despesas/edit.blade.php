@@ -13,7 +13,7 @@
                     <div class="max-w-4xl mx-auto mt-10 bg-gray-800 p-6 rounded-lg shadow-md">
                         <h2 class="text-white text-2xl font-semibold mb-4">Editar Despesa</h2> 
                         <!-- Formulário para editar usuário -->
-                        <form action="{{ route('despesas.update', $despesa->id ) }}" method="post" class="space-y-6">
+                        <form action="{{ route('despesas.update', $expense->id ) }}" method="post" class="space-y-6">
                             @method('patch')
                             @include('despesas.components.form')
                         </form>

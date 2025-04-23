@@ -18,11 +18,11 @@
                     </form>
                 
                     <ul>
-                        @foreach($despesas as $despesa)
+                        @foreach($expenses as $expense)
                             <li>
-                                {{ $despesa->tipo }} - R$ {{ $despesa->valor }}  
+                                {{ $expense->expense_name }} - R$ {{ $expense->expense_value }}  
                                 
-                                <a href="{{ route('despesas.show' , $despesa->id) }}">Detalhes</a>
+                                <a href="{{ route('despesas.show' , $expense->id) }}">Detalhes</a>
                             </li>
                         @endforeach
                     </ul>
