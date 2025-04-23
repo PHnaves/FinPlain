@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Notifications\CustomVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
-class User extends Authenticatable //implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -52,7 +54,7 @@ class User extends Authenticatable //implements MustVerifyEmail
 
     public function despesas(): HasMany
     {
-        return $this->hasMany(Despesa::class, 'id_user');
+        return $this->hasMany(Expense::class, 'user_id');
     }
 
     public function goals()
@@ -63,6 +65,11 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function notificacoes()
     {
         return $this->hasMany(Notificacao::class, 'id_user'); // Ajuste para o nome correto da FK
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new CustomVerifyEmail);
     }
 
 }
