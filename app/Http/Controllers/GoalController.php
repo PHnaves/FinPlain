@@ -142,8 +142,18 @@ class GoalController extends Controller
             'end_date' => 'required|date',
         ]);
         
-        // Atualização dos dados da goal
-        $data = $request->only(['goal_title', 'goal_description', 'valor_final', 'valor_atual', 'periodicidade', 'valor_periodico', 'status']);
+        // Atualização dos dados da meta
+        $data = $request->only([
+            'goal_title',
+            'goal_description',
+            'goal_category',
+            'target_value',
+            'current_value',
+            'frequency',
+            'recurring_value',
+            'status',
+            'end_date'
+        ]);
 
         $goal->update($data);
 
