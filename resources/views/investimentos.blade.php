@@ -16,25 +16,25 @@
                         </p>
                     </div>
 
-                    @if($investimentos->count() > 0)
+                    @if($investiments->count() > 0)
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            @foreach($investimentos as $investimento)
+                            @foreach($investiments as $investiment)
                                 <div class="bg-white rounded-lg shadow-md p-6">
-                                    <h4 class="text-lg font-semibold mb-2">{{ $investimento->nome }}</h4>
-                                    <p class="text-sm text-gray-600 mb-4">{{ $investimento->descricao }}</p>
+                                    <h4 class="text-lg font-semibold mb-2">{{ $investiment->investiment_name }}</h4>
+                                    <p class="text-sm text-gray-600 mb-4">{{ $investiment->investiment_description }}</p>
                                     
                                     <div class="space-y-2">
                                         <div class="flex justify-between">
                                             <span class="text-sm font-medium">Tipo:</span>
-                                            <span class="text-sm">{{ $investimento->tipo }}</span>
+                                            <span class="text-sm">{{ $investiment->investiment_type }}</span>
                                         </div>
                                         <div class="flex justify-between">
-                                            <span class="text-sm font-medium">Prazo:</span>
-                                            <span class="text-sm">{{ $investimento->prazo }}</span>
+                                            <span class="text-sm font-medium">Data de Expiração:</span>
+                                            <span class="text-sm">{{ $investiment->expiration_date }}</span>
                                         </div>
                                         <div class="flex justify-between">
-                                            <span class="text-sm font-medium">Valor Recomendado:</span>
-                                            <span class="text-sm">R$ {{ number_format($investimento->valor_recomendado, 2, ',', '.') }}</span>
+                                            <span class="text-sm font-medium">Valor Minimo:</span>
+                                            <span class="text-sm">R$ {{ number_format($investiment->minimum_value, 2, ',', '.') }}</span>
                                         </div>
                                     </div>
                                 </div>
