@@ -5,7 +5,7 @@ use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GastoController;
 use App\Http\Controllers\GoalController;
-use App\Http\Controllers\InvestimentoController;
+use App\Http\Controllers\InvestimentController;
 use App\Http\Controllers\LembreteController;
 use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
@@ -18,7 +18,7 @@ Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio
 Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
 Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
 
-Route::get('/investimentos', [InvestimentoController::class, 'index'])->name('investimentos');
+Route::get('/investimentos', [InvestimentController::class, 'index'])->name('investimentos');
 
 Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
 Route::get('/notificacoes', [NotificacaoController::class, 'index'])->name('notificacoes');
