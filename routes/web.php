@@ -11,12 +11,17 @@ use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
 
 
-Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
-Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
-Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
+Route::get('/relatorio', [RecordController::class, 'index'])->name('relatorio.index');
+Route::get('/relatorio/gerar', [RecordController::class, 'generatePdf'])->name('relatorio.gerar');
+Route::post('/relatorios/filtrar', [RecordController::class, 'filterExpenses'])->name('relatorios.filtrar');
+
+// Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
+// Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
+// Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
 
 Route::get('/investimentos', [InvestimentController::class, 'index'])->name('investimentos');
 
