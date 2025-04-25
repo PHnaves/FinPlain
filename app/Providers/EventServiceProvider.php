@@ -2,16 +2,16 @@
 
 namespace App\Providers;
 
+use App\Events\ExpenseLimit;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Events\GastoExcedido;
-use App\Listeners\EnviarNotificacaoGastoExcedido;
+use App\Listeners\ExpenseNotificationLimit;
 
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        GastoExcedido::class => [
-            EnviarNotificacaoGastoExcedido::class,
+        ExpenseLimit::class => [
+            ExpenseNotificationLimit::class,
         ],
     ];
     
