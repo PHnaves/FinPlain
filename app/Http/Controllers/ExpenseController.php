@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ExpenseLimit;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,15 @@ class ExpenseController extends Controller
         $validated['installments'] = $validated['installments'] ?? 1;
         $validated['user_id'] = Auth::id();
 
-        Expense::create($validated);
+        $expense = Expense::create($validated);
+
+        $user = Auth::user();
+        $rent = $user->rent;
+        $limit = $rent * 0.5;
+
+        if ($expense->expense_value > $limit) {
+            event(new ExpenseLimit($user, $expense));
+        }
 
         return redirect()->route('despesas.index')->with('success', 'Despesa cadastrada com sucesso!');
     }

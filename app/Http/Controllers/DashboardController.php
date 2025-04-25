@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expense;
 use App\Models\Gasto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,15 +31,19 @@ class DashboardController extends Controller
         });
 
         // Gráfico de Gastos
-        $gastos = Gasto::where('id_user', $user->id)->get();
-        $gastos_ids = $gastos->pluck('id');
-        $gastos_titulos = $gastos->pluck('descricao');
-        $gastos_valores = $gastos->pluck('valor');
-        $gastos_necessarios = $gastos->pluck('necessario'); // Assume que "tipo" pode ser 'necessario' ou 'nao_necessario'
+        $expenses = Expense::where('user_id', $user->id)->get();
+        $expense_ids = $expenses->pluck('id');
+        $expense_name = $expenses->pluck('expense_name');
+        $expense_value = $expenses->pluck('expense_value');
+        $expense_payment_date = $expenses->pluck('payment_date');
+
+        $expense_status = $expenses->map(function ($expense) {
+            return $expense->payment_date ? 'pago' : 'nao_pago';
+        });        
 
         return view('dashboard', compact(
             'goal_title', 'goal_progress', 'goal_ids',
-            'gastos_titulos', 'gastos_valores', 'gastos_necessarios', 'gastos_ids'
+            'expense_ids', 'expense_name', 'expense_value', 'expense_payment_date', 'expense_status'
         ));
     }
 }

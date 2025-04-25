@@ -30,9 +30,6 @@ class GastoController extends Controller
             'necessario' => 'required|in:sim,nao',
         ]);
     
-        $user = Auth::user(); 
-        $renda = $user->renda; 
-        $limite = $renda * 0.5;
     
         // Criando o gasto e armazenando na variável
         $gasto = Gasto::create([
@@ -41,11 +38,6 @@ class GastoController extends Controller
             'valor' => $request->valor,
             'necessario' => $request->necessario,
         ]);
-    
-        // Garantindo que só dispare o evento uma vez
-        if ($gasto->valor > $limite) {
-            event(new GastoExcedido($user, $gasto));
-        }
     
         return redirect()->route('gastos.index');
     }
