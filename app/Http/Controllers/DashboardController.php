@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
         $goal_title = $goals->pluck('goal_title');
         $goal_progress = $goals->map(function ($goal) {
-            return $goal->target_value > 0 ? ($goal->valor_atual / $goal->target_value * 100) : 0;
+            return $goal->target_value > 0 ? ($goal->current_value / $goal->target_value * 100) : 0;
         });
 
         // Gráfico de Gastos
