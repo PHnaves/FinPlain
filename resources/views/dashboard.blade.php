@@ -47,7 +47,7 @@
                                         const activePoints = goalsChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
                                         if (activePoints.length > 0) {
                                             const clickedIndex = activePoints[0].index;
-                                            window.location.href = "/goal/" + goalIds[clickedIndex] + "/show";
+                                            window.location.href = "/meta/" + goalIds[clickedIndex] + "/show";
                                         }
                                     }
                                 }
@@ -84,7 +84,7 @@
                                         const activePoints = gastosChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false);
                                         if (activePoints.length > 0) {
                                             const clickedIndex = activePoints[0].index;
-                                            window.location.href = "/expense/" + expenseIds[clickedIndex] + "/show";
+                                            window.location.href = "/despesa/" + expenseIds[clickedIndex] + "/show";
                                         }
                                     }
                                 }
