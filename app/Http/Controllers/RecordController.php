@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Expense;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+
+class RecordController extends Controller
+{
+    public function index()
+    {
+        return view('records.index');
+    }
+
+    public function generatePdf(Request $request)
+    {
+        $query = Expense::query();
+
+        if ($request->filled('expense_category')){
+            $query->where('expense_category', $request->expense_category);
+        }
+
+        if($request->filled('recurrence')){
+            $query->where('recurrence', $request->recurrence);
+        }
+
+        if ($request->filled('due_date')) {
+            $query->where('due_date', $request->due_date);
+        }
+
+        if ($request->filled('payment_date')) {
+            $query->where('payment_date', $request->payment_date);
+        }
+
+        $expenses = $query->get();
+        $total = $expenses->sum('expense_value');
+
+        $pdf = Pdf::loadView('pdf.record', [
+            'expenses' => $expenses,
+            'total' => $total,
+            'due_date' => $request->filled('due_date') ? Carbon::parse($request->due_date)->format('d/m/Y') : 'Data de Vancimento',
+            'payment_date' => $request->filled('payment_date') ? Carbon::parse($request->payment_date)->format('d/m/Y') : 'Data De Pagamento'
+        ]);
+
+        return $pdf->download('record.pdf');
+
+    }
+
+    public function filterExpenses(Request $request)
+    {
+        $query = Expense::query();
+
+        if ($request->filled('expense_category')){
+            $query->where('expense_category', $request->expense_category);
+        }
+
+        if($request->filled('recurrence')){
+            $query->where('recurrence', $request->recurrence);
+        }
+
+        if ($request->filled('due_date')) {
+            $query->where('due_date', $request->due_date);
+        }
+
+        if ($request->filled('payment_date')) {
+            $query->where('payment_date', $request->payment_date);
+        }
+
+        $expenses = $query->get();
+        $total = $expenses->sum('expense_value');
+
+        return view('records.index', compact('expenses', 'total'));
+    }
+}
