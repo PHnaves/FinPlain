@@ -14,4 +14,5 @@ class Investiment extends Model
         'expiration_date',
         'minimum_value'
     ];
+
 }

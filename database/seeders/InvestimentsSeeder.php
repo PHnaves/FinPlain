@@ -13,30 +13,12 @@ class InvestimentsSeeder extends Seeder
     public function run(): void
     {
         Investiment::create([
-            'nome' => 'Fundos Imobiliários - HGLG11',
-            'descricao' => 'Investimento de baixo risco, ideal para investidores conservadores.',
-            'tipo' => 'Fundos Imobiliários',
-            'perfil_recomendado' => 'Conservador',
-            'prazo' => 'Médio Prazo',
-            'valor_recomendado' => 3000.00
-        ]);
-
-        Investiment::create([
-            'nome' => 'Ações - PETR4',
-            'descricao' => 'Ação de alto risco com potencial de retorno no curto prazo.',
-            'tipo' => 'Ações',
-            'perfil_recomendado' => 'Arrojado',
-            'prazo' => 'Curto Prazo',
-            'valor_recomendado' => 1500.00
-        ]);
-
-        Investiment::create([
-            'nome' => 'Tesouro Direto - Tesouro Selic',
-            'descricao' => 'Investimento de baixo risco, ideal para quem busca segurança.',
-            'tipo' => 'Renda Fixa',
-            'perfil_recomendado' => 'Conservador',
-            'prazo' => 'Longo Prazo',
-            'valor_recomendado' => 2000.00
+            'investment_name' => 'Fundos Imobiliários - HGLG11',
+            'investment_description' => 'Investimento de baixo risco, ideal para investidores conservadores.',
+            'investment_type' => 'Fundos Imobiliários',
+            'recommended_profile' => 'Conservador',
+            'expiration_date' => '25/04/2026',
+            'minimum_value' => 3000.00
         ]);
     }
 }
