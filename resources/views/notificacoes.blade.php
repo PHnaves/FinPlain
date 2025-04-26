@@ -9,29 +9,44 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h1 class="text-2xl font-semibold mb-4">Notificações</h1>
 
-                    @foreach($notifications as $notification)
-                        <div class="{{ !$notification->status == 'unread' ? 'bg-gray-200' : 'bg-red-100' }} p-4 mb-4 rounded-lg">
-                            <p class="text-gray-800">{{ $notification->message }}</p>
+                    <div class="container">
+                        <h1>Minhas Notificações</h1>
 
-                            @if($notification->status == 'unread')
-                                <a href="{{ route('marcar_notificacao_lida', $notification->id) }}" class="text-blue-500 hover:underline">
-                                    Marcar como lida
-                                </a>
-                            @endif
+                        <form method="GET" action="{{ route('notificacoes') }}" class="mb-4">
+                            <select name="tipo" onchange="this.form.submit()">
+                                <option value="">Todas</option>
+                                <option value="despesa_vencida" {{ request('tipo') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
+                                <option value="deposito_meta" {{ request('tipo') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
+                                <option value="despesa_excedente" {{ request('tipo') == 'despesa_excedente' ? 'selected' : '' }}>Despesas Excedentes</option>
+                            </select>
+                        </form>
 
-                            @if ($notification->status == 'read')
-                                <form action="{{ route('notificacoes.destroy', $notification->id) }}" method="post" class="mt-2">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="text-red-500 hover:underline">
-                                        Excluir Notificação
-                                    </button>
-                                </form>
-                            @endif
-                        </div>
-                    @endforeach
+                        @foreach($notificacoes as $notificacao)
+                            <div class="card mb-3 {{ is_null($notificacao->read_at) ? 'bg-light' : 'bg-white' }}">
+                                <div class="card-body">
+                                    <p>{{ $notificacao->data['mensagem'] }}</p>
+                                    <a href="{{ $notificacao->data['url'] }}" class="btn btn-primary btn-sm">Ver Detalhes</a>
+
+                                    @if(is_null($notificacao->read_at))
+                                        <form method="POST" action="{{ route('notificacoes.marcarComoLida', $notificacao->id) }}" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm">Marcar como lida</button>
+                                        </form>
+                                    @endif
+
+                                    <form method="POST" action="{{ route('notificacoes.excluir', $notificacao->id) }}" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        {{ $notificacoes->links() }}
+                    </div>
+                        
                 </div>
             </div>
         </div>

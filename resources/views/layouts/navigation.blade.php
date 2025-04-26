@@ -34,9 +34,8 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
                         {{ __('Notificações') }}
-                        <i class="bi bi-bell"></i>
-                        @if($unreads > 0)
-                            <span id="contador-notificacoes">{{ $unreads }}</span>
+                        @if(auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
                         @endif
                     </x-nav-link>
                 </div>
@@ -105,8 +104,8 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
                 {{ __('Notificações') }}
-                @if($unreads > 0)
-                    <span id="contador-notificacoes">{{ $unreads }}</span>
+                @if(auth()->user()->unreadNotifications->count() > 0)
+                    <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
                 @endif
             </x-responsive-nav-link>
         </div>
