@@ -40,15 +40,7 @@ class ExpenseController extends Controller
         $validated['installments'] = $validated['installments'] ?? 1;
         $validated['user_id'] = Auth::id();
 
-        $expense = Expense::create($validated);
-
-        $user = Auth::user();
-        $rent = $user->rent;
-        $limit = $rent * 0.5;
-
-        if ($expense->expense_value > $limit) {
-            event(new ExpenseLimit($user, $expense));
-        }
+        Expense::create($validated);
 
         return redirect()->route('despesas.index')->with('success', 'Despesa cadastrada com sucesso!');
     }
