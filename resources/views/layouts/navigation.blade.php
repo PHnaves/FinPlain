@@ -35,8 +35,8 @@
                     <x-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
                         {{ __('Notificações') }}
                         <i class="bi bi-bell"></i>
-                        @if($naoLidas > 0)
-                            <span id="contador-notificacoes">{{ $naoLidas }}</span>
+                        @if($unreads > 0)
+                            <span id="contador-notificacoes">{{ $unreads }}</span>
                         @endif
                     </x-nav-link>
                 </div>
@@ -105,8 +105,8 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
                 {{ __('Notificações') }}
-                @if($naoLidas > 0)
-                    <span id="contador-notificacoes">{{ $naoLidas }}</span>
+                @if($unreads > 0)
+                    <span id="contador-notificacoes">{{ $unreads }}</span>
                 @endif
             </x-responsive-nav-link>
         </div>

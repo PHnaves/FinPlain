@@ -11,18 +11,18 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="text-2xl font-semibold mb-4">Notificações</h1>
 
-                    @foreach($notificacoes as $notificacao)
-                        <div class="{{ $notificacao->lida ? 'bg-gray-200' : 'bg-red-100' }} p-4 mb-4 rounded-lg">
-                            <p class="text-gray-800">{{ $notificacao->mensagem }}</p>
+                    @foreach($notifications as $notification)
+                        <div class="{{ !$notification->status == 'unread' ? 'bg-gray-200' : 'bg-red-100' }} p-4 mb-4 rounded-lg">
+                            <p class="text-gray-800">{{ $notification->message }}</p>
 
-                            @if(!$notificacao->lida)
-                                <a href="{{ route('marcar_notificacao_lida', $notificacao->id) }}" class="text-blue-500 hover:underline">
+                            @if($notification->status == 'unread')
+                                <a href="{{ route('marcar_notificacao_lida', $notification->id) }}" class="text-blue-500 hover:underline">
                                     Marcar como lida
                                 </a>
                             @endif
 
-                            @if ($notificacao->lida)
-                                <form action="{{ route('notificacoes.destroy', $notificacao->id) }}" method="post" class="mt-2">
+                            @if ($notification->status == 'read')
+                                <form action="{{ route('notificacoes.destroy', $notification->id) }}" method="post" class="mt-2">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="text-red-500 hover:underline">

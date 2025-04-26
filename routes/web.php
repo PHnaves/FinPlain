@@ -11,6 +11,7 @@ use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificacaoController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
 
@@ -25,19 +26,9 @@ Route::post('/relatorios/filtrar', [RecordController::class, 'filterExpenses'])-
 
 Route::get('/investimentos', [InvestimentController::class, 'index'])->name('investimentos');
 
-Route::get('/notificacoes/{id}/lida', [NotificacaoController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
-Route::get('/notificacoes', [NotificacaoController::class, 'index'])->name('notificacoes');
-Route::delete('/notificacoes/{notificacao}', [NotificacaoController::class, 'destroy'])->name('notificacoes.destroy');
-
-// GASTOS
-Route::middleware(['auth'])->group(function () {
-    Route::get('/gasto', [GastoController::class, 'index'])->name('gastos.index'); // Listar gastos
-    Route::post('/gasto', [GastoController::class, 'store'])->name('gastos.store'); // Criar gasto
-    Route::get('/gasto/{gasto}/show', [GastoController::class, 'show'])->name('gastos.show');
-    Route::get('/gasto/{gasto}/edit', [GastoController::class, 'edit'])->name('gastos.edit'); // Ver detalhes da gasto
-    Route::patch('/gasto/{gasto}', [GastoController::class, 'update'])->name('gastos.update'); // Atualizar gasto
-    Route::delete('/gasto/{gasto}', [GastoController::class, 'destroy'])->name('gastos.destroy'); // Deletar gasto
-});
+Route::get('/notificacoes/{id}/lida', [NotificationController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
+Route::get('/notificacoes', [NotificationController::class, 'index'])->name('notificacoes');
+Route::delete('/notificacoes/{notification}', [NotificationController::class, 'destroy'])->name('notificacoes.destroy');
 
 // DASHBOARD
 Route::middleware(['auth', 'verified'])->group(function () {
