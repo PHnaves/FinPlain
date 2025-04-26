@@ -16,6 +16,14 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
 
 
+use App\Http\Controllers\NotificationsController;
+
+Route::prefix('notificacoes')->middleware('auth')->group(function () {
+    Route::get('/', [NotificationsController::class, 'index'])->name('notificacoes');
+    Route::post('/{id}/marcar-como-lida', [NotificationsController::class, 'marcarComoLida'])->name('notificacoes.marcarComoLida');
+    Route::delete('/{id}', [NotificationsController::class, 'excluir'])->name('notificacoes.excluir');
+});
+
 Route::get('/relatorio', [RecordController::class, 'index'])->name('relatorio.index');
 Route::get('/relatorio/gerar', [RecordController::class, 'generatePdf'])->name('relatorio.gerar');
 Route::post('/relatorios/filtrar', [RecordController::class, 'filterExpenses'])->name('relatorios.filtrar');
@@ -25,10 +33,6 @@ Route::post('/relatorios/filtrar', [RecordController::class, 'filterExpenses'])-
 // Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
 
 Route::get('/investimentos', [InvestimentController::class, 'index'])->name('investimentos');
-
-Route::get('/notificacoes/{id}/lida', [NotificationController::class, 'marcarComoLida'])->name('marcar_notificacao_lida');
-Route::get('/notificacoes', [NotificationController::class, 'index'])->name('notificacoes');
-Route::delete('/notificacoes/{notification}', [NotificationController::class, 'destroy'])->name('notificacoes.destroy');
 
 // DASHBOARD
 Route::middleware(['auth', 'verified'])->group(function () {
