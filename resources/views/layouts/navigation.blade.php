@@ -27,11 +27,6 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.index')">
-                        {{ __('Gastos') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('investimentos')" :active="request()->routeIs('investimentos')">
                         {{ __('Investimentos') }}
                     </x-nav-link>
@@ -104,9 +99,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('metas.index')" :active="request()->routeIs('metas.index')">
                 {{ __('Metas') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('gastos.index')" :active="request()->routeIs('gastos.index')">
-                {{ __('Gastos') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('investimentos')" :active="request()->routeIs('investimentos')">
                 {{ __('Investimentos') }}
