@@ -7,8 +7,8 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule; // Importação correta
 
-Schedule::command('notificar:despesas')->everyMinute();
-Schedule::command('notificar:depositos')->everyMinute();
+Schedule::command('notificar:despesas')->dailyAt('06:00');
+Schedule::command('notificar:depositos')->dailyAt('06:00');
 Schedule::command('despesas:limite')->everyMinute();
 
 // Agendando os Jobs corretamente para envio de e-mails
