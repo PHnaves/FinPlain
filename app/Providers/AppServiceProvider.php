@@ -22,14 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('layouts.navigation', function ($view) {
-            $unreads = 0;
-    
-            if (Auth::check()) {
-                $unreads = Notification::where('user_id', Auth::id())->where('status', 'unread')->count();
-            }
-    
-            $view->with('unreads', $unreads);
-        });
+        
     }
 }
