@@ -62,9 +62,9 @@ class User extends Authenticatable //implements MustVerifyEmail
         return $this->hasMany(Goal::class, 'user_id');
     }
 
-    public function notificacoes()
+    public function notifications()
     {
-        return $this->hasMany(Notificacao::class, 'id_user'); // Ajuste para o nome correto da FK
+        return $this->hasMany(Notification::class, 'user_id'); // Ajuste para o nome correto da FK
     }
 
     public function sendEmailVerificationNotification()

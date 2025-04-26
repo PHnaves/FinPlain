@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Notificacao;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -23,13 +23,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.navigation', function ($view) {
-            $naoLidas = 0;
+            $unreads = 0;
     
             if (Auth::check()) {
-                $naoLidas = Notificacao::where('id_user', Auth::id())->where('lida', false)->count();
+                $unreads = Notification::where('user_id', Auth::id())->where('status', 'unread')->count();
             }
     
-            $view->with('naoLidas', $naoLidas);
+            $view->with('unreads', $unreads);
         });
     }
 }
