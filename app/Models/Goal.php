@@ -23,6 +23,11 @@ class Goal extends Model
         'end_date',
     ];
 
+    public function deposits()
+    {
+        return $this->hasMany(Goal::class, 'goal_id');
+    }
+
     // Relacionamento com o usuário
     public function user()
     {
