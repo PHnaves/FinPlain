@@ -19,11 +19,13 @@ class GoalEmail extends Mailable
      * Create a new message instance.
      */
 
-    public function __construct(
-        protected User $user, protected Goal $goal
-    )
+     protected $user;
+     protected $goal;
+
+    public function __construct(User $user, Goal $goal)
     {
-        
+        $this->user = $user;
+        $this->goal = $goal;
     }
 
     /**

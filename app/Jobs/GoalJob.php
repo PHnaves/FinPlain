@@ -22,48 +22,39 @@ class GoalJob implements ShouldQueue
 
     public function handle()
     {
-        try {
-            // Obtém a data atual
-            $today = Carbon::now();
+        $today = Carbon::today();
+        $goals = Goal::where('status', 'andamento')->get(); // Metas em andamento
 
-            // Busca todas as metas que precisam de um lembrete
-            $goals = Goal::where('status', 'andamento')
-                ->where(function ($query) use ($today) {
-                    $query->where(function ($q) use ($today) {
-                        // Enviar se a periodicidade for semanal e o dia da criação coincidir com o dia da semana atual
-                        $q->where('periodicidade', 'semanal')
-                          ->whereRaw('WEEKDAY(created_at) = ?', [$today->dayOfWeek]);
-                    })->orWhere(function ($q) use ($today) {
-                        // Enviar se a periodicidade for mensal e o dia da criação coincidir com o dia do mês atual
-                        $q->where('periodicidade', 'mensal')
-                          ->whereRaw('DAY(created_at) = ?', [$today->day]);
-                    });
-                })
-                ->get();
+        foreach ($goals as $goal) {
+            $createdAt = Carbon::parse($goal->created_at);
 
-            // Envia o e-mail para cada usuário com a meta correspondente
-            foreach ($goals as $goal) {
-                $user = User::find($goal->user_id);
+            if ($goal->frequency === 'semanal') {
+                $diffInDays = $createdAt->diffInDays($today);
 
-                // Verifica se o usuário existe
-                if ($user) {
-                    try {
-                        // Envia o e-mail de meta
-                        Mail::to($user->email)->send(new GoalEmail($user, $goal));
-                        Log::info("E-mail de meta enviado para: {$user->email} para a meta: {$goal->goal_name}");
-                    } catch (\Exception $e) {
-                        // Caso haja erro ao enviar o e-mail, registra no log
-                        Log::error("Erro ao enviar e-mail para o usuário {$user->email}: " . $e->getMessage());
-                    }
-                } else {
-                    // Caso o usuário não seja encontrado, registra no log
-                    Log::error("Usuário não encontrado para a meta: {$goal->goal_name}");
+                if ($diffInDays % 7 == 0) { // Múltiplos de 7 dias
+                    $this->sendGoalEmail($goal);
                 }
             }
 
-        } catch (\Exception $e) {
-            // Captura qualquer erro que ocorra ao processar o Job
-            Log::error("Erro ao processar o GoalJob: " . $e->getMessage());
+            if ($goal->frequency === 'mensal') {
+                $diffInMonths = $createdAt->diffInMonths($today);
+
+                if ($createdAt->addMonths($diffInMonths)->isSameDay($today)) {
+                    $this->sendGoalEmail($goal);
+                }
+            }
+        }
+    }
+
+    private function sendGoalEmail($goal)
+    {
+        $user = User::find($goal->user_id);
+
+        if ($user) {
+            Mail::to($user->email)->send(new GoalEmail($user, $goal));
+            Log::info("E-mail de meta enviado para: {$user->email} para a meta: {$goal->goal_name}");
+        } else {
+            Log::error("Usuário não encontrado para a meta: {$goal->goal_name}");
         }
     }
 }
