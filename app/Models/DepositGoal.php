@@ -16,6 +16,6 @@ class DepositGoal extends Model
     // Relacionamento com as metas
     public function goal()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Goal::class);
     }
 }
