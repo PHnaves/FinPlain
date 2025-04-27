@@ -17,6 +17,7 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\NotificationsController;
 
+Route::post('/deposito/{expense}', [DepositController::class, 'pagarDespesa'])->name('despesas.pagar');
 
 Route::post('/deposito/{goal}', [DepositController::class, 'depositar'])->name('deposito');
 
