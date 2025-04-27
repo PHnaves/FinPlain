@@ -17,20 +17,64 @@ class ExpenseJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    // Construtor vazio, já que não estamos passando parâmetros para o Job
-    public function __construct() {
-        
-    }
+    public function __construct() {}
 
     public function handle()
     {
         $tomorrow = Carbon::tomorrow();
-        $expenses = Expense::whereDate('due_date', $tomorrow)->get();
-    
+
+        // Buscar todas as despesas ativas
+        $expenses = Expense::all();
+
         foreach ($expenses as $expense) {
             $user = User::find($expense->user_id);
-            if ($user) {
-                Mail::to($user->email)->send(new ExpenseEmail($user, $expense));
+
+            if (!$user) {
+                continue;
+            }
+
+            // Se for "a vista", verifica só a primeira due_date
+            if ($expense->recurrence == 'a vista') {
+                if (Carbon::parse($expense->due_date)->isSameDay($tomorrow)) {
+                    Mail::to($user->email)->send(new ExpenseEmail($user, $expense));
+                }
+            } else {
+                // Calcular a próxima data baseada na recorrência
+                $nextDueDate = Carbon::parse($expense->due_date);
+
+                $installmentCount = 1;
+
+                while ($installmentCount <= $expense->installments) {
+                    // Verifica se amanhã é o vencimento da parcela atual
+                    if ($nextDueDate->isSameDay($tomorrow)) {
+                        Mail::to($user->email)->send(new ExpenseEmail($user, $expense));
+                        break; // já enviou o e-mail para esta despesa
+                    }
+
+                    // Incrementa a próxima data baseada na recorrência
+                    switch ($expense->recurrence) {
+                        case 'semanal':
+                            $nextDueDate->addWeek();
+                            break;
+                        case 'quinzenal':
+                            $nextDueDate->addWeeks(2);
+                            break;
+                        case 'mensal':
+                            $nextDueDate->addMonth();
+                            break;
+                        case 'trimestral':
+                            $nextDueDate->addMonths(3);
+                            break;
+                        case 'semestral':
+                            $nextDueDate->addMonths(6);
+                            break;
+                        case 'anual':
+                            $nextDueDate->addYear();
+                            break;
+                    }
+
+                    $installmentCount++;
+                }
             }
         }
     }
