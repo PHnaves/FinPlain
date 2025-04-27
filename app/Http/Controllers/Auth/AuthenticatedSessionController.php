@@ -28,8 +28,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Pega o usuário autenticado
+        $user = Auth::user();
+
+        // Chama o método authenticated passando o request e o user
+        $this->authenticated($request, $user);
+
         return redirect()->intended(route('dashboard', absolute: false));
+
     }
+
+    public function authenticated(Request $request, $user)
+    {
+        $user->atualizarRenda();
+    }
+
 
     /**
      * Destroy an authenticated session.
