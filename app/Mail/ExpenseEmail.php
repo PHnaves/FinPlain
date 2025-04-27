@@ -15,11 +15,13 @@ class ExpenseEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(
-        protected User $user, protected Expense $expense
-    )
-    {
+    protected $user;
+    protected $expense;
 
+    public function __construct(User $user, Expense $expense)
+    {
+        $this->user = $user;
+        $this->expense = $expense;
     }
 
     /**
