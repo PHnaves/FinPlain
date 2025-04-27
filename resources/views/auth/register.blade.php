@@ -19,51 +19,49 @@
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Senha')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirmar Senha')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <!-- Select From Type_user -->
         <div class="mt-4">
             <x-input-label for="type_user" :value="__('Tipo de Usuário')" />
-
             <select id="type_user" name="type_user" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
                 <option value="" disabled selected>Selecione um tipo de usuário</option>
                 <option value="conservador">Conservador</option>
                 <option value="moderado">Moderado</option>
                 <option value="arrojado">Arrojado</option>
             </select>
-
             <x-input-error :messages="$errors->get('type_user')" class="mt-2" />
         </div>
 
-        <!-- Select From Rent -->
+        <!-- Input Rent -->
         <div class="mt-4">
-            <x-input-label for="rent" :value="__('Valor Somado de Suas Rendas Fixas')" />
-
-            <x-text-input id="rent" class="block mt-1 w-full"
-                            type="number"
-                            name="rent" required />
-
+            <x-input-label for="rent" :value="__('Renda Atual')" />
+            <x-text-input id="rent" class="block mt-1 w-full" type="number" name="rent" :value="old('rent')" required />
             <x-input-error :messages="$errors->get('rent')" class="mt-2" />
         </div>
 
+        <!-- Input Monthly Income -->
+        <div class="mt-4">
+            <x-input-label for="monthly_income" :value="__('Salário Mensal')" />
+            <x-text-input id="monthly_income" class="block mt-1 w-full" type="number" step="0.01" name="monthly_income" :value="old('monthly_income')" required />
+            <x-input-error :messages="$errors->get('monthly_income')" class="mt-2" />
+        </div>
+
+        <!-- Input Payment Date -->
+        <div class="mt-4">
+            <x-input-label for="payment_date" :value="__('Dia do Pagamento')" />
+            <x-text-input id="payment_date" class="block mt-1 w-full" type="date" name="payment_date" :value="old('payment_date')" required />
+            <x-input-error :messages="$errors->get('payment_date')" class="mt-2" />
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline-none text-sm text-gray-600 hover:text-cyan rounded-md focus:outline-none" href="{{ route('login') }}">

@@ -27,6 +27,8 @@ class ProfileUpdateRequest extends FormRequest
             ],
             'type_user' => ['required', 'string', 'in:conservador,moderado,arrojado'],
             'rent' => ['required', 'numeric', 'min:0'],
+            'monthly_income' => ['required', 'numeric', 'min:0'],
+            'payment_date' => ['required', 'date'],
         ];
     }
 }

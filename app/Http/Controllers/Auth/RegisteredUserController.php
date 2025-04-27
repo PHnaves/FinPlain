@@ -35,6 +35,8 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'type_user' => ['required', 'in:conservador,moderado,arrojado'],//validacao enum
             'rent' => ['required', 'numeric', 'min:0'],
+            'monthly_income' => ['required', 'numeric', 'min:0'],
+            'payment_date' => ['required', 'date'],
         ]);
 
         $user = User::create([
@@ -42,7 +44,9 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'type_user' => $request->type_user,
-            'rent' => $request->rent
+            'rent' => $request->rent,
+            'monthly_income' => $request->monthly_income,
+            'payment_date' => $request->payment_date,
         ]);
 
         event(new Registered($user));

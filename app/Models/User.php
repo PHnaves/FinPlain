@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Notifications\CustomVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,6 +28,8 @@ class User extends Authenticatable //implements MustVerifyEmail
         'password',
         'type_user',
         'rent',
+        'monthly_income',
+        'payment_date'
     ];
 
     /**
@@ -66,5 +69,16 @@ class User extends Authenticatable //implements MustVerifyEmail
     {
         $this->notify(new CustomVerifyEmail);
     }
+
+
+    public function atualizarRenda()
+    {
+        $hoje = Carbon::now();
+        if ($this->payment_date && $hoje->isSameDay(Carbon::parse($this->payment_date))) {
+            $this->rent += $this->monthly_income;
+            $this->save();
+        }
+    }
+
 
 }
