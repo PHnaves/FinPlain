@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepositController;
 use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GastoController;
@@ -14,9 +15,10 @@ use App\Http\Controllers\NotificacaoController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
-
-
 use App\Http\Controllers\NotificationsController;
+
+
+Route::post('/deposito/{goal}', [DepositController::class, 'depositar'])->name('deposito');
 
 Route::prefix('notificacoes')->middleware('auth')->group(function () {
     Route::get('/', [NotificationsController::class, 'index'])->name('notificacoes');
