@@ -49,15 +49,10 @@
 
                         <!-- Ações -->
                         <div class="flex flex-wrap items-center space-x-4 mt-6">
-                            <!-- Botão Depositar -->
-                            <button id="depositar-btn" class="py-2 px-6 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow-md transition hover:bg-blue-500">
-                                Depositar
-                            </button>
-
                             <!-- Form de Depósito (oculto) -->
-                            <form id="depositar-form" action="{{ route('metas.update', $goal->id) }}" method="POST" style="display: none;" class="flex flex-col space-y-2">
+                            <form action="{{ route('deposito', $goal->id) }}" method="POST" class="flex flex-col space-y-2">
                                 @csrf
-                                <input type="number" name="valor_deposito" placeholder="Valor do depósito" required min="1" class="p-2 rounded-lg text-black">
+                                <input type="number" name="deposit_value" placeholder="Valor do depósito" required min="1" class="p-2 rounded-lg text-black">
                                 <button type="submit" class="py-2 px-6 rounded-lg bg-green-600 text-white text-sm font-semibold shadow-md transition hover:bg-green-500">
                                     Confirmar Depósito
                                 </button>
