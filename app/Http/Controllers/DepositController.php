@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DepositGoal;
+use App\Models\Expense;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,34 @@ class DepositController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Depósito realizado com sucesso!');
+    }
+
+    public function pagarDespesa($expense)
+    {
+        $expense = Expense::findOrFail($expense);
+        $user = Auth::user();
+
+        // 2. Verifica se o usuário tem saldo suficiente
+        if ($user->rent < $expense->expense_value) {
+            return redirect()->back()->with('error', 'Saldo insuficiente para pagar essa despesa.');
+        }
+
+        // 3. Diminui a quantidade de parcelas
+        if ($expense->installments > 1) {
+            $expense->installments -= 1;
+        } else {
+            // Última parcela
+            $expense->installments = 0;
+            $expense->payment_date = now();
+        }
+
+        $expense->save();
+
+        // 4. Diminui o saldo do usuário
+        $user->rent -= $expense->expense_value;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Despesa paga com sucesso!');
     }
 
 }
