@@ -20,7 +20,7 @@ use App\Http\Controllers\NotificationsController;
 // DEPOSITOS
 Route::middleware(['auth'])->group(function () {
     Route::post('/deposit/{expense}', [DepositController::class, 'pagarDespesa'])->name('despesas.pagar');
-    Route::post('/deposit/{goal}', [DepositController::class, 'depositar'])->name('deposito');
+    Route::post('/deposit/{goal}/deposit', [DepositController::class, 'depositar'])->name('deposit');
 });
 
 //NOTIFICACOES
