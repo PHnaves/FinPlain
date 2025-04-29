@@ -14,11 +14,11 @@
                         <h1>Minhas Notificações</h1>
 
                         <form method="GET" action="{{ route('notificacoes') }}" class="mb-4">
-                            <select name="tipo" onchange="this.form.submit()">
+                            <select name="tipo" onchange="this.form.submit()" class="form-select">
                                 <option value="">Todas</option>
                                 <option value="despesa_vencida" {{ request('tipo') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
                                 <option value="deposito_meta" {{ request('tipo') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
-                                <option value="despesa_excedente" {{ request('tipo') == 'despesa_excedente' ? 'selected' : '' }}>Despesas Excedentes</option>
+                                <option value="valor_limite_despesa" {{ request('tipo') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
                             </select>
                         </form>
 
@@ -26,7 +26,6 @@
                             <div class="card mb-3 {{ is_null($notificacao->read_at) ? 'bg-light' : 'bg-white' }}">
                                 <div class="card-body">
                                     <p>{{ $notificacao->data['mensagem'] }}</p>
-                                    <a href="{{ $notificacao->data['url'] }}" class="btn btn-primary btn-sm">Ver Detalhes</a>
 
                                     @if(is_null($notificacao->read_at))
                                         <form method="POST" action="{{ route('notificacoes.marcarComoLida', $notificacao->id) }}" class="d-inline">
