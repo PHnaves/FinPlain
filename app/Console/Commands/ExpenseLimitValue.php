@@ -15,27 +15,37 @@ class ExpenseLimitValue extends Command
 
     public function handle()
     {
-        $users = User::all(); // Buscar todos os usuários
-        $notifiedExpenses = []; // Para armazenar as despesas já notificadas, para assim não precisar criar mais um campo no banco de dados
+        $users = User::all();
+        $today = Carbon::today();
 
         foreach ($users as $user) {
-            if ($user->rent) { // Garantir que tenha um valor de renda
+            if ($user->rent) {
                 $limit = $user->rent * 0.5;
+                $this->info("Verificando usuário {$user->name} - Renda: R$ {$user->rent} - Limite: R$ {$limit}");
 
+                // Busca todas as despesas do usuário
                 $expenses = Expense::where('user_id', $user->id)->get();
-
+                
                 foreach ($expenses as $expense) {
-                    if ($expense->expense_value > $limit && !in_array($expense->id, $notifiedExpenses)) {
-                        // Envia a notificação
-                        $user->notify(new ExpenseLimitValueNotification($expense));
+                    $this->info("Verificando despesa: {$expense->expense_name} - Valor: R$ {$expense->expense_value}");
+                    
+                    // Verifica se a despesa já foi notificada hoje
+                    $lastNotification = $user->notifications()
+                        ->where('data->tipo', 'valor_limite_despesa')
+                        ->where('data->expense_id', $expense->id)
+                        ->whereDate('created_at', $today)
+                        ->first();
 
-                        // Marca a despesa como notificada no ciclo
-                        $notifiedExpenses[] = $expense->id;
+                    if ($expense->expense_value > $limit && !$lastNotification) {
+                        $this->info("Enviando notificação para despesa {$expense->expense_name}");
+                        $user->notify(new ExpenseLimitValueNotification($expense));
                     }
                 }
+            } else {
+                $this->info("Usuário {$user->name} não possui renda definida");
             }
         }
 
-        $this->info('Notificações de despesas com valor elevado enviadas com sucesso.');
+        $this->info('Verificação de despesas com valor elevado concluída.');
     }
 }

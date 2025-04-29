@@ -37,8 +37,8 @@ class ExpenseLimitValueNotification extends Notification
     {
         return [
             'tipo' => 'valor_limite_despesa',
-            'mensagem' => "A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} ultrapassou 50% de sua renda, tome mais cuidado com seus gastos!.",
-            'url' => route('despesas.show', $this->expense->id),
+            'expense_id' => $this->expense->id,
+            'mensagem' => "Atenção! A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} ultrapassou 50% de sua renda mensal. Considere revisar seus gastos."
         ];
     }
 
