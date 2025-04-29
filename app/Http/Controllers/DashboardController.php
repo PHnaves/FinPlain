@@ -14,10 +14,6 @@ class DashboardController extends Controller
 
         $user = Auth::user();
 
-        if (!$user) {
-            return redirect()->route('login')->with('error', 'Usuário não autenticado.');
-        }
-
         // Gráfico de Progresso das Metas
         $goals = Goal::where('user_id', $user->id)->get();
 
