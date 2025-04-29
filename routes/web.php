@@ -17,25 +17,30 @@ use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\NotificationsController;
 
-Route::post('/deposito/{expense}', [DepositController::class, 'pagarDespesa'])->name('despesas.pagar');
-
-Route::post('/deposito/{goal}', [DepositController::class, 'depositar'])->name('deposito');
-
-Route::prefix('notificacoes')->middleware('auth')->group(function () {
-    Route::get('/', [NotificationsController::class, 'index'])->name('notificacoes');
-    Route::post('/{id}/marcar-como-lida', [NotificationsController::class, 'marcarComoLida'])->name('notificacoes.marcarComoLida');
-    Route::delete('/{id}', [NotificationsController::class, 'excluir'])->name('notificacoes.excluir');
+// DEPOSITOS
+Route::middleware(['auth'])->group(function () {
+    Route::post('/deposit/{expense}', [DepositController::class, 'pagarDespesa'])->name('despesas.pagar');
+    Route::post('/deposit/{goal}', [DepositController::class, 'depositar'])->name('deposito');
 });
 
-Route::get('/relatorio', [RecordController::class, 'index'])->name('relatorio.index');
-Route::get('/relatorio/gerar', [RecordController::class, 'generatePdf'])->name('relatorio.gerar');
-Route::post('/relatorios/filtrar', [RecordController::class, 'filterExpenses'])->name('relatorios.filtrar');
+//NOTIFICACOES
+Route::middleware('auth')->group(function () {
+    Route::get('/notifications', [NotificationsController::class, 'index'])->name('notificacoes');
+    Route::post('/notifications/{id}/markAsRead', [NotificationsController::class, 'marcarComoLida'])->name('notificacoes.marcarComoLida');
+    Route::delete('/notifications/{id}', [NotificationsController::class, 'excluir'])->name('notificacoes.excluir');
+});
 
-// Route::get('/relatorio', [RelatorioController::class, 'index'])->name('relatorio.index');
-// Route::get('/relatorio/gerar', [RelatorioController::class, 'gerarPDF'])->name('relatorio.gerar');
-// Route::post('/relatorios/filtrar', [RelatorioController::class, 'filtarGastos'])->name('relatorios.filtrar');
+//RELATORIOS
+Route::middleware(['auth'])->group(function () {
+    Route::get('/record', [RecordController::class, 'index'])->name('relatorio.index');
+    Route::get('/record/generate', [RecordController::class, 'generatePdf'])->name('relatorio.gerar');
+    Route::post('/record/filter', [RecordController::class, 'filterExpenses'])->name('relatorios.filtrar');
+});
 
-Route::get('/investimentos', [InvestimentController::class, 'index'])->name('investimentos');
+// INVESTIMENTOS
+Route::middleware(['auth'])->group(function () {
+    Route::get('/investiments', [InvestimentController::class, 'index'])->name('investimentos');
+});
 
 // DASHBOARD
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -44,32 +49,32 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // METAS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/meta', [GoalController::class, 'index'])->name('metas.index'); // Listar metas
-    Route::get('/meta/create', [GoalController::class, 'create'])->name('metas.create');
-    Route::post('/meta', [GoalController::class, 'store'])->name('metas.store'); // Criar meta
-    Route::get('/meta/{goal}/show', [GoalController::class, 'show'])->name('metas.show'); // Ver detalhes da meta
-    Route::get('/meta/{goal}/edit', [GoalController::class, 'edit'])->name('metas.edit'); // Ver detalhes da meta
-    Route::patch('/meta/{goal}', [GoalController::class, 'update'])->name('metas.update'); // Atualizar meta
-    Route::delete('/meta/{goal}', [GoalController::class, 'destroy'])->name('metas.destroy'); // Deletar meta
+    Route::get('/goal', [GoalController::class, 'index'])->name('metas.index'); // Listar metas
+    Route::get('/goal/create', [GoalController::class, 'create'])->name('metas.create');
+    Route::post('/goal', [GoalController::class, 'store'])->name('metas.store'); // Criar meta
+    Route::get('/goal/{goal}/show', [GoalController::class, 'show'])->name('metas.show'); // Ver detalhes da meta
+    Route::get('/goal/{goal}/edit', [GoalController::class, 'edit'])->name('metas.edit'); // Ver detalhes da meta
+    Route::patch('/goal/{goal}', [GoalController::class, 'update'])->name('metas.update'); // Atualizar meta
+    Route::delete('/goal/{goal}', [GoalController::class, 'destroy'])->name('metas.destroy'); // Deletar meta
 });
 
 // DESPESAS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/despesa', [ExpenseController::class, 'index'])->name('despesas.index'); // Listar despesas
-    Route::post('/despesa', [ExpenseController::class, 'store'])->name('despesas.store'); // Criar despesa
-    Route::get('/despesa/{expense}/show', [ExpenseController::class, 'show'])->name('despesas.show'); // Ver detalhes da despesa
-    Route::get('/despesa/{expense}/edit', [ExpenseController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
-    Route::patch('/despesa/{expense}', [ExpenseController::class, 'update'])->name('despesas.update'); // Atualizar despesa
-    Route::delete('/despesa/{expense}', [ExpenseController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
+    Route::get('/expense', [ExpenseController::class, 'index'])->name('despesas.index'); // Listar despesas
+    Route::post('/expense', [ExpenseController::class, 'store'])->name('despesas.store'); // Criar despesa
+    Route::get('/expense/{expense}/show', [ExpenseController::class, 'show'])->name('despesas.show'); // Ver detalhes da despesa
+    Route::get('/expense/{expense}/edit', [ExpenseController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
+    Route::patch('/expense/{expense}', [ExpenseController::class, 'update'])->name('despesas.update'); // Atualizar despesa
+    Route::delete('/expense/{expense}', [ExpenseController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
 });
 
 
-
+//PAGINA BOAS VINDAS
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+//PERFIL
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
