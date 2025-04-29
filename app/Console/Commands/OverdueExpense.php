@@ -30,13 +30,23 @@ class OverdueExpense extends Command
     public function handle()
     {
         $tomorrow = Carbon::tomorrow();
+        $today = Carbon::today();
     
         $expenses = Expense::whereDate('due_date', $tomorrow)->get();
     
         foreach ($expenses as $expense) {
-            $user = User::find($expense->user_id);
-            if ($user) {
-                $user->notify(new OverdueExpenseNotification($expense));
+            // Verifica se já existe uma notificação para esta despesa hoje
+            $lastNotification = $expense->user->notifications()
+                ->where('data->tipo', 'despesa_vencida')
+                ->where('data->expense_id', $expense->id)
+                ->whereDate('created_at', $today)
+                ->first();
+
+            if (!$lastNotification) {
+                $user = User::find($expense->user_id);
+                if ($user) {
+                    $user->notify(new OverdueExpenseNotification($expense));
+                }
             }
         }
     

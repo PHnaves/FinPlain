@@ -36,8 +36,8 @@ class OverdueExpenseNotification extends Notification
     {
         return [
             'tipo' => 'despesa_vencida',
-            'mensagem' => "A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} vance amanhã.",
-            'url' => route('despesas.show', $this->expense->id),
+            'expense_id' => $this->expense->id,
+            'mensagem' => "A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} vence amanhã."
         ];
     }
 
