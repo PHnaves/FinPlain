@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ExpenseLimit;
+use App\Http\Requests\ExpenseRequests\ExpenseDeleteRequest;
+use App\Http\Requests\ExpenseRequests\ExpenseEditRequest;
+use App\Http\Requests\ExpenseRequests\ExpenseShowRequest;
+use App\Http\Requests\ExpenseRequests\ExpenseStoreRequest;
+use App\Http\Requests\ExpenseRequests\ExpenseUpdateRequest;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,18 +27,10 @@ class ExpenseController extends Controller
     /**
      * Salvar uma nova despesa.
      */
-    public function store(Request $request)
+    public function store(ExpenseStoreRequest $request)
     {
-        $validated = $request->validate([
-            'expense_name' => 'required|string|max:100',
-            'expense_description' => 'required|string',
-            'expense_category' => 'required|string|max:100',
-            'expense_value' => 'required|numeric|min:0',
-            'recurrence' => 'required|in:a vista,semanal,quinzenal,mensal,trimestral,semestral,anual',
-            'installments' => 'nullable|integer|min:1',
-            'due_date' => 'required|date',
-            'payment_date' => 'nullable|date',
-        ]);
+
+        $validated = $request->validated();
 
         // Define o valor padrão para parcelas, caso não venha preenchido
         $validated['installments'] = $validated['installments'] ?? 1;
@@ -48,7 +44,7 @@ class ExpenseController extends Controller
     /**
      * Mostrar uma despesa específica.
      */
-    public function show(Expense $expense)
+    public function show(ExpenseShowRequest $request, Expense $expense)
     {
         return view('despesas.show', compact('expense'));
     }
@@ -56,7 +52,7 @@ class ExpenseController extends Controller
     /**
      * Editar uma despesa.
      */
-    public function edit(Expense $expense)
+    public function edit(ExpenseEditRequest $request, Expense $expense)
     {
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
@@ -66,19 +62,10 @@ class ExpenseController extends Controller
     /**
      * Atualizar despesa.
      */
-    public function update(Request $request, Expense $expense)
+    public function update(ExpenseUpdateRequest $request, Expense $expense)
     {
 
-        $validated = $request->validate([
-            'expense_name' => 'required|string|max:100',
-            'expense_description' => 'required|string',
-            'expense_category' => 'required|string|max:100',
-            'expense_value' => 'required|numeric|min:0',
-            'recurrence' => 'required|in:a vista,semanal,quinzenal,mensal,trimestral,semestral,anual',
-            'installments' => 'nullable|integer|min:1',
-            'due_date' => 'required|date',
-            'payment_date' => 'nullable|date',
-        ]);
+        $validated = $request->validated();
 
         $validated['installments'] = $validated['installments'] ?? 1;
 
@@ -90,7 +77,7 @@ class ExpenseController extends Controller
     /**
      * Remover despesa.
      */
-    public function destroy(Expense $expense)
+    public function destroy(ExpenseDeleteRequest $request, Expense $expense)
     {
         $expense->delete();
 
