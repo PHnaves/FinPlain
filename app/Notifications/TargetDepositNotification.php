@@ -37,8 +37,8 @@ class TargetDepositNotification extends Notification
     {
         return [
             'tipo' => 'deposito_meta',
-            'mensagem' => "Se lembra da meta {$this->goal->goal_name} no valor de R$ {$this->goal->goal_value}? Voce escolheu a data de hoje para efetuar o depoisto.",
-            'url' => route('metas.show', $this->goal->id),
+            'goal_id' => $this->goal->id,
+            'mensagem' => "Se lembra da meta {$this->goal->goal_name} no valor de R$ {$this->goal->goal_value}? Voce escolheu a data de hoje para efetuar o depoisto."
         ];
     }
 

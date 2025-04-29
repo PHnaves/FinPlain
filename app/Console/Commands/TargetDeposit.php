@@ -21,6 +21,17 @@ class TargetDeposit extends Command
         foreach ($goals as $goal) {
             $createdAt = Carbon::parse($goal->created_at);
 
+            // Verifica se já existe uma notificação para esta meta hoje
+            $lastNotification = $goal->user->notifications()
+                ->where('data->tipo', 'deposito_meta')
+                ->where('data->goal_id', $goal->id)
+                ->whereDate('created_at', $today)
+                ->first();
+
+            if ($lastNotification) {
+                continue; // Pula para a próxima meta se já houver notificação hoje
+            }
+
             if ($goal->frequency === 'semanal') {
                 // A cada 7 dias a partir da criação
                 $diffInDays = $createdAt->diffInDays($today);
