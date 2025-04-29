@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GoalRequests\GoalDeleteRequest;
+use App\Http\Requests\GoalRequests\GoalEditRequest;
+use App\Http\Requests\GoalRequests\GoalShowRequest;
+use App\Http\Requests\GoalRequests\GoalStoreRequest;
+use App\Http\Requests\GoalRequests\GoalUpdateRequest;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;//para verificar se o usuario esta logado/autenticado
@@ -32,58 +37,25 @@ class GoalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GoalStoreRequest $request)
     {
         // Validação dos campos
-        $request->validate([
-            'goal_title' => 'required|string|max:255',
-            'goal_description' => 'nullable|string',
-            'goal_category' => 'required|string|max:100',
-            'target_value' => 'nullable|numeric|min:0',
-            'current_value' => 'nullable|numeric|min:0',
-            'frequency' => 'required|in:semanal,mensal',
-            'recurring_value' => 'required|numeric|min:0',
-            'status' => 'in:andamento,concluída,cancelada',
-            'end_date' => 'required|date',
-        ]);
-
-        // Dados do formulário
-        $data = $request->only([
-            'goal_title', 
-            'goal_description', 
-            'goal_category', 
-            'target_value', 
-            'current_value', 
-            'frequency',
-            'recurring_value', 
-            'status',
-            'end_date'
-        ]);
+        $validated = $request->validated();
 
         // Garante que o valor_atual tenha um valor padrão de 0 caso não seja fornecido
-        $data['target_value'] = $data['target_value'] ?? 0;
+        $validated['target_value'] = $validated['target_value'] ?? 0;
+        $validated['user_id'] = Auth::id();
 
         // Criando a goal associada ao usuário autenticado
-        Goal::create([
-            'user_id' => Auth::id(), // Associando ao usuário autenticado
-            'goal_title' => $data['goal_title'],
-            'goal_description' => $data['goal_description'],
-            'goal_category' => $data['goal_category'],
-            'target_value' => $data['target_value'],
-            'current_value' => $data['current_value'],
-            'frequency' => $data['frequency'],
-            'recurring_value' => $data['recurring_value'],
-            'status' => $data['status'] ?? 'andamento', // Default status se não informado
-            'end_date' => $data['end_date'],
-        ]);
+        Goal::create($validated);
 
-        return redirect()->route('metas.index');
+        return redirect()->route('metas.index')->with('success', 'Meta cadastrada com sucesso!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Goal $goal)
+    public function show(GoalShowRequest $request, Goal $goal)
     {
         // Calcula quantos depósitos ainda são necessários para concluir a goal
         if ($goal->target_value >= $goal->current_value) {
@@ -116,7 +88,7 @@ class GoalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Goal $goal)
+    public function edit(GoalEditRequest $request, Goal $goal)
     {
         // prgar somente a categoria das metas
         $goal_categories = Goal::distinct()->pluck('goal_category');
@@ -127,45 +99,26 @@ class GoalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Goal $goal)
+    public function update(GoalUpdateRequest $request, Goal $goal)
     {
         // Validação dos campos
-        $request->validate([
-            'goal_title' => 'required|string|max:255',
-            'goal_description' => 'nullable|string',
-            'goal_category' => 'required|string|max:100',
-            'target_value' => 'nullable|numeric|min:0',
-            'current_value' => 'nullable|numeric|min:0',
-            'frequency' => 'required|in:semanal,mensal',
-            'recurring_value' => 'required|numeric|min:0',
-            'status' => 'in:andamento,concluída,cancelada',
-            'end_date' => 'required|date',
-        ]);
+        $validated = $request->validated();
         
+        $validated['target_value'] = $validated['target_value'] ?? 0;
+
         // Atualização dos dados da meta
-        $data = $request->only([
-            'goal_title',
-            'goal_description',
-            'goal_category',
-            'target_value',
-            'current_value',
-            'frequency',
-            'recurring_value',
-            'status',
-            'end_date'
-        ]);
+        $goal->update($validated);
 
-        $goal->update($data);
-
-        return redirect()->route('metas.index');
+        return redirect()->route('metas.index')->with('success', 'Meta atualizada com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Goal $goal)
+    public function destroy(GoalDeleteRequest $request, Goal $goal)
     {
         $goal->delete();
-        return redirect()->route('metas.index');
+
+        return redirect()->route('metas.index')->with('success', 'Meta removida com sucesso!');
     }
 }
