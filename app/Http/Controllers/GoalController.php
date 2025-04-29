@@ -55,7 +55,7 @@ class GoalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(GoalShowRequest $request, Goal $goal)
+    public function show(Goal $goal)
     {
         // Calcula quantos depósitos ainda são necessários para concluir a goal
         if ($goal->target_value >= $goal->current_value) {
@@ -63,7 +63,7 @@ class GoalController extends Controller
             $conclusion_date = Carbon::now()->format('d/m/Y');
             $message = "Sua Meta já foi atingida! Parabens, continue assim.";
         } else {
-            $deposits_number = ceil(($goal->valor_final - $goal->valor_atual) / $goal->valor_periodico);
+            $deposits_number = ceil(($goal->target_value - $goal->current_value) / $goal->recurring_value);
     
             // Define o intervalo de dias baseado na periodicidade
             $intervalo = match ($goal->frequency) {
