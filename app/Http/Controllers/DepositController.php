@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DepositStoreRequest;
 use App\Models\DepositGoal;
 use App\Models\Expense;
 use App\Models\Goal;
@@ -10,12 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller
 {
-    public function depositar(Request $request, $goal)
+    public function depositar(DepositStoreRequest $request, $goal)
     {
         $goal = Goal::findOrFail($goal);
         $user = Auth::user();
 
-        $depositValue = $request->input('deposit_value');
+        $depositValue = $request->validated()['deposit_value'];
 
         // 1. Verifica se o usuário tem saldo suficiente
         if ($user->rent < $depositValue) {
