@@ -14,30 +14,33 @@ class NotificationsController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $tipo = $request->input('tipo');
+        $type = $request->input('type');
 
-        $notificacoes = $user->notifications()
-            ->when($tipo, function ($query, $tipo) {
-                return $query->where('data->tipo', $tipo);
+        // Filtra as notificação por tipo
+        $notifications = $user->notifications()
+            ->when($type, function ($query, $type) {
+                return $query->where('data->type', $type);
             })
             ->latest()
             ->paginate(10);
 
-        return view('notificacoes', compact('notificacoes'));
+        return view('notificacoes', compact('notifications'));
     }
 
-    public function marcarComoLida($id)
+    public function markAsRead($id)
     {
-        $notificacao = Auth::user()->notifications()->findOrFail($id);
-        $notificacao->markAsRead();
+        // Marca a notificação como lida
+        $notification = Auth::user()->notifications()->findOrFail($id);
+        $notification->markAsRead();
 
         return redirect()->back()->with('success', 'Notificação marcada como lida!');
     }
 
-    public function excluir($id)
+    public function destroy($id)
     {
-        $notificacao = Auth::user()->notifications()->findOrFail($id);
-        $notificacao->delete();
+        // Exclui a notificação
+        $notification = Auth::user()->notifications()->findOrFail($id);
+        $notification->delete();
 
         return redirect()->back()->with('success', 'Notificação excluída com sucesso!');
     }
