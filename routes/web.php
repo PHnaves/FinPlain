@@ -19,27 +19,27 @@ use App\Http\Controllers\NotificationsController;
 
 // DEPOSITOS
 Route::middleware(['auth'])->group(function () {
-    Route::post('/deposit/{expense}', [DepositController::class, 'pagarDespesa'])->name('despesas.pagar');
-    Route::post('/deposit/{goal}/deposit', [DepositController::class, 'depositar'])->name('deposit');
+    Route::post('/deposit/{expense}', [DepositController::class, 'payExpense'])->name('pay.expense');
+    Route::post('/deposit/{goal}/deposit', [DepositController::class, 'depositGoal'])->name('deposit.goal');
 });
 
 //NOTIFICACOES
 Route::middleware('auth')->group(function () {
-    Route::get('/notifications', [NotificationsController::class, 'index'])->name('notificacoes');
-    Route::post('/notifications/{id}/markAsRead', [NotificationsController::class, 'marcarComoLida'])->name('notificacoes.marcarComoLida');
-    Route::delete('/notifications/{id}', [NotificationsController::class, 'excluir'])->name('notificacoes.excluir');
+    Route::get('/notifications', [NotificationsController::class, 'index'])->name('notifications');
+    Route::post('/notifications/{id}/markAsRead', [NotificationsController::class, 'markAsRead'])->name('notifications.markAsRead');
+    Route::delete('/notifications/{id}', [NotificationsController::class, 'destroy'])->name('notifications.destroy');
 });
 
 //RELATORIOS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/record', [RecordController::class, 'index'])->name('relatorio.index');
-    Route::get('/record/generate', [RecordController::class, 'generatePdf'])->name('relatorio.gerar');
-    Route::post('/record/filter', [RecordController::class, 'filterExpenses'])->name('relatorios.filtrar');
+    Route::get('/record', [RecordController::class, 'index'])->name('records.index');
+    Route::get('/record/generate', [RecordController::class, 'generatePdf'])->name('records.generate');
+    Route::post('/record/filter', [RecordController::class, 'filterExpenses'])->name('records.filter');
 });
 
 // INVESTIMENTOS
 Route::middleware(['auth'])->group(function () {
-    Route::get('/investiments', [InvestimentController::class, 'index'])->name('investimentos');
+    Route::get('/investiments', [InvestimentController::class, 'index'])->name('investiments.index');
 });
 
 // DASHBOARD
