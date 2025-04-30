@@ -13,7 +13,7 @@
 
                     <h1>Minhas Despesas</h1>
 
-                    <a href="{{ route('relatorio.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="{{ route('records.index') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Ver Relatórios
                     </a>
 

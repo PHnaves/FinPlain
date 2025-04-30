@@ -27,12 +27,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('investimentos')" :active="request()->routeIs('investimentos')">
+                    <x-nav-link :href="route('investiments.index')" :active="request()->routeIs('investiments.index')">
                         {{ __('Investimentos') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
+                    <x-nav-link :href="route('notifications')" :active="request()->routeIs('notifications')">
                         {{ __('Notificações') }}
                         @if(auth()->user()->unreadNotifications->count() > 0)
                             <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
@@ -99,10 +99,10 @@
             <x-responsive-nav-link :href="route('metas.index')" :active="request()->routeIs('metas.index')">
                 {{ __('Metas') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('investimentos')" :active="request()->routeIs('investimentos')">
+            <x-responsive-nav-link :href="route('investiments.index')" :active="request()->routeIs('investiments.index')">
                 {{ __('Investimentos') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('notificacoes')" :active="request()->routeIs('notificacoes')">
+            <x-responsive-nav-link :href="route('notifications')" :active="request()->routeIs('notifications')">
                 {{ __('Notificações') }}
                 @if(auth()->user()->unreadNotifications->count() > 0)
                     <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>

@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold mb-4">Filtrar Gastos</h3>
-                        <form action="{{ route('relatorios.filtrar') }}" method="POST" class="space-y-4">
+                        <form action="{{ route('records.filter') }}" method="POST" class="space-y-4">
                             @csrf
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="mt-6 flex justify-end">
-                                <form action="{{ route('relatorio.gerar') }}" method="GET">
+                                <form action="{{ route('records.generate') }}" method="GET">
                                     <input type="hidden" name="data_inicio" value="{{ request('data_inicio') ?? '' }}">
                                     <input type="hidden" name="data_fim" value="{{ request('data_fim') ?? '' }}">
                                     <input type="hidden" name="tipo" value="{{ request('tipo') ?? '' }}">

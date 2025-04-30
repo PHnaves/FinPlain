@@ -13,28 +13,28 @@
                     <div class="container">
                         <h1>Minhas Notificações</h1>
 
-                        <form method="GET" action="{{ route('notificacoes') }}" class="mb-4">
-                            <select name="tipo" onchange="this.form.submit()" class="form-select">
+                        <form method="GET" action="{{ route('notifications') }}" class="mb-4">
+                            <select name="type" onchange="this.form.submit()" class="form-select">
                                 <option value="">Todas</option>
-                                <option value="despesa_vencida" {{ request('tipo') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
-                                <option value="deposito_meta" {{ request('tipo') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
-                                <option value="valor_limite_despesa" {{ request('tipo') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
+                                <option value="despesa_vencida" {{ request('type') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
+                                <option value="deposito_meta" {{ request('type') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
+                                <option value="valor_limite_despesa" {{ request('type') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
                             </select>
                         </form>
 
-                        @foreach($notificacoes as $notificacao)
-                            <div class="card mb-3 {{ is_null($notificacao->read_at) ? 'bg-light' : 'bg-white' }}">
+                        @foreach($notifications as $notification)
+                            <div class="card mb-3 {{ is_null($notification->read_at) ? 'bg-light' : 'bg-white' }}">
                                 <div class="card-body">
-                                    <p>{{ $notificacao->data['mensagem'] }}</p>
+                                    <p>{{ $notification->data['mensagem'] }}</p>
 
-                                    @if(is_null($notificacao->read_at))
-                                        <form method="POST" action="{{ route('notificacoes.marcarComoLida', $notificacao->id) }}" class="d-inline">
+                                    @if(is_null($notification->read_at))
+                                        <form method="POST" action="{{ route('notifications.markAsRead', $notification->id) }}" class="d-inline">
                                             @csrf
                                             <button type="submit" class="btn btn-success btn-sm">Marcar como lida</button>
                                         </form>
                                     @endif
 
-                                    <form method="POST" action="{{ route('notificacoes.excluir', $notificacao->id) }}" class="d-inline">
+                                    <form method="POST" action="{{ route('notifications.destroy', $notification->id) }}" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
@@ -43,7 +43,7 @@
                             </div>
                         @endforeach
 
-                        {{ $notificacoes->links() }}
+                        {{ $notifications->links() }}
                     </div>
                         
                 </div>

@@ -50,7 +50,7 @@
                         <!-- Ações -->
                         <div class="flex flex-wrap items-center space-x-4 mt-6">
                             <!-- Form de Depósito -->
-                            <form action="{{ route('deposit', $goal->id) }}" method="POST" class="flex flex-col space-y-2">
+                            <form action="{{ route('deposit.goal', $goal->id) }}" method="POST" class="flex flex-col space-y-2">
                                 @csrf
                                 <input type="number" name="deposit_value" placeholder="Valor do depósito" required min="0.01" step="0.01" class="p-2 rounded-lg text-black">
                                 <button type="submit" class="py-2 px-6 rounded-lg bg-green-600 text-white text-sm font-semibold shadow-md transition hover:bg-green-500">

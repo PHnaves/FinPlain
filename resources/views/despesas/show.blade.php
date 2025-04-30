@@ -74,7 +74,7 @@
                             </a>
 
                             @if($expense->installments > 0)
-                                <form action="{{ route('despesas.pagar', $expense->id) }}" method="POST" onsubmit="return confirm('Confirmar pagamento desta despesa?');">
+                                <form action="{{ route('pay.expense', $expense->id) }}" method="POST" onsubmit="return confirm('Confirmar pagamento desta despesa?');">
                                     @csrf
                                     <button class="py-2 px-6 rounded-lg bg-green-600 text-white text-sm font-semibold shadow-md transition-all duration-300 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer">
                                         Pagar Despesa
