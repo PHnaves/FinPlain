@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .form-control {
+        @apply w-full px-4 py-2 border border-info-1 rounded-std focus:outline-none focus:border-primary;
+    }
+}
+
+/* Preloader styles */
+.preloader {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Hide preloader when page is loaded */
+body.loaded .preloader {
+    opacity: 0;
+    visibility: hidden;
+}
