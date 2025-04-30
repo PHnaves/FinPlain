@@ -14,13 +14,15 @@ class DashboardController extends Controller
 
         $user = Auth::user();
 
-        // Gráfico de Progresso das Metas
+        // Busca as metas relacionadas ao usuario logado
         $goals = Goal::where('user_id', $user->id)->get();
 
-        // pegar os ids das goals
+        // pegar os ids das metas
         $goal_ids = Goal::pluck('id');
 
+        // Titulo das metas
         $goal_title = $goals->pluck('goal_title');
+        // Progresso das metas
         $goal_progress = $goals->map(function ($goal) {
             return $goal->target_value > 0 ? ($goal->current_value / $goal->target_value * 100) : 0;
         });
@@ -32,6 +34,7 @@ class DashboardController extends Controller
         $expense_value = $expenses->pluck('expense_value');
         $expense_payment_date = $expenses->pluck('payment_date');
 
+        // Status das despesas
         $expense_status = $expenses->map(function ($expense) {
             return $expense->payment_date ? 'pago' : 'nao_pago';
         });        

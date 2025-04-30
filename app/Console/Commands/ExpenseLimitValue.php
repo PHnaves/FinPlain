@@ -29,13 +29,14 @@ class ExpenseLimitValue extends Command
                 foreach ($expenses as $expense) {
                     $this->info("Verificando despesa: {$expense->expense_name} - Valor: R$ {$expense->expense_value}");
                     
-                    // Verifica se a despesa já foi notificada hoje
+                    // Verifica se a despesa já foi notificada hoje para não haver repetições 
                     $lastNotification = $user->notifications()
                         ->where('data->tipo', 'valor_limite_despesa')
                         ->where('data->expense_id', $expense->id)
                         ->whereDate('created_at', $today)
                         ->first();
 
+                    // Se a despesa teve o valor maior que o limit e não foi enviada ai sim envia a notificação
                     if ($expense->expense_value > $limit && !$lastNotification) {
                         $this->info("Enviando notificação para despesa {$expense->expense_name}");
                         $user->notify(new ExpenseLimitValueNotification($expense));

@@ -33,7 +33,7 @@ class ExpenseJob implements ShouldQueue
                 continue;
             }
 
-            // Se for "a vista", verifica só a primeira due_date
+            // Se for "a vista", verifica só a primeira data de vencimento
             if ($expense->recurrence == 'a vista') {
                 if (Carbon::parse($expense->due_date)->isSameDay($tomorrow)) {
                     Mail::to($user->email)->send(new ExpenseEmail($user, $expense));

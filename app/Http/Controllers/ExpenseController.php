@@ -50,7 +50,7 @@ class ExpenseController extends Controller
     }
 
     /**
-     * Editar uma despesa.
+     * Mostrar o formulário para editar uma despesa.
      */
     public function edit(Request $request, Expense $expense)
     {

@@ -15,7 +15,7 @@ use Carbon\Carbon;// para manipular datas
 class GoalController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Listar todas as metas.
      */
     public function index()
     {
@@ -24,7 +24,7 @@ class GoalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar o formulário para criar uma nova meta.
      */
     public function create()
     {
@@ -35,7 +35,7 @@ class GoalController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Salvar uma nova meta
      */
     public function store(GoalStoreRequest $request)
     {
@@ -53,7 +53,7 @@ class GoalController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Detalhes da meta
      */
     public function show(Goal $goal)
     {
@@ -86,7 +86,7 @@ class GoalController extends Controller
     
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar o formulário para editar uma meta.
      */
     public function edit(Request $request, Goal $goal)
     {
@@ -97,7 +97,7 @@ class GoalController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualizar meta
      */
     public function update(GoalUpdateRequest $request, Goal $goal)
     {
@@ -113,7 +113,7 @@ class GoalController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover meta
      */
     public function destroy(Request $request, Goal $goal)
     {

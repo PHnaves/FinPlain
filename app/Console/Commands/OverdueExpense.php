@@ -32,6 +32,7 @@ class OverdueExpense extends Command
         $tomorrow = Carbon::tomorrow();
         $today = Carbon::today();
     
+        // Despesas que vencem no dia seguinte
         $expenses = Expense::whereDate('due_date', $tomorrow)->get();
     
         foreach ($expenses as $expense) {
@@ -42,6 +43,7 @@ class OverdueExpense extends Command
                 ->whereDate('created_at', $today)
                 ->first();
 
+            // Se não existir notificação relacionada ai envia
             if (!$lastNotification) {
                 $user = User::find($expense->user_id);
                 if ($user) {
