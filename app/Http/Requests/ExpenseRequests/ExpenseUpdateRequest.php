@@ -11,8 +11,7 @@ class ExpenseUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $expense = $this->route('expense');
-        return $expense && $expense->user_id === auth()->id();
+        return true;
     }
 
     /**
