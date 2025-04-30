@@ -88,7 +88,7 @@ class GoalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(GoalEditRequest $request, Goal $goal)
+    public function edit(Request $request, Goal $goal)
     {
         // prgar somente a categoria das metas
         $goal_categories = Goal::distinct()->pluck('goal_category');
@@ -115,7 +115,7 @@ class GoalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GoalDeleteRequest $request, Goal $goal)
+    public function destroy(Request $request, Goal $goal)
     {
         $goal->delete();
 

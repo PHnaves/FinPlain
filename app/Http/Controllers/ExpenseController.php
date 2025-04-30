@@ -44,7 +44,7 @@ class ExpenseController extends Controller
     /**
      * Mostrar uma despesa específica.
      */
-    public function show(ExpenseShowRequest $request, Expense $expense)
+    public function show(Request $request, Expense $expense)
     {
         return view('despesas.show', compact('expense'));
     }
@@ -52,7 +52,7 @@ class ExpenseController extends Controller
     /**
      * Editar uma despesa.
      */
-    public function edit(ExpenseEditRequest $request, Expense $expense)
+    public function edit(Request $request, Expense $expense)
     {
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
@@ -77,7 +77,7 @@ class ExpenseController extends Controller
     /**
      * Remover despesa.
      */
-    public function destroy(ExpenseDeleteRequest $request, Expense $expense)
+    public function destroy(Request $request, Expense $expense)
     {
         $expense->delete();
 
