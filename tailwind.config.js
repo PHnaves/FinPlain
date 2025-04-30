@@ -14,14 +14,21 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                primary: {
+                    DEFAULT: '#11999E',
+                    1: '#0D7A7E',
+                    2: '#0A5B5E',
+                    3: '#F5F7F8',
+                },
+                info: '#666666',
+                'info-1': '#E5E5E5',
+            },
+            borderRadius: {
+                'std': '0.5rem',
+                'std-1/2': '0.25rem',
+            },
         },
-        colors:{
-            black: '#212121',
-            gray: '#323232',
-            cyan: '#11999E',
-            green: '#00BF63',
-            white: '#F5F7F8'
-        }
     },
 
     plugins: [forms],
