@@ -16,13 +16,25 @@ class ExpenseController extends Controller
     /**
      * Listar todas as despesas.
      */
-    public function index()
+    public function index(Request $request)
     {
         $expenses = Expense::where('user_id', Auth::id())->get();
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
-        return view('despesas.index', compact('expenses', 'expense_categories'));
+        $recurrence = $request->get('recurrence');
+
+        if ($recurrence) {
+            $expenses->where('recurrence', $recurrence);
+        }
+
+        $expenses = Expense::where('user_id', auth()->id())
+                   ->orderBy('created_at', 'desc')
+                   ->get();
+
+
+        return view('despesas.index', compact('expenses', 'expense_categories', 'recurrence'));
     }
+
 
     /**
      * Salvar uma nova despesa.
