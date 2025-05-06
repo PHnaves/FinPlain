@@ -15,8 +15,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-5 lg:gap-6">
         <div class="bg-primary col-span-2 hidden lg:flex items-center justify-start p-4 lg:h-full bg-[url('{{ asset('assets/images/auth/auth-bg.png') }}')] bg-no-repeat bg-cover bg-center lg:pl-12 xxl:pl-36">
             <div class="content">
-                <img class="max-w-[16rem] mb-6" src="{{ asset('/images/Logo-FinPlain.png') }}" alt="Logo">
-                <h4 class="text-white md:text-3xl xl:text-[42px] font-bold capitalize leading-[52px]">Ben Vindo(a) faça Parte da FinPlain</h4>
+                <img class="max-w-full mb-6" src="{{ asset('/images/Cadastro.png') }}" alt="Imagem de fundo">
             </div>
         </div>
         <div class="col-span-3 px-4 py-12 lg:py-6 flex items-center justify-center">
