@@ -18,21 +18,44 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        $expenses = Expense::where('user_id', Auth::id())->get();
-        $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
-
+        $currentMonth = $request->get('month', now()->format('m'));
+        $currentYear = $request->get('year', now()->format('Y'));
         $recurrence = $request->get('recurrence');
 
-        if ($recurrence) {
-            $expenses->where('recurrence', $recurrence);
+        $query = Expense::where('user_id', Auth::id());
+
+        // Filtro por mês
+        if ($currentMonth && $currentYear) {
+            $query->whereMonth('due_date', $currentMonth)
+                  ->whereYear('due_date', $currentYear);
         }
 
-        $expenses = Expense::where('user_id', auth()->id())
-                   ->orderBy('created_at', 'desc')
-                   ->get();
+        // Filtro por recorrência
+        if ($recurrence) {
+            if ($recurrence === 'mensal') {
+                $query->where('recurrence', 'mensal');
+            } elseif ($recurrence === 'única') {
+                $query->where(function($q) {
+                    $q->where('recurrence', 'única')
+                      ->orWhereNull('recurrence')
+                      ->orWhere('installments', 1);
+                });
+            }
+        }
 
+        $expenses = $query->orderBy('due_date', 'desc')->get();
+        $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
-        return view('despesas.index', compact('expenses', 'expense_categories', 'recurrence'));
+        return view('despesas.index', compact('expenses', 'expense_categories', 'recurrence', 'currentMonth', 'currentYear'));
+    }
+
+    /**
+     * Mostrar o formulário para criar uma nova despesa.
+     */
+    public function create()
+    {
+        $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
+        return view('despesas.create', compact('expense_categories'));
     }
 
 
@@ -95,4 +118,5 @@ class ExpenseController extends Controller
 
         return redirect()->route('despesas.index')->with('success', 'Despesa removida com sucesso!');
     }
+
 }

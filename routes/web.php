@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
 // DESPESAS
 Route::middleware(['auth'])->group(function () {
     Route::get('/expense', [ExpenseController::class, 'index'])->name('despesas.index'); // Listar despesas
+    Route::get('/expense/create', [ExpenseController::class, 'create'])->name('despesas.create'); // Formulário de criação
     Route::post('/expense', [ExpenseController::class, 'store'])->name('despesas.store'); // Criar despesa
     Route::get('/expense/{expense}/show', [ExpenseController::class, 'show'])->name('despesas.show'); // Ver detalhes da despesa
     Route::get('/expense/{expense}/edit', [ExpenseController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
