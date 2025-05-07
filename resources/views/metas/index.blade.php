@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Cards de Resumo -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                 <!-- Total de Metas -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6">
@@ -36,7 +36,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-700">Metas Concluídas</h3>
+                                <h3 class="text-lg font-semibold text-gray-700">Concluídas</h3>
                                 <p class="text-2xl font-bold text-gray-900">{{ $goals->where('status', 'concluída')->count() }}</p>
                             </div>
                         </div>
@@ -59,15 +59,32 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Metas Canceladas -->
+                <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-red-100 text-red-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-semibold text-gray-700">Canceladas</h3>
+                                <p class="text-2xl font-bold text-gray-900">{{ $goals->where('status', 'cancelada')->count() }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Gráficos -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <!-- Gráfico de Progresso das Metas -->
+                <!-- Gráfico de Distribuição por Status -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Progresso das Metas</h3>
-                        <canvas id="goalsProgressChart" height="300"></canvas>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Distribuição por Status</h3>
+                        <canvas id="goalsStatusChart" height="300"></canvas>
                     </div>
                 </div>
 
@@ -140,34 +157,28 @@
         // Dados para os gráficos
         const goals = @json($goals);
         
-        // Gráfico de Progresso das Metas
-        const progressCtx = document.getElementById('goalsProgressChart').getContext('2d');
-        new Chart(progressCtx, {
-            type: 'bar',
+        // Gráfico de Distribuição por Status
+        const statusCtx = document.getElementById('goalsStatusChart').getContext('2d');
+        const statusData = {
+            concluída: goals.filter(goal => goal.status === 'concluída').length,
+            andamento: goals.filter(goal => goal.status === 'andamento').length,
+            cancelada: goals.filter(goal => goal.status === 'cancelada').length
+        };
+
+        new Chart(statusCtx, {
+            type: 'pie',
             data: {
-                labels: goals.map(goal => goal.goal_title),
+                labels: ['Concluídas', 'Em Andamento', 'Canceladas'],
                 datasets: [{
-                    label: 'Progresso (%)',
-                    data: goals.map(goal => (goal.current_value / goal.target_value) * 100),
-                    backgroundColor: '#4f46e5',
-                    borderRadius: 4
+                    data: [statusData.concluída, statusData.andamento, statusData.cancelada],
+                    backgroundColor: ['#10B981', '#F59E0B', '#EF4444']
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        title: {
-                            display: true,
-                            text: 'Porcentagem Concluída'
-                        }
+                        position: 'right'
                     }
                 }
             }
