@@ -58,20 +58,27 @@ class DepositController extends Controller
             return redirect()->back()->with('error', 'Saldo insuficiente para pagar essa despesa.');
         }
 
-        // Diminui a quantidade de parcelas
-        if ($expense->installments > 1) {
+        // Se a despesa já tem data de pagamento, não permite pagar novamente
+        if ($expense->payment_date) {
+            return redirect()->back()->with('error', 'Esta despesa já foi paga.');
+        }
+
+        // Se a despesa tem parcelas
+        if ($expense->installments > 0) {
+            // Diminui a quantidade de parcelas
             $expense->installments -= 1;
+            
+            // Se for a última parcela, marca como pago
+            if ($expense->installments === 0) {
+                $expense->payment_date = now();
+            }
         } else {
-            // Última parcela
-            $expense->installments = 0;
+            // Se não tem parcelas, marca como pago
             $expense->payment_date = now();
         }
 
         // Atualiza a despesa
-        Expense::where('id', $expense->id)->update([
-            'installments' => $expense->installments,
-            'payment_date' => $expense->payment_date
-        ]);
+        $expense->save();
 
         // Diminui o saldo do usuário
         User::where('id', $user->id)->update([
