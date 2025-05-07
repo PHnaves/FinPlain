@@ -13,7 +13,7 @@
             </div>
 
             <!-- Card de publicidade -->
-            <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+            <div class="h-[630px] bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-lg shadow-md p-6 flex flex-col justify-between">
                 <div>
                     <h3 class="text-2xl font-semibold mb-2">Controle seus gastos</h3>
                     <p class="text-sm text-indigo-100">Economize mais com o nosso painel de despesas inteligente.</p>
@@ -34,9 +34,12 @@
         function toggleInstallments() {
             if (recurrence.value === 'a vista') {
                 installmentsField.style.display = 'none';
-                installmentsInput.value = 1;
+                installmentsInput.value = 0;
             } else {
                 installmentsField.style.display = 'block';
+                if (installmentsInput.value === '0') {
+                    installmentsInput.value = 1;
+                }
             }
         }
 
