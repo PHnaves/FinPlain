@@ -130,7 +130,7 @@
     </div>
 
     <!-- Sidebar Desktop -->
-    <aside class="fixed top-16 left-0 hidden md:flex flex-col w-72 bg-black border-r border-gray-900 h-[calc(100vh-4rem)] pt-6 space-y-1">
+    <aside class="fixed top-16 left-0 hidden md:flex flex-col w-56 bg-black border-r border-gray-900 h-[calc(100vh-4rem)] pt-6 space-y-1">
         <a href="{{ route('dashboard') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('dashboard') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
             <img src="{{asset('/icons/home.png')}}" alt="dashboard" class="h-5 w-5 object-contain brightness-0 invert">
             <span class="font-medium text-gray-200">Dashboard</span>
