@@ -6,6 +6,7 @@ use App\Models\Expense;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecordController extends Controller
 {
@@ -22,7 +23,7 @@ class RecordController extends Controller
      */
     public function generatePdf(Request $request)
     {
-        $query = Expense::query();
+        $query = Expense::where('user_id', Auth::id());
 
         // Filtro categoria
         if ($request->filled('expense_category')){
@@ -57,7 +58,6 @@ class RecordController extends Controller
 
         // Baixar o PDF
         return $pdf->download('record.pdf');
-
     }
 
     /**
@@ -65,7 +65,7 @@ class RecordController extends Controller
      */
     public function filterExpenses(Request $request)
     {
-        $query = Expense::query();
+        $query = Expense::where('user_id', Auth::id());
 
         if ($request->filled('expense_category')){
             $query->where('expense_category', $request->expense_category);

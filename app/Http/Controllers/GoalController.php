@@ -19,7 +19,7 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $goals = Goal::all();
+        $goals = Goal::where('user_id', auth()->id())->get();
         return view('metas.index', compact('goals'));
     }
 
@@ -28,9 +28,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-
-        $goal_categories = Goal::distinct()->pluck('goal_category');
-
+        $goal_categories = Goal::where('user_id', auth()->id())->distinct()->pluck('goal_category');
         return view('metas.create', compact('goal_categories'));
     }
 
@@ -51,11 +49,15 @@ class GoalController extends Controller
         // Verifica o status da meta
         if ($data['current_value'] >= $data['target_value']) {
             $data['status'] = 'concluída';
+            $data['current_value'] = $data['target_value']; // Garante que não ultrapasse o valor final
         } else if (isset($data['status']) && $data['status'] === 'cancelada') {
             $data['status'] = 'cancelada';
         } else {
             $data['status'] = 'andamento';
         }
+
+        // Adiciona o user_id do usuário autenticado
+        $data['user_id'] = auth()->id();
         
         $goal = Goal::create($data);
         
@@ -70,7 +72,15 @@ class GoalController extends Controller
     {
         // Verifica se a meta pertence ao usuário atual
         if ($goal->user_id !== auth()->id()) {
-            abort(403);
+            abort(403, 'Você não tem permissão para acessar esta meta.');
+        }
+
+        // Verifica se o valor atual atingiu ou ultrapassou o valor final
+        if ($goal->current_value >= $goal->target_value && $goal->status !== 'concluída') {
+            $goal->update([
+                'status' => 'concluída',
+                'current_value' => $goal->target_value // Garante que não ultrapasse o valor final
+            ]);
         }
 
         // Calcula o número de depósitos restantes
@@ -95,6 +105,13 @@ class GoalController extends Controller
             }
         }
 
+        // Define a mensagem baseada no status da meta
+        $message = match($goal->status) {
+            'concluída' => 'Parabéns! Sua meta foi concluída com sucesso!',
+            'cancelada' => 'Esta meta foi cancelada em ' . Carbon::parse($goal->updated_at)->format('d/m/Y'),
+            default => 'Você atingirá sua meta em aproximadamente ' . $deposits_number . ' depósitos. Continue firme e forte!'
+        };
+
         // Gera dados para o gráfico de progresso
         $progressData = collect();
         
@@ -110,7 +127,7 @@ class GoalController extends Controller
             'value' => $goal->current_value
         ]);
 
-        return view('metas.show', compact('goal', 'deposits_number', 'conclusion_date', 'progressData'));
+        return view('metas.show', compact('goal', 'deposits_number', 'conclusion_date', 'progressData', 'message'));
     }
     
 
@@ -119,9 +136,12 @@ class GoalController extends Controller
      */
     public function edit(Request $request, Goal $goal)
     {
-        // prgar somente a categoria das metas
-        $goal_categories = Goal::distinct()->pluck('goal_category');
+        // Verifica se a meta pertence ao usuário atual
+        if ($goal->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para editar esta meta.');
+        }
 
+        $goal_categories = Goal::where('user_id', auth()->id())->distinct()->pluck('goal_category');
         return view('metas.edit', compact('goal', 'goal_categories'));
     }
 
@@ -130,6 +150,11 @@ class GoalController extends Controller
      */
     public function update(GoalUpdateRequest $request, Goal $goal)
     {
+        // Verifica se a meta pertence ao usuário atual
+        if ($goal->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para atualizar esta meta.');
+        }
+
         $data = $request->validated();
         
         // Calcula o valor por período
@@ -142,6 +167,7 @@ class GoalController extends Controller
         // Verifica o status da meta
         if ($data['current_value'] >= $data['target_value']) {
             $data['status'] = 'concluída';
+            $data['current_value'] = $data['target_value']; // Garante que não ultrapasse o valor final
         } else if (isset($data['status']) && $data['status'] === 'cancelada') {
             $data['status'] = 'cancelada';
         } else {
@@ -159,8 +185,12 @@ class GoalController extends Controller
      */
     public function destroy(Request $request, Goal $goal)
     {
-        $goal->delete();
+        // Verifica se a meta pertence ao usuário atual
+        if ($goal->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para excluir esta meta.');
+        }
 
+        $goal->delete();
         return redirect()->route('metas.index')->with('success', 'Meta removida com sucesso!');
     }
 
@@ -191,5 +221,50 @@ class GoalController extends Controller
 
         // Calcula o valor por período
         return round($targetValue / $periods, 2);
+    }
+
+    /**
+     * Realiza um depósito na meta
+     */
+    public function deposit(Request $request, Goal $goal)
+    {
+        // Verifica se a meta pertence ao usuário atual
+        if ($goal->user_id !== auth()->id()) {
+            abort(403, 'Você não tem permissão para realizar depósitos nesta meta.');
+        }
+
+        // Verifica se a meta já está concluída
+        if ($goal->status === 'concluída') {
+            return redirect()->route('metas.show', $goal)
+                ->with('error', 'Esta meta já foi concluída!');
+        }
+
+        // Valida o valor do depósito
+        $request->validate([
+            'deposit_value' => 'required|numeric|min:0.01'
+        ]);
+
+        $deposit_value = $request->deposit_value;
+        $new_value = $goal->current_value + $deposit_value;
+
+        // Verifica se o novo valor ultrapassaria o valor final
+        if ($new_value > $goal->target_value) {
+            return redirect()->route('metas.show', $goal)
+                ->with('error', 'O valor do depósito ultrapassaria o valor final da meta! O valor máximo permitido é R$ ' . number_format($goal->target_value - $goal->current_value, 2, ',', '.'));
+        }
+
+        // Atualiza o valor atual da meta
+        $goal->current_value = $new_value;
+
+        // Verifica se atingiu o valor final
+        if ($goal->current_value >= $goal->target_value) {
+            $goal->status = 'concluída';
+            $goal->current_value = $goal->target_value; // Garante que não ultrapasse o valor final
+        }
+
+        $goal->save();
+
+        return redirect()->route('metas.show', $goal)
+            ->with('success', 'Depósito realizado com sucesso!');
     }
 }

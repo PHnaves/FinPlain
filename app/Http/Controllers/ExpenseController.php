@@ -85,6 +85,11 @@ class ExpenseController extends Controller
      */
     public function show(Request $request, Expense $expense)
     {
+        // Verifica se a despesa pertence ao usuário atual
+        if ($expense->user_id !== Auth::id()) {
+            abort(403, 'Você não tem permissão para acessar esta despesa.');
+        }
+
         return view('despesas.show', compact('expense'));
     }
 
@@ -93,6 +98,11 @@ class ExpenseController extends Controller
      */
     public function edit(Request $request, Expense $expense)
     {
+        // Verifica se a despesa pertence ao usuário atual
+        if ($expense->user_id !== Auth::id()) {
+            abort(403, 'Você não tem permissão para editar esta despesa.');
+        }
+
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
         return view('despesas.edit', compact('expense', 'expense_categories'));
@@ -103,6 +113,11 @@ class ExpenseController extends Controller
      */
     public function update(ExpenseUpdateRequest $request, Expense $expense)
     {
+        // Verifica se a despesa pertence ao usuário atual
+        if ($expense->user_id !== Auth::id()) {
+            abort(403, 'Você não tem permissão para atualizar esta despesa.');
+        }
+
         $validated = $request->validated();
 
         // Se a despesa for à vista, não tem parcelas
@@ -128,6 +143,11 @@ class ExpenseController extends Controller
      */
     public function destroy(Request $request, Expense $expense)
     {
+        // Verifica se a despesa pertence ao usuário atual
+        if ($expense->user_id !== Auth::id()) {
+            abort(403, 'Você não tem permissão para excluir esta despesa.');
+        }
+
         $expense->delete();
 
         return redirect()->route('despesas.index')->with('success', 'Despesa removida com sucesso!');
