@@ -39,17 +39,28 @@ class GoalController extends Controller
      */
     public function store(GoalStoreRequest $request)
     {
-        // Validação dos campos
-        $validated = $request->validated();
+        $data = $request->validated();
+        
+        // Calcula o valor por período
+        $data['recurring_value'] = $this->calculateRecurringValue(
+            $data['target_value'],
+            $data['frequency'],
+            $data['end_date']
+        );
 
-        // Garante que o valor_atual tenha um valor padrão de 0 caso não seja fornecido
-        $validated['target_value'] = $validated['target_value'] ?? 0;
-        $validated['user_id'] = Auth::id();
-
-        // Criando a goal associada ao usuário autenticado
-        Goal::create($validated);
-
-        return redirect()->route('metas.index')->with('success', 'Meta cadastrada com sucesso!');
+        // Verifica o status da meta
+        if ($data['current_value'] >= $data['target_value']) {
+            $data['status'] = 'concluída';
+        } else if (isset($data['status']) && $data['status'] === 'cancelada') {
+            $data['status'] = 'cancelada';
+        } else {
+            $data['status'] = 'andamento';
+        }
+        
+        $goal = Goal::create($data);
+        
+        return redirect()->route('metas.show', $goal)
+            ->with('success', 'Meta criada com sucesso!');
     }
 
     /**
@@ -57,31 +68,49 @@ class GoalController extends Controller
      */
     public function show(Goal $goal)
     {
-        // Calcula quantos depósitos ainda são necessários para concluir a goal
-        if ($goal->target_value >= $goal->current_value) {
-            $deposits_number = 0;
-            $conclusion_date = Carbon::now()->format('d/m/Y');
-            $message = "Sua Meta já foi atingida! Parabens, continue assim.";
-        } else {
-            $deposits_number = ceil(($goal->target_value - $goal->current_value) / $goal->recurring_value);
-    
-            // Define o intervalo de dias baseado na periodicidade
-            $intervalo = match ($goal->frequency) {
-                'semanal' => 7,
-                'mensal' => 30,
-                default => null
-            };
-    
-            if (!$intervalo) {
-                return redirect()->route('metas.index')->with('error', 'Periodicidade inválida.');
-            }
-    
-            // Calcula a data estimada para conclusão
-            $conclusion_date = Carbon::now()->addDays($deposits_number * $intervalo)->format('d/m/Y');
-            $message = "Você atingirá sua goal em aproximadamente $deposits_number depósitos. Continue firme e forte!";
+        // Verifica se a meta pertence ao usuário atual
+        if ($goal->user_id !== auth()->id()) {
+            abort(403);
         }
-    
-        return view('metas.show', compact('goal', 'deposits_number', 'conclusion_date', 'message'));
+
+        // Calcula o número de depósitos restantes
+        $remaining_value = $goal->target_value - $goal->current_value;
+        $deposits_number = ceil($remaining_value / $goal->recurring_value);
+
+        // Calcula a data estimada de conclusão
+        $conclusion_date = null;
+        if ($goal->status === 'andamento' && $goal->frequency && $goal->end_date) {
+            $end_date = Carbon::parse($goal->end_date);
+            $today = Carbon::now();
+            
+            if ($goal->frequency === 'semanal') {
+                $conclusion_date = $today->copy()->addWeeks($deposits_number);
+            } else {
+                $conclusion_date = $today->copy()->addMonths($deposits_number);
+            }
+            
+            // Se a data calculada for posterior à data final, usa a data final
+            if ($conclusion_date->gt($end_date)) {
+                $conclusion_date = $end_date;
+            }
+        }
+
+        // Gera dados para o gráfico de progresso
+        $progressData = collect();
+        
+        // Adiciona o ponto inicial (0)
+        $progressData->push([
+            'date' => Carbon::parse($goal->created_at)->format('d/m/Y'),
+            'value' => 0
+        ]);
+
+        // Adiciona o ponto atual
+        $progressData->push([
+            'date' => Carbon::now()->format('d/m/Y'),
+            'value' => $goal->current_value
+        ]);
+
+        return view('metas.show', compact('goal', 'deposits_number', 'conclusion_date', 'progressData'));
     }
     
 
@@ -101,15 +130,28 @@ class GoalController extends Controller
      */
     public function update(GoalUpdateRequest $request, Goal $goal)
     {
-        // Validação dos campos
-        $validated = $request->validated();
+        $data = $request->validated();
         
-        $validated['target_value'] = $validated['target_value'] ?? 0;
+        // Calcula o valor por período
+        $data['recurring_value'] = $this->calculateRecurringValue(
+            $data['target_value'],
+            $data['frequency'],
+            $data['end_date']
+        );
 
-        // Atualização dos dados da meta
-        $goal->update($validated);
-
-        return redirect()->route('metas.index')->with('success', 'Meta atualizada com sucesso!');
+        // Verifica o status da meta
+        if ($data['current_value'] >= $data['target_value']) {
+            $data['status'] = 'concluída';
+        } else if (isset($data['status']) && $data['status'] === 'cancelada') {
+            $data['status'] = 'cancelada';
+        } else {
+            $data['status'] = 'andamento';
+        }
+        
+        $goal->update($data);
+        
+        return redirect()->route('metas.show', $goal)
+            ->with('success', 'Meta atualizada com sucesso!');
     }
 
     /**
@@ -120,5 +162,34 @@ class GoalController extends Controller
         $goal->delete();
 
         return redirect()->route('metas.index')->with('success', 'Meta removida com sucesso!');
+    }
+
+    /**
+     * Calcula o valor recorrente baseado na frequência e data final
+     */
+    private function calculateRecurringValue($targetValue, $frequency, $endDate)
+    {
+        $now = Carbon::now();
+        $end = Carbon::parse($endDate);
+        
+        // Se a data final já passou, retorna o valor total
+        if ($now->greaterThan($end)) {
+            return $targetValue;
+        }
+        
+        // Calcula o número de períodos baseado na frequência
+        $periods = match ($frequency) {
+            'semanal' => $now->diffInWeeks($end),
+            'mensal' => $now->diffInMonths($end),
+            default => 1
+        };
+
+        // Evita divisão por zero
+        if ($periods <= 0) {
+            return $targetValue;
+        }
+
+        // Calcula o valor por período
+        return round($targetValue / $periods, 2);
     }
 }
