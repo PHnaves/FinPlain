@@ -27,7 +27,7 @@ class ExpenseUpdateRequest extends FormRequest
             'expense_category' => 'required|string|max:100',
             'expense_value' => 'required|numeric|min:0',
             'recurrence' => 'required|in:a vista,semanal,quinzenal,mensal,trimestral,semestral,anual',
-            'installments' => 'nullable|integer|min:1',
+            'installments' => 'nullable|integer|min:0',
             'due_date' => 'required|date',
             'payment_date' => 'nullable|date',
         ];
@@ -45,7 +45,7 @@ class ExpenseUpdateRequest extends FormRequest
             'recurrence.required' => 'A recorrência é obrigatória.',
             'recurrence.in' => 'A recorrência selecionada é inválida.',
             'installments.integer' => 'O número de parcelas deve ser um número inteiro.',
-            'installments.min' => 'O número mínimo de parcelas é 1.',
+            'installments.min' => 'O número mínimo de parcelas é 0.',
             'due_date.required' => 'A data de vencimento é obrigatória.',
             'due_date.date' => 'A data de vencimento deve ser uma data válida.',
             'payment_date.date' => 'A data de pagamento deve ser uma data válida.',
