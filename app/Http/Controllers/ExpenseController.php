@@ -36,9 +36,9 @@ class ExpenseController extends Controller
                 $query->where('recurrence', 'mensal');
             } elseif ($recurrence === 'única') {
                 $query->where(function($q) {
-                    $q->where('recurrence', 'única')
+                    $q->where('recurrence', 'a vista')
                       ->orWhereNull('recurrence')
-                      ->orWhere('installments', 1);
+                      ->orWhere('installments', 0);
                 });
             }
         }
@@ -58,17 +58,21 @@ class ExpenseController extends Controller
         return view('despesas.create', compact('expense_categories'));
     }
 
-
     /**
      * Salvar uma nova despesa.
      */
     public function store(ExpenseStoreRequest $request)
     {
-
         $validated = $request->validated();
 
-        // Define o valor padrão para parcelas, caso não venha preenchido
-        $validated['installments'] = $validated['installments'] ?? 1;
+        // Se a despesa for à vista, não tem parcelas
+        if ($validated['recurrence'] === 'a vista') {
+            $validated['installments'] = 0;
+        } else {
+            // Define o valor padrão para parcelas, caso não venha preenchido
+            $validated['installments'] = $validated['installments'] ?? 1;
+        }
+
         $validated['user_id'] = Auth::id();
 
         Expense::create($validated);
@@ -99,10 +103,20 @@ class ExpenseController extends Controller
      */
     public function update(ExpenseUpdateRequest $request, Expense $expense)
     {
-
         $validated = $request->validated();
 
-        $validated['installments'] = $validated['installments'] ?? 1;
+        // Se a despesa for à vista, não tem parcelas
+        if ($validated['recurrence'] === 'a vista') {
+            $validated['installments'] = 0;
+        } else {
+            // Se a despesa tem data de pagamento, não permite alterar as parcelas
+            if (!empty($validated['payment_date'])) {
+                unset($validated['installments']);
+            } else {
+                // Se a data de pagamento foi removida, permite alterar as parcelas
+                $validated['installments'] = $validated['installments'] ?? 1;
+            }
+        }
 
         $expense->update($validated);
 
@@ -118,5 +132,4 @@ class ExpenseController extends Controller
 
         return redirect()->route('despesas.index')->with('success', 'Despesa removida com sucesso!');
     }
-
 }
