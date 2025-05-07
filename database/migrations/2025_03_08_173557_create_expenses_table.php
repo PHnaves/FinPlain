@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('expense_category', 100); // Categoria da despesa (Ex: "Aluguel", "Lazer")
             $table->decimal('expense_value', 10, 2); // Valor da despesa
             $table->enum('recurrence', ['a vista', 'semanal', 'quinzenal', 'mensal', 'trimestral', 'semestral', 'anual',]); // Frequencia da despesa
-            $table->integer('installments')->default(1); // Numero de parcelas
+            $table->integer('installments')->default(0); // Numero de parcelas
             $table->dateTime('due_date'); // Data de vencimento
             $table->datetime('payment_date')->nullable(); // Data de pagamento
             $table->timestamps();
