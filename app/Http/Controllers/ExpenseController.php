@@ -10,6 +10,7 @@ use App\Http\Requests\ExpenseRequests\ExpenseUpdateRequest;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
@@ -46,7 +47,53 @@ class ExpenseController extends Controller
         $expenses = $query->orderBy('due_date', 'desc')->get();
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
-        return view('despesas.index', compact('expenses', 'expense_categories', 'recurrence', 'currentMonth', 'currentYear'));
+        // Dados para os gráficos
+        // 1. Distribuição por categoria
+        $categoryData = $expenses->groupBy('expense_category')
+            ->map(function ($items) {
+                return $items->sum('expense_value');
+            });
+
+        // 2. Tendência mensal (últimos 6 meses)
+        $monthlyData = Expense::where('user_id', Auth::id())
+            ->where('due_date', '>=', now()->subMonths(6))
+            ->get()
+            ->groupBy(function ($expense) {
+                return Carbon::parse($expense->due_date)->format('Y-m');
+            })
+            ->map(function ($items) {
+                return $items->sum('expense_value');
+            });
+
+        // 3. Status de pagamento
+        $paymentStatus = $expenses->groupBy(function ($expense) {
+            return $expense->payment_date ? 'Pago' : 'Pendente';
+        })->map(function ($items) {
+            return $items->sum('expense_value');
+        });
+
+        // 4. Métricas principais
+        $metrics = [
+            'total_expenses' => $expenses->sum('expense_value'),
+            'paid_expenses' => $expenses->whereNotNull('payment_date')->sum('expense_value'),
+            'pending_expenses' => $expenses->whereNull('payment_date')->sum('expense_value'),
+            'average_expense' => $expenses->avg('expense_value'),
+            'total_count' => $expenses->count(),
+            'paid_count' => $expenses->whereNotNull('payment_date')->count(),
+            'pending_count' => $expenses->whereNull('payment_date')->count(),
+        ];
+
+        return view('despesas.index', compact(
+            'expenses', 
+            'expense_categories', 
+            'recurrence', 
+            'currentMonth', 
+            'currentYear',
+            'categoryData',
+            'monthlyData',
+            'paymentStatus',
+            'metrics'
+        ));
     }
 
     /**
