@@ -17,9 +17,16 @@ class GoalController extends Controller
     /**
      * Listar todas as metas.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $goals = Goal::where('user_id', auth()->id())->get();
+        $query = Goal::where('user_id', auth()->id());
+
+        // Filtro por status
+        if ($request->has('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $goals = $query->get();
         return view('metas.index', compact('goals'));
     }
 
