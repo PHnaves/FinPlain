@@ -23,20 +23,23 @@ class ExpenseLimitValue extends Command
                 $limit = $user->rent * 0.5;
                 $this->info("Verificando usuário {$user->name} - Renda: R$ {$user->rent} - Limite: R$ {$limit}");
 
-                // Busca todas as despesas do usuário
-                $expenses = Expense::where('user_id', $user->id)->get();
+                // Busca todas as despesas do usuário criadas após a última atualização do salário
+                $expenses = Expense::where('user_id', $user->id)
+                    ->where('created_at', '>=', $user->updated_at)
+                    ->whereNull('payment_date') // Apenas despesas não pagas
+                    ->get();
                 
                 foreach ($expenses as $expense) {
                     $this->info("Verificando despesa: {$expense->expense_name} - Valor: R$ {$expense->expense_value}");
                     
-                    // Verifica se a despesa já foi notificada hoje para não haver repetições 
+                    // Verifica se a despesa já foi notificada nos últimos 7 dias
                     $lastNotification = $user->notifications()
                         ->where('data->tipo', 'valor_limite_despesa')
                         ->where('data->expense_id', $expense->id)
-                        ->whereDate('created_at', $today)
+                        ->where('created_at', '>=', now()->subDays(7))
                         ->first();
 
-                    // Se a despesa teve o valor maior que o limit e não foi enviada ai sim envia a notificação
+                    // Se a despesa teve o valor maior que o limite e não foi notificada nos últimos 7 dias, envia a notificação
                     if ($expense->expense_value > $limit && !$lastNotification) {
                         $this->info("Enviando notificação para despesa {$expense->expense_name}");
                         $user->notify(new ExpenseLimitValueNotification($expense));
