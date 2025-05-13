@@ -79,11 +79,11 @@ OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi pre
 
 ### 🚀 Mês 2: Front-End e Experiência do Usuário
 ✅ Semana 6:
-- [ ] Criar páginas principais (dashboard, metas, despesas, investimentos).
-- [ ] Criar UI responsiva com Tailwind CSS.
+- [X] Criar páginas principais (dashboard, metas, despesas, investimentos).
+- [X] Criar UI responsiva com Tailwind CSS.
 
 ✅ Semana 7:
-- [ ] Implementar gráficos interativos (Chart.js ou Laravel Charts).
+- [X] Implementar gráficos interativos (Chart.js ou Laravel Charts).
 - [ ] Melhorar experiência do usuário nas interações.
 
 ✅ Semana 8:
