@@ -124,6 +124,10 @@
                         <img src="{{asset('/icons/dollar-sign.png')}}" alt="investimentos" class="h-5 w-5 object-contain brightness-0 invert">
                         <span class="font-medium text-gray-200">Investimentos</span>
                     </a>
+                    <a href="{{ route('records.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('records.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
+                        <img src="{{asset('/icons/file-text.png')}}" alt="relatorios" class="h-5 w-5 object-contain brightness-0 invert">
+                        <span class="font-medium text-gray-200">Relatórios</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -146,6 +150,10 @@
         <a href="{{ route('investiments.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('investiments.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
             <img src="{{asset('/icons/dollar-sign.png')}}" alt="investimentos" class="h-5 w-5 object-contain brightness-0 invert">
             <span class="font-medium text-gray-200">Investimentos</span>
+        </a>
+        <a href="{{ route('records.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('records.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
+            <img src="{{asset('/icons/file-text.png')}}" alt="relatorios" class="h-5 w-5 object-contain brightness-0 invert">
+            <span class="font-medium text-gray-200">Relatórios</span>
         </a>
     </aside>
 
