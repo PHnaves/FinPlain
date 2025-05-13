@@ -15,7 +15,8 @@ class RecordController extends Controller
      */
     public function index()
     {
-        return view('records.index');
+        $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
+        return view('records.index', compact('expense_categories'));
     }
 
     /**
@@ -85,7 +86,8 @@ class RecordController extends Controller
 
         $expenses = $query->get();
         $total = $expenses->sum('expense_value');
+        $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
-        return view('records.index', compact('expenses', 'total'));
+        return view('records.index', compact('expenses', 'total', 'expense_categories'));
     }
 }
