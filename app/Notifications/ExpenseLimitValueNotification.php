@@ -35,10 +35,16 @@ class ExpenseLimitValueNotification extends Notification
      */
     public function toDatabase($notifiable)
     {
+        $limit = $notifiable->rent * 0.5;
+        $percentage = round(($this->expense->expense_value / $notifiable->rent) * 100, 1);
+        
         return [
             'tipo' => 'valor_limite_despesa',
             'expense_id' => $this->expense->id,
-            'mensagem' => "Atenção! A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} ultrapassou 50% de sua renda mensal. Considere revisar seus gastos."
+            'mensagem' => "Atenção! A despesa '{$this->expense->expense_name}' no valor de R$ " . number_format($this->expense->expense_value, 2, ',', '.') . 
+                         " representa {$percentage}% de sua renda mensal (R$ " . number_format($notifiable->rent, 2, ',', '.') . "). " .
+                         "O limite recomendado é de 50% (R$ " . number_format($limit, 2, ',', '.') . "). " .
+                         "Considere revisar seus gastos ou ajustar seu orçamento."
         ];
     }
 

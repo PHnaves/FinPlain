@@ -19,7 +19,7 @@ class NotificationsController extends Controller
         // Filtra as notificação por tipo
         $notifications = $user->notifications()
             ->when($type, function ($query, $type) {
-                return $query->where('data->type', $type);
+                return $query->where('data->tipo', $type);
             })
             ->latest()
             ->paginate(10);
