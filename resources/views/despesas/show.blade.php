@@ -87,7 +87,7 @@
                         <div class="w-full md:w-auto">
                             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 break-words">{{ $expense->expense_name }}</h1>
                             <div class="mt-2 flex flex-wrap items-center gap-2">
-                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary-3 text-primary">
                                     {{ $expense->expense_category }}
                                 </span>
                                 <span class="px-3 py-1 rounded-full text-sm font-semibold
