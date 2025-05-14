@@ -49,7 +49,7 @@
                         id="password"
                         name="password"
                         type="password"
-                        class="mt-1 block w-full"
+                        class="form-control"
                         placeholder="{{ __('Digite sua senha para confirmar') }}"
                     />
 
