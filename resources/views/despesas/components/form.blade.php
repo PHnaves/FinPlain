@@ -6,7 +6,7 @@
     <input type="text" id="expense_name" name="expense_name"
         value="{{ old('expense_name', isset($expense) ? $expense->expense_name : '') }}"
         placeholder="Ex: Aluguel de apartamento"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
 </div>
 
@@ -15,7 +15,7 @@
     <label for="expense_description" class="block text-sm font-medium text-gray-700">Descrição</label>
     <textarea id="expense_description" name="expense_description"
         placeholder="Ex: Pagamento referente ao mês de abril"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>{{ old('expense_description', isset($expense) ? $expense->expense_description : '') }}</textarea>
 </div>
 
@@ -25,7 +25,7 @@
     <input list="expense_categories" name="expense_category" id="expense_category"
         value="{{ old('expense_category', isset($expense) ? $expense->expense_category : '') }}"
         placeholder="Escolha ou crie uma categoria"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
     <datalist id="expense_categories">
         @foreach ($expense_categories as $expense_category)
@@ -40,7 +40,7 @@
     <input type="number" id="expense_value" name="expense_value"
         value="{{ old('expense_value', isset($expense) ? $expense->expense_value : '') }}"
         placeholder="Ex: 1200.00" step="0.01"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
 </div>
 
@@ -48,7 +48,7 @@
 <div>
     <label for="recurrence" class="block text-sm font-medium text-gray-700">Frequência</label>
     <select name="recurrence" id="recurrence"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
         @foreach (['a vista', 'semanal', 'quinzenal', 'mensal', 'trimestral', 'semestral', 'anual'] as $option)
             <option value="{{ $option }}" {{ old('recurrence', isset($expense) ? $expense->recurrence : '') === $option ? 'selected' : '' }}>
@@ -64,7 +64,7 @@
     <input type="number" id="installments" name="installments"
         value="{{ old('installments', isset($expense) ? ($expense->payment_date ? 0 : $expense->installments) : 0) }}"
         placeholder="Ex: 3" min="0"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         {{ isset($expense) && $expense->payment_date ? 'disabled' : '' }}>
 </div>
 
@@ -73,7 +73,7 @@
     <label for="due_date" class="block text-sm font-medium text-gray-700">Data de Vencimento</label>
     <input type="date" id="due_date" name="due_date"
         value="{{ old('due_date', isset($expense) && $expense->due_date ? \Carbon\Carbon::parse($expense->due_date)->format('Y-m-d') : '') }}"
-        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
 </div>
 
 <!-- Apenas no modo edição -->
@@ -82,14 +82,14 @@
         <label for="payment_date" class="block text-sm font-medium text-gray-700">Data de Pagamento</label>
         <input type="datetime-local" id="payment_date" name="payment_date" autocomplete="off"
             value="{{ old('payment_date', $expense->payment_date ? \Carbon\Carbon::parse($expense->payment_date)->format('Y-m-d\TH:i') : '') }}"
-            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
     </div>
 @endif
 
 <!-- Botão -->
 <div class="flex justify-end">
     <button type="submit"
-        class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 transition">
+        class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-1 transition">
         Salvar
     </button>
 </div>
