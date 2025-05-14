@@ -54,7 +54,7 @@
                     @if($investiments->count() > 0)
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             @foreach($investiments as $investiment)
-                                <div class="border border-gray-200 rounded-lg p-4 bg-white shadow-sm flex flex-col gap-2 hover:border-blue-300 transition">
+                                <div class="border border-primary rounded-lg p-4 bg-white shadow-sm flex flex-col gap-2 hover:border-primary-1 transition">
                                     <div class="flex items-center justify-between mb-1">
                                         <span class="font-semibold text-gray-800 text-base">{{ $investiment->investiment_name }}</span>
                                         <span class="text-xs px-2 py-0.5 rounded-full font-medium
