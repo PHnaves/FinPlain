@@ -11,7 +11,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Botão Nova Meta -->
             <div class="mb-6">
-                <a href="{{ route('metas.create') }}" class="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring ring-indigo-300 disabled:opacity-25 transition ease-in-out duration-150">
+                <a href="{{ route('metas.create') }}" class="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 bg-primary border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-primary-1 active:bg-primary-1 focus:outline-none focus:border-primary-1 focus:ring ring-primary-1 disabled:opacity-25 transition ease-in-out duration-150">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
@@ -24,7 +24,7 @@
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
                         <div class="flex items-center">
-                            <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                            <div class="p-3 rounded-full bg-primary-3 text-primary">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                                 </svg>
@@ -91,7 +91,7 @@
                 <div class="p-4">
                     <div class="flex flex-wrap gap-2">
                         <a href="{{ route('metas.index') }}" 
-                           class="px-4 py-2 rounded-lg text-sm font-medium {{ request('status') === null ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
+                           class="px-4 py-2 rounded-lg text-sm font-medium {{ request('status') === null ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
                             Todas
                         </a>
                         <a href="{{ route('metas.index', ['status' => 'andamento']) }}" 
@@ -174,7 +174,7 @@
                                         </td>
                                         <td class="px-4 py-4 whitespace-nowrap text-sm font-medium">
                                             <div class="flex items-center gap-2">
-                                                <a href="{{ route('metas.show', $goal->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                                <a href="{{ route('metas.show', $goal->id) }}" class="text-primary hover:text-primary-1">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -223,8 +223,8 @@
                 datasets: [{
                     label: 'Valor Atual',
                     data: goals.map(goal => goal.current_value),
-                    backgroundColor: 'rgba(79, 70, 229, 0.5)',
-                    borderColor: 'rgb(79, 70, 229)',
+                    backgroundColor: '#11999E',
+                    borderColor: '#11999E',
                     borderWidth: 1
                 }, {
                     label: 'Valor Restante',
@@ -281,7 +281,7 @@
                 datasets: [{
                     data: categoryData,
                     backgroundColor: [
-                        'rgba(79, 70, 229, 0.8)',
+                        '#11999E',
                         'rgba(16, 185, 129, 0.8)',
                         'rgba(245, 158, 11, 0.8)',
                         'rgba(239, 68, 68, 0.8)',
