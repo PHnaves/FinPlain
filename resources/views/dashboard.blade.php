@@ -47,7 +47,7 @@
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
                         <div class="flex items-center">
-                            <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                            <div class="p-3 rounded-full bg-primary-3 text-primary">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                                 </svg>
@@ -85,7 +85,7 @@
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-lg font-semibold text-gray-900">Progresso das Metas</h3>
-                            <a href="{{ route('metas.index') }}" class="text-sm text-indigo-600 hover:text-indigo-900">Ver todas</a>
+                            <a href="{{ route('metas.index') }}" class="text-sm text-primary hover:text-primary-1">Ver todas</a>
                         </div>
                         <div class="h-80">
                             <canvas id="goalsChart"></canvas>
@@ -98,7 +98,7 @@
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-lg font-semibold text-gray-900">Gastos por Categoria</h3>
-                            <a href="{{ route('despesas.index') }}" class="text-sm text-indigo-600 hover:text-indigo-900">Ver todas</a>
+                            <a href="{{ route('despesas.index') }}" class="text-sm text-primary hover:text-primary-1">Ver todas</a>
                         </div>
                         <div class="h-80">
                             <canvas id="gastosChart"></canvas>
@@ -128,7 +128,7 @@
                 <a href="{{ route('metas.create') }}" class="bg-white overflow-hidden shadow-sm rounded-lg hover:shadow-md transition">
                     <div class="p-4">
                         <div class="flex items-center">
-                            <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                            <div class="p-3 rounded-full bg-primary-3 text-primary">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                                 </svg>
@@ -192,7 +192,7 @@
                 datasets: [{
                     label: 'Progresso (%)',
                     data: goalProgress,
-                    backgroundColor: '#4f46e5',
+                    backgroundColor: '#11999E',
                     borderRadius: 4
                 }]
             },
