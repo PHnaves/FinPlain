@@ -4,7 +4,7 @@
 
 @layer components {
     .form-control {
-        @apply w-full px-4 py-2 border border-info-1 rounded-std focus:outline-none focus:border-primary;
+        @apply w-full px-4 py-2 border border-info-1 rounded-std focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary;
     }
 }
 
