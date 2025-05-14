@@ -69,16 +69,16 @@
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Data de Vencimento</label>
                                     <input type="date" name="due_date" value="{{ old('due_date', request('due_date')) }}"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Data de Pagamento</label>
                                     <input type="date" name="payment_date" value="{{ old('payment_date', request('payment_date')) }}"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Categoria</label>
-                                    <select name="expense_category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <select name="expense_category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                         <option value="">Todas</option>
                                         @foreach($expense_categories ?? [] as $category)
                                             <option value="{{ $category }}" {{ request('expense_category') == $category ? 'selected' : '' }}>
@@ -89,7 +89,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700">Recorrência</label>
-                                    <select name="recurrence" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    <select name="recurrence" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                         <option value="">Todas</option>
                                         @foreach(['a vista', 'semanal', 'quinzenal', 'mensal', 'trimestral', 'semestral', 'anual'] as $option)
                                             <option value="{{ $option }}" {{ request('recurrence') == $option ? 'selected' : '' }}>
