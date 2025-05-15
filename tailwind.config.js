@@ -30,11 +30,11 @@ export default {
             },
         },
         screens: {
-            sm: '640px',
-            md: '1200px', // alterado de 768px para 800px
+            sm: '850px',
+            md: '1200px',
             lg: '1280px',
             xl: '1440px',
-            '2xl': '1536px',
+            '2xl': '1600px',
         },
     },
 
