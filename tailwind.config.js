@@ -29,6 +29,13 @@ export default {
                 'std-1/2': '0.25rem',
             },
         },
+        screens: {
+            sm: '640px',
+            md: '1200px', // alterado de 768px para 800px
+            lg: '1280px',
+            xl: '1440px',
+            '2xl': '1536px',
+        },
     },
 
     plugins: [forms],
