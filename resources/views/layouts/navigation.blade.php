@@ -165,35 +165,55 @@
     </div>
 
     <script>
-        // Menu Mobile
-        const menuButton = document.getElementById('menuButton');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuContent = mobileMenu.querySelector('div');
+    const menuButton = document.getElementById('menuButton');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuContent = mobileMenu.querySelector('div');
 
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenuContent.classList.remove('-translate-x-full');
-            } else {
-                mobileMenuContent.classList.add('-translate-x-full');
-            }
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenuContent.classList.remove('-translate-x-full');
+        }, 10);
+    }
+
+    function closeMobileMenu() {
+        mobileMenuContent.classList.add('-translate-x-full');
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 300); // Duração da animação em ms
+    }
+
+    function toggleMobileMenu() {
+        if (mobileMenu.classList.contains('hidden')) {
+            openMobileMenu();
+        } else {
+            closeMobileMenu();
         }
+    }
 
-        menuButton.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
+    menuButton?.addEventListener('click', toggleMobileMenu);
+    closeMenu?.addEventListener('click', closeMobileMenu);
 
-        // Fechar menu ao clicar fora
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                toggleMenu();
-            }
-        });
+    // Fechar ao clicar fora
+    mobileMenu?.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+            closeMobileMenu();
+        }
+    });
 
-        // Fechar menu ao redimensionar para desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
-                toggleMenu();
-            }
-        });
-    </script>
+    // Fechar se redimensionar para desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) { // md: breakpoint
+            closeMobileMenu();
+        }
+    });
+
+    // Garante que o menu esteja fechado se já estiver em desktop ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.add('hidden');
+            mobileMenuContent.classList.add('-translate-x-full');
+        }
+    });
+</script>

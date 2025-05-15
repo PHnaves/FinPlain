@@ -159,11 +159,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-6 shadow">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição por Categoria</h3>
-                    <canvas id="categoryChart" height="300"></canvas>
+                    <div class="h-96 flex items-center justify-center">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
                 </div>
                 <div class="bg-white rounded-lg p-6 shadow">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Tendência Mensal</h3>
-                    <canvas id="monthlyTrendChart" height="300"></canvas>
+                    <div class="h-96 flex items-center justify-center">
+                        <canvas id="monthlyTrendChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
