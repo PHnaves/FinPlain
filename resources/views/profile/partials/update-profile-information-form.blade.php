@@ -63,23 +63,36 @@
         <!-- Input Rent -->
         <div class="mt-4">
             <x-input-label for="rent" :value="__('Renda Atual')" />
-            <x-text-input id="rent" class="form-control" type="number" name="rent" :value="old('rent', $user->rent)" required />
+            <x-text-input id="rent" class="form-control" type="number" name="rent" min="0" max="99999999,99" step="0.01" :value="old('rent', $user->rent)" required />
             <x-input-error class="mt-2" :messages="$errors->get('rent')" />
         </div>
 
         <!-- Monthly Income -->
         <div class="mt-4">
             <x-input-label for="monthly_income" :value="__('Salário Mensal (R$)')" />
-            <x-text-input id="monthly_income" name="monthly_income" type="number" step="0.01" class="form-control" :value="old('monthly_income', $user->monthly_income)" required />
+            <x-text-input id="monthly_income" name="monthly_income" min="0" max="99999999,99" type="number" step="0.01" class="form-control" :value="old('monthly_income', $user->monthly_income)" required />
             <x-input-error class="mt-2" :messages="$errors->get('monthly_income')" />
         </div>
 
-        <!-- Payment Date -->
+        <!-- Payment frequency -->
         <div class="mt-4">
-            <x-input-label for="payment_date" :value="__('Dia do Pagamento')" />
-            <x-text-input id="payment_date" name="payment_date" type="date" class="form-control" :value="old('payment_date', $user->payment_date)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('payment_date')" />
+            <x-input-label for="payment_frequency" :value="__('Frequência de Pagamento')" />
+            <select id="payment_frequency" name="payment_frequency" class="form-control" required>
+                <option value="" disabled {{ old('payment_frequency', $user->payment_frequency) == null ? 'selected' : '' }}>Selecione uma Frequência</option>
+                <option value="mensal" {{ old('payment_frequency', $user->payment_frequency) == 'mensal' ? 'selected' : '' }}>Mensal</option>
+                <option value="quinzenal" {{ old('payment_frequency', $user->payment_frequency) == 'quinzenal' ? 'selected' : '' }}>Quinzenal</option>
+                <option value="semanal" {{ old('payment_frequency', $user->payment_frequency) == 'semanal' ? 'selected' : '' }}>Semanal</option>
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('payment_frequency')" />
         </div>
+
+        <!-- Payment Day -->
+        <div class="mt-4">
+            <x-input-label for="payment_day" :value="__('Dia do Pagamento')" />
+            <x-text-input id="payment_day" name="payment_day" type="number" class="form-control" :value="old('payment_day', $user->payment_day)" required min="1" max="31"/>
+            <x-input-error class="mt-2" :messages="$errors->get('payment_day')" />
+        </div>
+
 
         <!-- Save Button -->
         <div class="flex items-center gap-4">
