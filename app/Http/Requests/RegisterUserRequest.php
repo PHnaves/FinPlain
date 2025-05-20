@@ -2,12 +2,18 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ProfileUpdateRequest extends FormRequest
+class RegisterUserRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -17,19 +23,13 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'lowercase',
-                'email',
-                'max:255',
-                Rule::unique(User::class)->ignore($this->user()->id),
-            ],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'type_user' => ['required', 'string', 'in:conservador,moderado,arrojado'],
             'rent' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
             'monthly_income' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
             'payment_frequency' => ['required', 'string', 'in:mensal,quinzenal,semanal'],
-            'payment_day' => ['required', 'integer', 'between:1,31'],
+            'payment_day' => ['required', 'numeric', 'between:1,31'],
         ];
     }
 
