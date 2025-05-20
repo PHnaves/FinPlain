@@ -54,7 +54,7 @@
 
                         <div class="mb-5 text-left">
                             <label for="type_user" class="flex items-center gap-2">
-                                Tipo de Usuário
+                                Tipo de Investidor
                                 <div class="relative group">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -79,21 +79,32 @@
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="rent">Renda Atual</label>
-                            <input type="number" class="form-control" id="rent" name="rent" placeholder="0.00" required>
+                            <label for="rent">Saldo Atual</label>
+                            <input type="number" class="form-control" id="rent" name="rent" min="0" max="99999999,99" placeholder="0.00" required>
                             <x-input-error :messages="$errors->get('rent')" class="mt-2" />
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="monthly_income">Salário Mensal</label>
-                            <input type="number" step="0.01" class="form-control" id="monthly_income" name="monthly_income" placeholder="0.00" required>
+                            <label for="monthly_income">Salário</label>
+                            <input type="number" step="0.01" class="form-control" id="monthly_income" name="monthly_income" min="0" max="99999999,99" placeholder="0.00" required>
                             <x-input-error :messages="$errors->get('monthly_income')" class="mt-2" />
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="payment_date">Dia do Pagamento</label>
-                            <input type="date" class="form-control" id="payment_date" name="payment_date" required>
-                            <x-input-error :messages="$errors->get('payment_date')" class="mt-2" />
+                            <label for="payment_frequency">Frequencia de Pagamento</label>
+                            <select id="payment_frequency" name="payment_frequency" class="form-control" required>
+                                <option value="" disabled selected>Selecione uma Frequência</option>
+                                <option value="mensal">Mensal</option>
+                                <option value="quinzenal">Quinzenal</option>
+                                <option value="semanal">Semanal</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('payment_frequency')" class="mt-2" />
+                        </div>
+
+                        <div class="mb-5 text-left">
+                            <label for="payment_day">Dia de Pagamento</label>
+                            <input type="number" class="form-control" id="payment_day" name="payment_day" min="1" max="31" placeholder="Dia do Mês" required>
+                            <x-input-error :messages="$errors->get('payment_day')" class="mt-2" />
                         </div>
 
                         <div class="mb-5">
