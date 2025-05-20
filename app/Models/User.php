@@ -29,7 +29,8 @@ class User extends Authenticatable //implements MustVerifyEmail
         'type_user',
         'rent',
         'monthly_income',
-        'payment_date'
+        'payment_frequency',
+        'payment_day'
     ];
 
     /**
@@ -74,11 +75,26 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function atualizarRenda()
     {
         $hoje = Carbon::now();
-        if ($this->payment_date && $hoje->isSameDay(Carbon::parse($this->payment_date))) {
-            $this->rent += $this->monthly_income;
-            $this->save();
+        $paymentDay = $this->payment_day;
+        $paymentFrequency = $this->payment_frequency;
+
+        if ($paymentFrequency === 'mensal') {
+            if ($hoje->day === $paymentDay) {
+                $this->rent += $this->monthly_income;
+                $this->save();
+            }
+
+        } elseif ($paymentFrequency === 'quinzenal') {
+            if ($hoje->day === $paymentDay || ($paymentDay === 15 && $hoje->day === 30)) {
+                $this->rent += $this->monthly_income;
+                $this->save();
+            }
+            
+        } elseif ($paymentFrequency === 'semanal') {
+            if ($hoje->dayOfWeek + 1 === $paymentDay) {
+                $this->rent += $this->monthly_income;
+                $this->save();
+            }
         }
     }
-
-
 }
