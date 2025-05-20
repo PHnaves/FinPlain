@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -27,18 +28,8 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RegisterUserRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'type_user' => ['required', 'in:conservador,moderado,arrojado'],//validacao enum
-            'rent' => ['required', 'numeric', 'min:0'],
-            'monthly_income' => ['required', 'numeric', 'min:0'],
-            'payment_date' => ['required', 'date'],
-        ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -46,7 +37,8 @@ class RegisteredUserController extends Controller
             'type_user' => $request->type_user,
             'rent' => $request->rent,
             'monthly_income' => $request->monthly_income,
-            'payment_date' => $request->payment_date,
+            'payment_frequency' => $request->payment_frequency,
+            'payment_day' => $request->payment_day,
         ]);
 
         event(new Registered($user));
