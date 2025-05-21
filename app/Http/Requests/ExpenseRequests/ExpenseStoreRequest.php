@@ -22,14 +22,14 @@ class ExpenseStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'expense_name' => 'required|string|max:100',
-            'expense_description' => 'required|string',
-            'expense_category' => 'required|string|max:100',
-            'expense_value' => 'required|numeric|min:0',
-            'recurrence' => 'required|in:a vista,semanal,quinzenal,mensal,trimestral,semestral,anual',
-            'installments' => 'nullable|integer|min:0',
-            'due_date' => 'required|date',
-            'payment_date' => 'nullable|date',
+            'expense_name' => ['required', 'string', 'max:100'],
+            'expense_description' => ['required', 'string'],
+            'expense_category' => ['required', 'string', 'max:100'],
+            'expense_value' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
+            'recurrence' => ['required', 'in:a vista,semanal,quinzenal,mensal,trimestral,semestral,anual'],
+            'installments' => ['nullable', 'integer', 'min:0'],
+            'due_date' => ['required', 'date'],
+            'payment_date' => ['nullable', 'date'],
         ];
     }
 
@@ -42,6 +42,7 @@ class ExpenseStoreRequest extends FormRequest
             'expense_value.required' => 'O valor da despesa é obrigatório.',
             'expense_value.numeric' => 'O valor deve ser um número.',
             'expense_value.min' => 'O valor deve ser no mínimo 0.',
+            'expense_value.max' => 'O valor deve ser no máximo 9999999,99.',
             'recurrence.required' => 'A recorrência é obrigatória.',
             'recurrence.in' => 'A recorrência selecionada é inválida.',
             'installments.integer' => 'O número de parcelas deve ser um número inteiro.',
