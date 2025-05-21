@@ -58,7 +58,7 @@ class RegisterUserRequest extends FormRequest
             'rent.required' => 'A renta é obrigatório.',
             'rent.numeric' => 'A renta deve ser numérico.',
             'rent.min' => 'A renta deve ser maior ou igual a 0.',
-            'rent.max' => 'A renta deve ser menor ou igual a 99999999,99.',
+            'rent.max' => 'A renta deve ser menor ou igual a 9999999,99.',
             
             'monthly_income.required' => 'O salario mensal é obrigatório.',
             'monthly_income.numeric' => 'O salario mensal deve ser numérico.',
