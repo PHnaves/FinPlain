@@ -8,6 +8,7 @@
         placeholder="Ex: Aluguel de apartamento"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
+        <x-input-error class="mt-2" :messages="$errors->get('expense_name')" />
 </div>
 
 <!-- Descrição da Despesa -->
@@ -17,6 +18,7 @@
         placeholder="Ex: Pagamento referente ao mês de abril"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>{{ old('expense_description', isset($expense) ? $expense->expense_description : '') }}</textarea>
+        <x-input-error class="mt-2" :messages="$errors->get('expense_description')" />
 </div>
 
 <!-- Categoria -->
@@ -27,6 +29,7 @@
         placeholder="Escolha ou crie uma categoria"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
+    <x-input-error class="mt-2" :messages="$errors->get('expense_category')" />
     <datalist id="expense_categories">
         @foreach ($expense_categories as $expense_category)
             <option value="{{ $expense_category }}">
@@ -37,11 +40,14 @@
 <!-- Valor da Despesa -->
 <div>
     <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor da Despesa</label>
-    <input type="number" id="expense_value" name="expense_value"
+    <input type="number" id="expense_value" name="expense_value" 
+        min="0"
+        max="99999999,99"
         value="{{ old('expense_value', isset($expense) ? $expense->expense_value : '') }}"
         placeholder="Ex: 1200.00" step="0.01"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         required>
+        <x-input-error class="mt-2" :messages="$errors->get('expense_value')" />
 </div>
 
 <!-- Frequência -->
@@ -56,6 +62,7 @@
             </option>
         @endforeach
     </select>
+    <x-input-error class="mt-2" :messages="$errors->get('recurrence')" />
 </div>
 
 <!-- Parcelas -->
@@ -66,6 +73,7 @@
         placeholder="Ex: 3" min="0"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         {{ isset($expense) && $expense->payment_date ? 'disabled' : '' }}>
+        <x-input-error class="mt-2" :messages="$errors->get('installments')" />
 </div>
 
 <!-- Data de vencimento -->
@@ -74,6 +82,7 @@
     <input type="date" id="due_date" name="due_date"
         value="{{ old('due_date', isset($expense) && $expense->due_date ? \Carbon\Carbon::parse($expense->due_date)->format('Y-m-d') : '') }}"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+        <x-input-error class="mt-2" :messages="$errors->get('due_date')" />
 </div>
 
 <!-- Apenas no modo edição -->
@@ -83,6 +92,7 @@
         <input type="datetime-local" id="payment_date" name="payment_date" autocomplete="off"
             value="{{ old('payment_date', $expense->payment_date ? \Carbon\Carbon::parse($expense->payment_date)->format('Y-m-d\TH:i') : '') }}"
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+            <x-input-error class="mt-2" :messages="$errors->get('payment_date')" />
     </div>
 @endif
 
