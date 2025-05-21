@@ -18,7 +18,7 @@
             <div class="h-[630px] bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-lg shadow-md p-6 flex flex-col justify-between">
                 <div>
                     <h3 class="text-2xl font-semibold mb-2">Controle seus gastos</h3>
-                    <p class="text-sm text-indigo-100">Economize mais com o nosso painel de despesas inteligente.</p>
+                    <p class="text-sm text-indigo-100">Economize mais com o nosso painel de transações inteligente.</p>
                 </div>
                 <div class="mt-6">
                     <img src="https://cdn-icons-png.flaticon.com/512/2331/2331970.png" alt="Publicidade" class="w-28 mx-auto">

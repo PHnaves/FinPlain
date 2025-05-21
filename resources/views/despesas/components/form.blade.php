@@ -1,8 +1,8 @@
 @csrf
 
-<!-- Nome da Despesa -->
+<!-- Nome da Transação -->
 <div>
-    <label for="expense_name" class="block text-sm font-medium text-gray-700">Nome da Despesa</label>
+    <label for="expense_name" class="block text-sm font-medium text-gray-700">Nome da Transação</label>
     <input type="text" id="expense_name" name="expense_name"
         value="{{ old('expense_name', isset($expense) ? $expense->expense_name : '') }}"
         placeholder="Ex: Aluguel de apartamento"
@@ -11,7 +11,7 @@
         <x-input-error class="mt-2" :messages="$errors->get('expense_name')" />
 </div>
 
-<!-- Descrição da Despesa -->
+<!-- Descrição da Transação -->
 <div>
     <label for="expense_description" class="block text-sm font-medium text-gray-700">Descrição</label>
     <textarea id="expense_description" name="expense_description"
@@ -37,9 +37,9 @@
     </datalist>
 </div>
 
-<!-- Valor da Despesa -->
+<!-- Valor da Transação -->
 <div>
-    <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor da Despesa</label>
+    <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor da Transação</label>
     <input type="number" id="expense_value" name="expense_value" 
         min="0"
         max="99999999,99"

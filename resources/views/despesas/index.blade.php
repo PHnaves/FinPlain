@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Resumo do Mês</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="text-center">
-                        <p class="text-sm text-gray-600">Total de Despesas</p>
+                        <p class="text-sm text-gray-600">Total de Transações</p>
                         <p class="text-2xl font-bold text-gray-800">R$ {{ number_format($metrics['total_expenses'], 2, ',', '.') }}</p>
                     </div>
                     <div class="text-center">
@@ -287,7 +287,7 @@
                             return \Carbon\Carbon::parse($date)->format('M/Y');
                         })) !!},
                         datasets: [{
-                            label: 'Total de Despesas',
+                            label: 'Total de Transações',
                             data: {!! json_encode($monthlyData->values()) !!},
                             borderColor: '#3B82F6',
                             backgroundColor: 'rgba(59, 130, 246, 0.1)',

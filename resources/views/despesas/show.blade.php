@@ -2,14 +2,14 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Detalhe da Despesa') }}
+                {{ __('Detalhe da Transação') }}
             </h2>
             <div class="flex gap-2">
                 <a href="{{ route('despesas.edit', $expense->id) }}" class="inline-flex items-center px-4 py-2 bg-yellow-600 text-white text-sm font-semibold rounded-lg hover:bg-yellow-500 transition">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                     </svg>
-                    Editar Despesa
+                    Editar Transação
                 </a>
                 <button
                     x-data=""
@@ -19,7 +19,7 @@
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                     </svg>
-                    Excluir Despesa
+                    Excluir Transação
                 </button>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                         </svg>
-                        {{ __('Excluir Despesa') }}
+                        {{ __('Excluir Transação') }}
                     </x-danger-button>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <!-- Cabeçalho da Despesa -->
+                    <!-- Cabeçalho da Transação -->
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b">
                         <div class="w-full md:w-auto">
                             <h1 class="text-2xl md:text-3xl font-bold text-gray-900 break-words">{{ $expense->expense_name }}</h1>
@@ -107,7 +107,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                     </svg>
-                                    Editar Despesa
+                                    Editar Transação
                                 </a>
                                 <button
                                     x-data=""
@@ -117,7 +117,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                     </svg>
-                                    Excluir Despesa
+                                    Excluir Transação
                                 </button>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                         <svg class="w-6 h-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                         </svg>
-                                        <p class="text-green-700 font-medium">Despesa Paga!</p>
+                                        <p class="text-green-700 font-medium">Transação Paga!</p>
                                     </div>
                                 @else
                                     <div class="flex items-center justify-center p-4 bg-yellow-50 rounded-lg">

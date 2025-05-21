@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Cards de Resumo -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <!-- Total de Despesas -->
+                <!-- Total de Transações -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
                         <div class="flex items-center">
@@ -19,14 +19,14 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Despesas</p>
+                                <p class="text-sm font-medium text-gray-600">Total de Transações</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ count($expense_name) }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Despesas Pendentes -->
+                <!-- Transações Pendentes -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
                         <div class="flex items-center">
@@ -36,7 +36,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Despesas Pendentes</p>
+                                <p class="text-sm font-medium text-gray-600">Transações Pendentes</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ $expense_status->filter(function($status) { return $status === 'nao_pago'; })->count() }}</p>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Ver Despesas</p>
+                                <p class="text-sm font-medium text-gray-900">Ver Transações</p>
                                 <p class="text-sm text-gray-500">Lista completa</p>
                             </div>
                         </div>

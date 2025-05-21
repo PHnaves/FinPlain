@@ -114,7 +114,7 @@
                     </a>
                     <a href="{{ route('despesas.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('despesas.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
                         <img src="{{asset('/icons/credit-card.png')}}" alt="despesa" class="h-5 w-5 object-contain brightness-0 invert">
-                        <span class="font-medium text-gray-200">Despesas</span>
+                        <span class="font-medium text-gray-200">Transações</span>
                     </a>
                     <a href="{{ route('metas.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('metas.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
                         <img src="{{asset('/icons/check-square.png')}}" alt="meta" class="h-5 w-5 object-contain brightness-0 invert">
@@ -141,7 +141,7 @@
         </a>
         <a href="{{ route('despesas.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('despesas.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
             <img src="{{asset('/icons/credit-card.png')}}" alt="despesa" class="h-5 w-5 object-contain brightness-0 invert">
-            <span class="font-medium text-gray-200">Despesas</span>
+            <span class="font-medium text-gray-200">Transações</span>
         </a>
         <a href="{{ route('metas.index') }}" class="flex items-center space-x-4 hover:bg-gray-900 px-6 py-3 transition-colors duration-200 {{ request()->routeIs('metas.index') ? 'bg-gray-900 border-r-4 border-primary-1' : '' }}">
             <img src="{{asset('/icons/check-square.png')}}" alt="meta" class="h-5 w-5 object-contain brightness-0 invert">
