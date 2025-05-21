@@ -84,10 +84,10 @@ OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi pre
 
 ✅ Semana 7:
 - [X] Implementar gráficos interativos (Chart.js ou Laravel Charts).
-- [ ] Melhorar experiência do usuário nas interações.
+- [X] Melhorar experiência do usuário nas interações.
 
 ✅ Semana 8:
-- [ ] Criar página de notificações e alertas.
+- [X] Criar página de notificações e alertas.
 - [ ] Implementar cálculos e projeções de gastos futuros.
 
 ### 🎯 Mês 3: Testes, Ajustes e Lançamento
