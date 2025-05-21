@@ -22,15 +22,15 @@ class GoalUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'goal_title' => 'required|string|max:255',
-            'goal_description' => 'nullable|string',
-            'goal_category' => 'required|string|max:100',
-            'target_value' => 'nullable|numeric|min:0',
-            'current_value' => 'nullable|numeric|min:0',
-            'frequency' => 'required|in:semanal,mensal',
-            'recurring_value' => 'required|numeric|min:0',
-            'status' => 'in:andamento,concluída,cancelada',
-            'end_date' => 'required|date',
+            'goal_title' => ['required', 'string', 'max:255'],
+            'goal_description' => ['nullable', 'string'],
+            'goal_category' => ['required', 'string', 'max:100'],
+            'target_value' => ['nullable', 'numeric', 'min:0'],
+            'current_value' => ['nullable', 'numeric', 'min:0'],
+            'frequency' => ['required', 'in:semanal,mensal'],
+            'recurring_value' => ['required', 'numeric', 'min:0'],
+            'status' => ['in:andamento,concluída,cancelada'],
+            'end_date' => ['required', 'date'],
         ];
     }
 
