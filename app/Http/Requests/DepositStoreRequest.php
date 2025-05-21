@@ -22,7 +22,7 @@ class DepositStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'deposit_value' => 'required|numeric|min:0.01',
+            'deposit_value' => ['required', 'numeric', 'min:0.01'],
         ];
     }
 
