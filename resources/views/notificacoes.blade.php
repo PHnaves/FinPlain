@@ -15,7 +15,7 @@
                             <h1 class="text-2xl font-bold text-gray-900">Minhas Notificações</h1>
                             <form method="GET" action="{{ route('notifications') }}" class="flex items-center space-x-2">
                                 <select name="type" onchange="this.form.submit()" 
-                                    class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                    class="rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                     <option value="">Todas as notificações</option>
                                     <option value="despesa_vencida" {{ request('type') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
                                     <option value="deposito_meta" {{ request('type') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
@@ -37,7 +37,7 @@
                         @else
                             <div class="space-y-4">
                                 @foreach($notifications as $notification)
-                                    <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden {{ is_null($notification->read_at) ? 'border-l-4 border-l-indigo-500' : '' }}">
+                                    <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden {{ is_null($notification->read_at) ? 'border-l-4 border-l-primary' : '' }}">
                                         <div class="p-4">
                                             <div class="flex items-start justify-between">
                                                 <div class="flex-1">
@@ -71,7 +71,7 @@
                                                     @if(is_null($notification->read_at))
                                                         <form method="POST" action="{{ route('notifications.markAsRead', $notification->id) }}" class="inline">
                                                             @csrf
-                                                            <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                                                            <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md text-primary-3 bg-primary-1 hover:bg-primary-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
                                                                 Marcar como lida
                                                             </button>
                                                         </form>
