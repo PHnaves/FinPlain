@@ -22,7 +22,7 @@ class GoalUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'goal_title' => ['required', 'string', 'max:255'],
+            'goal_title' => ['required', 'string', 'max:50'],
             'goal_description' => ['nullable', 'string'],
             'goal_category' => ['required', 'string', 'max:100'],
             'target_value' => ['nullable', 'numeric', 'min:0'],
@@ -38,7 +38,7 @@ class GoalUpdateRequest extends FormRequest
     {
         return [
             'goal_title.required' => 'O título da meta é obrigatório.',
-            'goal_title.max' => 'O título da meta não pode ultrapassar 255 caracteres.',
+            'goal_title.max' => 'O título da meta não pode ultrapassar 50 caracteres.',
             'goal_category.required' => 'A categoria é obrigatória.',
             'goal_category.max' => 'A categoria não pode ultrapassar 100 caracteres.',
             'target_value.numeric' => 'O valor final deve ser numérico.',
