@@ -67,7 +67,7 @@
 
 <!-- Parcelas -->
 <div id="installments_field" style="display: none;">
-    <label for="installments" class="block text-sm font-medium text-gray-700">Número de Parcelas</label>
+    <label for="installments" class="block text-sm font-medium text-gray-700">Quantidade de Parcelas</label>
     <input type="number" id="installments" name="installments"
         value="{{ old('installments', isset($expense) ? ($expense->payment_date ? 0 : $expense->installments) : 0) }}"
         placeholder="Ex: 3" min="0"
@@ -78,7 +78,7 @@
 
 <!-- Data de vencimento -->
 <div>
-    <label for="due_date" class="block text-sm font-medium text-gray-700">Data de Vencimento</label>
+    <label for="due_date" class="block text-sm font-medium text-gray-700">Data de Vencimento da Proxima Parcela</label>
     <input type="date" id="due_date" name="due_date"
         value="{{ old('due_date', isset($expense) && $expense->due_date ? \Carbon\Carbon::parse($expense->due_date)->format('Y-m-d') : '') }}"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">

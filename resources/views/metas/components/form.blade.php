@@ -97,7 +97,7 @@
 
 <!-- Data final -->
 <div>
-    <label for="end_date" class="block text-sm font-medium text-gray-700">Data Limite (opcional)</label>
+    <label for="end_date" class="block text-sm font-medium text-gray-700">Data Final Que Deseja Atingir a Meta</label>
     <input type="date" id="end_date" name="end_date"
            value="{{ old('end_date', isset($goal) && $goal->end_date ? \Carbon\Carbon::parse($goal->end_date)->format('Y-m-d') : '') }}"
            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
