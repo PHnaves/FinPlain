@@ -20,7 +20,7 @@
         {{ __('Excluir Conta') }}
     </x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
             @csrf
             @method('delete')
@@ -53,7 +53,7 @@
                         placeholder="{{ __('Digite sua senha para confirmar') }}"
                     />
 
-                    <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
                 <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4 w-full max-w-md">
