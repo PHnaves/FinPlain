@@ -23,7 +23,7 @@
                 <div class="col-start-2 col-end-12 col-span-4">
                     <div class="mb-10">
                         <h1 class="text-3xl md:text-4xl text-primary font-bold mb-3">Entrar Em Sua Conta</h1>
-                        <p class="text-base text-info">Ben vindo de volta!</p>
+                        <p class="text-base text-info">Bem vindo de volta!</p>
                     </div>
 
                     <form method="POST" action="{{ route('login') }}" class="w-full validation" novalidate>
