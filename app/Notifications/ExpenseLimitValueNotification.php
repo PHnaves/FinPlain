@@ -41,7 +41,7 @@ class ExpenseLimitValueNotification extends Notification
         return [
             'tipo' => 'valor_limite_despesa',
             'expense_id' => $this->expense->id,
-            'mensagem' => "Atenção! A despesa '{$this->expense->expense_name}' no valor de R$ " . number_format($this->expense->expense_value, 2, ',', '.') . 
+            'mensagem' => "Atenção! Uma parcela da sua despesa '{$this->expense->expense_name}' no valor de R$ " . number_format($this->expense->expense_value, 2, ',', '.') . 
                          " representa {$percentage}% de sua renda mensal (R$ " . number_format($notifiable->rent, 2, ',', '.') . "). " .
                          "O limite recomendado é de 50% (R$ " . number_format($limit, 2, ',', '.') . "). " .
                          "Considere revisar seus gastos ou ajustar seu orçamento."

@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\DatabaseMessage;
 use Illuminate\Notifications\Notification;
 
 class OverdueExpenseNotification extends Notification
@@ -37,10 +36,9 @@ class OverdueExpenseNotification extends Notification
         return [
             'tipo' => 'despesa_vencida',
             'expense_id' => $this->expense->id,
-            'mensagem' => "A despesa '{$this->expense->expense_name}' no valor de R$ {$this->expense->expense_value} vence amanhã."
+            'mensagem' => "Olá! Só passando pra lembrar que a despesa \"{$this->expense->expense_name}\" de R$ " . number_format($this->expense->expense_value, 2, ',', '.') . " vence amanhã. Fique atento!",
         ];
     }
-
     /**
      * Get the array representation of the notification.
      *

@@ -3,8 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class TargetDepositNotification extends Notification
@@ -38,8 +36,7 @@ class TargetDepositNotification extends Notification
         return [
             'tipo' => 'deposito_meta',
             'goal_id' => $this->goal->id,
-            'mensagem' => "Se lembra da meta {$this->goal->goal_name} no valor de R$ {$this->goal->goal_value}? Voce escolheu a data de hoje para efetuar o depoisto."
-        ];
+            'mensagem' => "Hoje é o dia agendado para contribuir com sua meta \"{$this->goal->goal_title}\". O valor do depósito previsto é de R$ " . number_format($this->goal->goal_current_value, 2, ',', '.') . ". Continue firme!"];
     }
 
     /**
