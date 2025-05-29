@@ -9,14 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('payment_frequency')->after('monthly_income');
-            $table->integer('payment_day')->after('payment_frequency');
-        });
-    }
-
+    
     /**
      * Reverse the migrations.
      */
