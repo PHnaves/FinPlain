@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('type_user')->enum('conservador', 'moderado', 'arrojado');
             $table->decimal('rent', 10, 2);
-            $table->string('payment_frequency')->after('monthly_income');
-            $table->integer('payment_day')->after('payment_frequency');
+            $table->string('payment_frequency');
+            $table->integer('payment_day');
             $table->rememberToken();
             $table->timestamps();
         });
