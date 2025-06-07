@@ -7,7 +7,6 @@ use App\Models\DepositGoal;
 use App\Models\Expense;
 use App\Models\Goal;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DepositController extends Controller

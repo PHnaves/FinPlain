@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GoalRequests\GoalDeleteRequest;
-use App\Http\Requests\GoalRequests\GoalEditRequest;
-use App\Http\Requests\GoalRequests\GoalShowRequest;
 use App\Http\Requests\GoalRequests\GoalStoreRequest;
 use App\Http\Requests\GoalRequests\GoalUpdateRequest;
 use App\Models\Goal;
@@ -19,7 +16,7 @@ class GoalController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Goal::where('user_id', auth()->id());
+        $query = Goal::where('user_id', Auth::id());
 
         // Filtro por status
         if ($request->has('status')) {
@@ -35,7 +32,7 @@ class GoalController extends Controller
      */
     public function create()
     {
-        $goal_categories = Goal::where('user_id', auth()->id())->distinct()->pluck('goal_category');
+        $goal_categories = Goal::where('user_id', Auth::id())->distinct()->pluck('goal_category');
         return view('metas.create', compact('goal_categories'));
     }
 
@@ -64,11 +61,11 @@ class GoalController extends Controller
         }
 
         // Adiciona o user_id do usuário autenticado
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
         
         $goal = Goal::create($data);
         
-        return redirect()->route('metas.show', $goal)
+        return redirect()->route('metas.index')
             ->with('success', 'Meta criada com sucesso!');
     }
 
@@ -78,7 +75,7 @@ class GoalController extends Controller
     public function show(Goal $goal)
     {
         // Verifica se a meta pertence ao usuário atual
-        if ($goal->user_id !== auth()->id()) {
+        if ($goal->user_id !== Auth::id()) {
             abort(403, 'Você não tem permissão para acessar esta meta.');
         }
 
@@ -106,10 +103,6 @@ class GoalController extends Controller
                 $conclusion_date = $today->copy()->addMonths($deposits_number);
             }
             
-            // Se a data calculada for posterior à data final, usa a data final
-            if ($conclusion_date->gt($end_date)) {
-                $conclusion_date = $end_date;
-            }
         }
 
         // Define a mensagem baseada no status da meta
@@ -144,11 +137,11 @@ class GoalController extends Controller
     public function edit(Request $request, Goal $goal)
     {
         // Verifica se a meta pertence ao usuário atual
-        if ($goal->user_id !== auth()->id()) {
+        if ($goal->user_id !== Auth::id()) {
             abort(403, 'Você não tem permissão para editar esta meta.');
         }
 
-        $goal_categories = Goal::where('user_id', auth()->id())->distinct()->pluck('goal_category');
+        $goal_categories = Goal::where('user_id', Auth::id())->distinct()->pluck('goal_category');
         return view('metas.edit', compact('goal', 'goal_categories'));
     }
 
@@ -158,7 +151,7 @@ class GoalController extends Controller
     public function update(GoalUpdateRequest $request, Goal $goal)
     {
         // Verifica se a meta pertence ao usuário atual
-        if ($goal->user_id !== auth()->id()) {
+        if ($goal->user_id !== Auth::id()) {
             abort(403, 'Você não tem permissão para atualizar esta meta.');
         }
 
@@ -183,7 +176,7 @@ class GoalController extends Controller
         
         $goal->update($data);
         
-        return redirect()->route('metas.show', $goal)
+        return redirect()->back()
             ->with('success', 'Meta atualizada com sucesso!');
     }
 
@@ -193,7 +186,7 @@ class GoalController extends Controller
     public function destroy(Request $request, Goal $goal)
     {
         // Verifica se a meta pertence ao usuário atual
-        if ($goal->user_id !== auth()->id()) {
+        if ($goal->user_id !== Auth::id()) {
             abort(403, 'Você não tem permissão para excluir esta meta.');
         }
 
@@ -228,50 +221,5 @@ class GoalController extends Controller
 
         // Calcula o valor por período
         return round($targetValue / $periods, 2);
-    }
-
-    /**
-     * Realiza um depósito na meta
-     */
-    public function deposit(Request $request, Goal $goal)
-    {
-        // Verifica se a meta pertence ao usuário atual
-        if ($goal->user_id !== auth()->id()) {
-            abort(403, 'Você não tem permissão para realizar depósitos nesta meta.');
-        }
-
-        // Verifica se a meta já está concluída
-        if ($goal->status === 'concluída') {
-            return redirect()->route('metas.show', $goal)
-                ->with('error', 'Esta meta já foi concluída!');
-        }
-
-        // Valida o valor do depósito
-        $request->validate([
-            'deposit_value' => 'required|numeric|min:0.01'
-        ]);
-
-        $deposit_value = $request->deposit_value;
-        $new_value = $goal->current_value + $deposit_value;
-
-        // Verifica se o novo valor ultrapassaria o valor final
-        if ($new_value > $goal->target_value) {
-            return redirect()->route('metas.show', $goal)
-                ->with('error', 'O valor do depósito ultrapassaria o valor final da meta! O valor máximo permitido é R$ ' . number_format($goal->target_value - $goal->current_value, 2, ',', '.'));
-        }
-
-        // Atualiza o valor atual da meta
-        $goal->current_value = $new_value;
-
-        // Verifica se atingiu o valor final
-        if ($goal->current_value >= $goal->target_value) {
-            $goal->status = 'concluída';
-            $goal->current_value = $goal->target_value; // Garante que não ultrapasse o valor final
-        }
-
-        $goal->save();
-
-        return redirect()->route('metas.show', $goal)
-            ->with('success', 'Depósito realizado com sucesso!');
     }
 }
