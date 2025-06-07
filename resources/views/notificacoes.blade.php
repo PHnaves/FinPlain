@@ -1,28 +1,23 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Notificações') }}
-        </h2>
-    </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <div class="container">
-                        <div class="flex justify-between items-center mb-6">
-                            <h1 class="text-2xl font-bold text-gray-900">Minhas Notificações</h1>
-                            <form method="GET" action="{{ route('notifications') }}" class="flex items-center space-x-2">
-                                <select name="type" onchange="this.form.submit()" 
-                                    class="rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
-                                    <option value="">Todas as notificações</option>
-                                    <option value="despesa_vencida" {{ request('type') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
-                                    <option value="deposito_meta" {{ request('type') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
-                                    <option value="valor_limite_despesa" {{ request('type') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
-                                </select>
-                            </form>
-                        </div>
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+                    <h2 class="text-3xl font-bold text-primary-1">🔔 Minhas Notificações</h2>
+
+                    <form method="GET" action="{{ route('notifications') }}" class="flex items-center justify-center md:justify-end">
+                        <select name="type" onchange="this.form.submit()" 
+                            class="w-full md:w-auto rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary text-sm">
+                            <option value="">Todas as notificações</option>
+                            <option value="despesa_vencida" {{ request('type') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
+                            <option value="deposito_meta" {{ request('type') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
+                            <option value="valor_limite_despesa" {{ request('type') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
+                        </select>
+                    </form>
+                </div>
+
 
                         @if($notifications->isEmpty())
                             <div class="text-center py-12">

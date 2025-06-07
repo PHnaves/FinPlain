@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'FinPlain') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,21 +15,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-primary-1">
-                    <div class="max-w-7xl mx-auto py-2 px-2 sm:px-4 lg:px-6">
-                    </div>
-                </header>
-            @endisset
-
-            {{-- <!-- Page Content -->
-            <main>
+        <!-- Conteúdo Principal -->
+        <div class="md:ml-72 md:mt-16 mt-16 min-h-screen bg-gray-50">
+            <main class="p-4 md:p-6">
                 {{ $slot }}
-            </main> --}}
+            </main>
+        </div>
         </div>
 
         @stack('scripts')

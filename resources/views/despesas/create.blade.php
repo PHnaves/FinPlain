@@ -1,12 +1,24 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Nova Despesa</h2>
-    </x-slot>
 
     <div class="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            @if (session('success'))
+                <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                    {{ session('error') }}
+                </div>
+            @endif
             <!-- Formulário -->
             <div class="lg:col-span-2 bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-3xl font-bold text-primary-1 p-4 md:p-6 border-b-2 border-primary-1 shadow-sm text-center">
+                    🧾 Nova Transação
+                </h2>
                 
                 <form action="{{ route('despesas.store') }}" method="POST" class="space-y-4">
                     @include('despesas.components.form')

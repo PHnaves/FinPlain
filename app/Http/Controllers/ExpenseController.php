@@ -16,6 +16,8 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
+        $user_rent = Auth::user()->rent;
+
         $currentMonth = $request->get('month', now()->format('m'));
         $currentYear = $request->get('year', now()->format('Y'));
         $recurrence = $request->get('recurrence');
@@ -81,6 +83,7 @@ class ExpenseController extends Controller
         ];
 
         return view('despesas.index', compact(
+            'user_rent',
             'expenses', 
             'expense_categories', 
             'recurrence', 

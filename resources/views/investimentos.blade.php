@@ -1,19 +1,36 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Sugestão de Investimentos') }}
+    
+    <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
+        <h2 class="text-3xl font-bold text-primary-1">
+            💼 Sugestão de Investimentos
         </h2>
-    </x-slot>
+        <div class="text-right">
+            <p class="text-sm text-gray-600">Seu saldo atual</p>
+            <p class="text-xl font-semibold text-gray-800">{{number_format($user_rent, 2, ',', '.')}}</p>
+        </div>
+    </div>
+
+    @if (session('success'))
+        <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {{ session('error') }}
+        </div>
+    @endif
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Cabeçalho com informações do perfil -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
-                    <div class="flex items-center justify-between">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                         <div>
-                            <h3 class="text-lg font-medium text-gray-900">Seu Perfil de Investidor</h3>
-                            <p class="mt-1 text-sm text-gray-600">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Seu Perfil de Investidor</h3>
+                            <p class="text-sm text-gray-600">
                                 @php
                                     $profileInfo = [
                                         'conservador' => 'Você prefere investimentos mais seguros, com baixo risco e retornos mais previsíveis.',
@@ -24,8 +41,8 @@
                                 {{ $profileInfo[auth()->user()->type_user] }}
                             </p>
                         </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="px-3 py-1 rounded-full text-sm font-medium
+                        <div>
+                            <span class="px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm
                                 @if(auth()->user()->type_user === 'conservador')
                                     bg-green-100 text-green-800
                                 @elseif(auth()->user()->type_user === 'moderado')
@@ -40,6 +57,7 @@
                     </div>
                 </div>
             </div>
+
 
             <!-- Grid de Investimentos -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">

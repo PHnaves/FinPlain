@@ -39,7 +39,7 @@
 
 <!-- Valor da Transação -->
 <div>
-    <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor da Transação</label>
+    <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor das Parcelas da transação</label>
     <input type="number" id="expense_value" name="expense_value" 
         min="0"
         max="99999999,99"

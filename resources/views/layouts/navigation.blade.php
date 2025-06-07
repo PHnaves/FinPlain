@@ -157,12 +157,12 @@
         </a>
     </aside>
 
-    <!-- Conteúdo Principal -->
+    {{-- <!-- Conteúdo Principal -->
     <div class="md:ml-72 md:mt-16 mt-16 min-h-screen bg-gray-50">
         <main class="p-4 md:p-6">
             {{ $slot }}
         </main>
-    </div>
+    </div> --}}
 
     <script>
     const menuButton = document.getElementById('menuButton');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,8 +16,10 @@ class RecordController extends Controller
      */
     public function index()
     {
+        $user_rent = Auth::user()->rent;
+
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
-        return view('records.index', compact('expense_categories'));
+        return view('records.index', compact('expense_categories', 'user_rent'));
     }
 
     /**
@@ -66,6 +69,10 @@ class RecordController extends Controller
      */
     public function filterExpenses(Request $request)
     {
+
+        //necessario colocar aqui tambem para não ocorrer erros de visualização e de variavel
+        $user_rent = Auth::user()->rent;
+
         $query = Expense::where('user_id', Auth::id());
 
         if ($request->filled('expense_category')){
@@ -88,6 +95,6 @@ class RecordController extends Controller
         $total = $expenses->sum('expense_value');
         $expense_categories = Expense::where('user_id', Auth::id())->distinct()->pluck('expense_category');
 
-        return view('records.index', compact('expenses', 'total', 'expense_categories'));
+        return view('records.index', compact('expenses', 'total', 'expense_categories', 'user_rent'));
     }
 }

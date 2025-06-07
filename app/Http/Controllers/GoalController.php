@@ -16,6 +16,9 @@ class GoalController extends Controller
      */
     public function index(Request $request)
     {
+        
+        $user_rent = Auth::user()->rent;
+
         $query = Goal::where('user_id', Auth::id());
 
         // Filtro por status
@@ -24,7 +27,7 @@ class GoalController extends Controller
         }
 
         $goals = $query->get();
-        return view('metas.index', compact('goals'));
+        return view('metas.index', compact('goals', 'user_rent'));
     }
 
     /**

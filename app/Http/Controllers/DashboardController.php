@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
         return view('dashboard', compact(
             'goal_title', 'goal_progress', 'goal_ids',
-            'expense_ids', 'expense_name', 'expense_value', 'expense_payment_date', 'expense_status'
+            'expense_ids', 'expense_name', 'expense_value', 'expense_payment_date', 'expense_status', 'user'
         ));
     }
 }
