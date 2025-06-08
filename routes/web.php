@@ -2,19 +2,12 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepositController;
-use App\Http\Controllers\DespesaController;
 use App\Http\Controllers\ExpenseController;
-use App\Http\Controllers\GastoController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\InvestimentController;
-use App\Http\Controllers\LembreteController;
-use App\Http\Controllers\MetaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NotificacaoController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecordController;
-use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\NotificationsController;
 
 // DEPOSITOS
@@ -69,11 +62,23 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/expense/{expense}', [ExpenseController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
 });
 
-
 //PAGINA BOAS VINDAS
 Route::get('/', function () {
     return view('welcome');
 });
+
+//TERMOS E POLITICA DE PRIVACIDADE
+Route::get('/termos-de-uso', function () {
+    return view('termos.termosUso');
+})->name('termos.termosUso'); 
+
+Route::get('/termos-de-servico', function () {
+    return view('termos.termosServico');
+})->name('termos.termosServico'); 
+
+Route::get('/politica-de-privacidade', function () {
+    return view('termos.politicaPrivacidade');
+})->name('termos.politicaPrivacidade');
 
 //PERFIL
 Route::middleware('auth')->group(function () {
