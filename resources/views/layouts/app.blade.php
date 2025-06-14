@@ -15,15 +15,23 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-        <!-- Conteúdo Principal -->
-        <div class="md:ml-72 md:mt-16 mt-16 min-h-screen bg-gray-50">
-            <main class="p-4 md:p-6">
-                {{ $slot }}
-            </main>
+        <!-- Preloader Start -->
+        <div class="preloader h-full fixed w-full z-[9999] bg-[#0A5B5E] transition duration-300">
+            <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
         </div>
+        <!-- Preloader End -->
+
+        <div class="min-h-screen">
+            <div id="mainContent" class="opacity-0 transition-opacity duration-300">
+                @include('layouts.navigation')
+
+                <!-- Conteúdo Principal -->
+                <div class="md:ml-72 min-h-screen">
+                    <main class="p-4 md:p-6">
+                        {{ $slot }}
+                    </main>
+                </div>
+            </div>
         </div>
 
         {{-- finbot --}}
@@ -33,6 +41,20 @@
             data-btn-position="bottom-right"
             data-widget-btn-color="#11999e" 
             defer> 
+        </script>
+
+        <script>
+            // Preloader
+            window.addEventListener('load', function() {
+                const preloader = document.querySelector('.preloader');
+                const mainContent = document.getElementById('mainContent');
+                
+                setTimeout(function() {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    mainContent.style.opacity = '1';
+                }, 1000);
+            });
         </script>
 
         @stack('scripts')
