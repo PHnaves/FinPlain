@@ -95,13 +95,13 @@
 
 <body class="landing">
     <!-- Preloader Start -->
-    <div class="preloader h-full fixed w-full z-50 bg-[#0A5B5E] transition duration-300">
+    <div class="preloader h-screen fixed w-full z-50 bg-[#0A5B5E] transition duration-300">
         <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
     </div>
     <!-- Preloader End -->
 
     <!-- Header -->
-    <header class="bg-[#0A5B5E] sticky top-0 w-full z-10 shadow-sm hidden" id="mainHeader">
+    <header class="bg-[#0A5B5E] sticky top-0 w-full z-40 shadow-sm hidden" id="mainHeader">
         <nav class="py-2">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between">
@@ -149,39 +149,30 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="bg-primary-3 py-20 md:py-32" id="home">
+    <section class="bg-gradient-to-br from-white to-gray-50 py-20 md:py-32 relative overflow-hidden" id="home" style="margin-top: 0; z-index: 0;">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
                         Organize suas finanças com
-                        <span class="gradient-text">FinPlain</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-1">FinPlain</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-info mb-8 leading-relaxed">
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                         A plataforma completa para gerenciar suas finanças pessoais e empresariais de forma simples e eficiente.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-8 py-3 rounded-full font-semibold shadow-lg w-full sm:w-auto text-center transition-colors duration-300">
+                        <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-8 py-4 rounded-full font-semibold shadow-lg w-full sm:w-auto text-center transition-all duration-300 transform hover:scale-105">
                             Começar Gratuitamente
                         </a>
-                        <a href="#sobre" class="text-primary hover:text-primary-1 font-medium flex items-center">
-                            <i class="fas fa-play-circle mr-2"></i>
+                        <a href="#sobre" class="text-gray-900 hover:text-primary font-medium flex items-center group">
+                            <i class="fas fa-play-circle mr-2 group-hover:animate-bounce"></i>
                             Saiba mais
                         </a>
                     </div>
                 </div>
-                <div class="relative">
-                    <img src="../public/assets/images/landing/hero_img.png" alt="Dashboard FinPlain" class="w-full rounded-lg shadow-2xl">
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-primary-3 rounded-full flex items-center justify-center">
-                                <i class="fas fa-chart-line text-primary"></i>
-                            </div>
-                            <div>
-                                <p class="text-sm text-info">Crescimento</p>
-                                <p class="text-lg font-semibold text-primary">+245%</p>
-                            </div>
-                        </div>
+                <div class="relative" style="z-index: 0;">
+                    <div class="relative transform hover:scale-105 transition-transform duration-300">
+                        <img src="{{ asset('/images/Hero-Section.png') }}" alt="Dashboard FinPlain" class="w-full rounded-2xl shadow-2xl">
                     </div>
                 </div>
             </div>
@@ -198,28 +189,34 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-pie text-2xl text-indigo-600"></i>
+                <!-- Card 1: Análise -->
+                <div class="bg-white p-10 rounded-xl shadow-lg card-hover">
+                    <div class="mb-8">
+                        <img src="{{ asset('/images/Imagem-Welcome1.png') }}" alt="Análise Financeira" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Análise Completa</h3>
-                    <p class="text-gray-600">Acompanhe seus gastos e receitas com gráficos interativos e relatórios detalhados.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Visualize Seus Dados</h3>
+                    <p class="text-gray-600 text-lg">Transforme números em insights com painéis intuitivos e relatórios fáceis de entender.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-bullseye text-2xl text-purple-600"></i>
+
+                <!-- Card 2: Metas -->
+                <div class="bg-white p-10 rounded-xl shadow-lg card-hover">
+                    <div class="mb-8">
+                        <img src="{{ asset('/images/Imagem-Welcome2.png') }}" alt="Metas Financeiras" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Metas Financeiras</h3>
-                    <p class="text-gray-600">Defina e acompanhe suas metas financeiras com ferramentas personalizadas.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Alcance Seus Objetivos</h3>
+                    <p class="text-gray-600 text-lg">Monitore seu progresso e mantenha o foco nas metas que importam para sua vida financeira.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
-                    <div class="w-14 h-14 bg-pink-100 rounded-lg flex items-center justify-center mb-6">
-                        <i class="fas fa-shield-alt text-2xl text-pink-600"></i>
+
+                <!-- Card 3: Segurança -->
+                <div class="bg-white p-10 rounded-xl shadow-lg card-hover">
+                    <div class="mb-8">
+                        <img src="{{ asset('/images/Imagem-Welcome3.png') }}" alt="Segurança Financeira" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Segurança Total</h3>
-                    <p class="text-gray-600">Suas informações financeiras protegidas com a mais alta tecnologia de segurança.</p>
+                    <h3 class="text-2xl font-semibold mb-4">Proteção em Primeiro Lugar</h3>
+                    <p class="text-gray-600 text-lg">Tenha tranquilidade com tecnologia de ponta cuidando da privacidade dos seus dados.</p>
                 </div>
             </div>
+
         </div>
     </section>
 
