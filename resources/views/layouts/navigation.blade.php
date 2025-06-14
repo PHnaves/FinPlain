@@ -1,5 +1,5 @@
     <!-- Sidebar Principal -->
-    <aside class="fixed top-0 left-0 h-screen w-64 bg-gradient-to-b from-primary-1 to-primary-2 shadow-xl z-[100] transition-all duration-300 transform -translate-x-full md:translate-x-0" id="sidebar">
+    <aside class="fixed top-0 left-0 h-screen w-64 bg-primary-2 shadow-xl z-[100] transition-all duration-300 transform -translate-x-full md:translate-x-0" id="sidebar">
         <!-- Logo e Nome -->
         <div class="flex items-center space-x-3 p-6 border-b border-white/10">
             <div class="relative group">
@@ -100,7 +100,9 @@
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const hamburger = event.target.closest('button');
-            if (!hamburger && !sidebar.contains(event.target) && window.innerWidth < 768) {
+            const hamburgerButton = document.querySelector('button.md\\:hidden');
+            
+            if (!hamburger && !sidebar.contains(event.target) && hamburgerButton && !hamburgerButton.classList.contains('hidden')) {
                 sidebar.classList.add('-translate-x-full');
             }
         });
