@@ -95,13 +95,13 @@
 
 <body class="landing">
     <!-- Preloader Start -->
-    <div class="preloader h-full fixed w-full z-50 bg-gradient-to-r from-indigo-600 to-purple-600 transition duration-300">
+    <div class="preloader h-full fixed w-full z-50 bg-[#0A5B5E] transition duration-300">
         <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
     </div>
     <!-- Preloader End -->
 
     <!-- Header -->
-    <header class="bg-[#0A5B5E] sticky top-0 w-full z-10 shadow-sm">
+    <header class="bg-[#0A5B5E] sticky top-0 w-full z-10 shadow-sm hidden" id="mainHeader">
         <nav class="py-2">
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between">
@@ -109,18 +109,19 @@
                         <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="w-16 md:w-20" alt="Logo FinPlain">
                     </div>
 
-                    <button class="md:hidden text-white p-2" id="navToggler">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-
-                    <div class="desktop-menu items-center space-x-4 md:space-x-6">
-                        <a href="#home" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Início</a>
-                        <a href="#sobre" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Sobre</a>
-                        <a href="#precos" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Planos</a>
-                        <a href="#contato" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Contato</a>
-                        <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-4 md:px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg transition-colors duration-300">Começar Agora</a>
+                    <div class="flex items-center">
+                        <div class="desktop-menu items-center space-x-4 md:space-x-6">
+                            <a href="#home" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Início</a>
+                            <a href="#sobre" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Sobre</a>
+                            <a href="#precos" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Planos</a>
+                            <a href="#contato" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Contato</a>
+                            <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-4 md:px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg transition-colors duration-300 hidden md:inline-block">Começar Agora</a>
+                        </div>
+                        <button class="md:hidden text-white p-2 ml-4" id="navToggler">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -142,7 +143,7 @@
                 <a href="#sobre" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Sobre</a>
                 <a href="#precos" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Planos</a>
                 <a href="#contato" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Contato</a>
-                <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-6 py-2.5 rounded-full text-base font-semibold shadow-lg inline-block transition-colors duration-300 w-full text-center">Começar Agora</a>
+                <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-6 py-2.5 rounded-full text-base font-semibold shadow-lg inline-block transition-colors duration-300 w-full text-center md:hidden">Começar Agora</a>
             </nav>
         </div>
     </div>
@@ -392,10 +393,6 @@
             <div class="border-t border-gray-700 pt-6">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <p class="text-gray-300 text-sm mb-4 md:mb-0">© 2024 FinPlain. Todos os direitos reservados.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Suporte</a>
-                        <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">FAQ</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -441,6 +438,42 @@
                     }
                 });
             });
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            const mainHeader = document.getElementById('mainHeader');
+            
+            setTimeout(function() {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                mainHeader.classList.remove('hidden');
+            }, 1000);
+        });
+
+        // Fechar o menu quando clicar fora
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('userMenu');
+            const button = event.target.closest('button');
+            if (!button && !menu.contains(event.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+
+        // Função para alternar a sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // Fechar a sidebar quando clicar fora em telas móveis
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const hamburger = event.target.closest('button');
+            if (!hamburger && !sidebar.contains(event.target) && window.innerWidth < 768) {
+                sidebar.classList.add('-translate-x-full');
+            }
         });
     </script>
 </body>
