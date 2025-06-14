@@ -179,8 +179,8 @@ class GoalController extends Controller
         
         $goal->update($data);
         
-        return redirect()->back()
-            ->with('success', 'Meta atualizada com sucesso!');
+        return redirect()->route('metas.index')
+            ->with('success', 'Meta criada com sucesso!');
     }
 
     /**
