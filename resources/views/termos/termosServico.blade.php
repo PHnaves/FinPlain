@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Serviço - FinPlain</title>
+    <title>Termos de Serviço - FinPlan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,12 +12,12 @@
         <p class="text-center text-muted mb-4">Última atualização: 08/06/2025</p>
 
         <div class="mb-4">
-            <p>Estes Termos de Serviço descrevem o contrato entre você e o FinPlain.</p>
+            <p>Estes Termos de Serviço descrevem o contrato entre você e o FinPlan.</p>
         </div>
 
         <div class="mb-4">
             <h2>1. Sobre o Serviço</h2>
-            <p>O FinPlain é uma aplicação que oferece ferramentas de controle financeiro e educação financeira para usuários de baixa renda. Os serviços incluem:</p>
+            <p>O FinPlan é uma aplicação que oferece ferramentas de controle financeiro e educação financeira para usuários de baixa renda. Os serviços incluem:</p>
             <ul>
                 <li>Registro de saldo</li>
                 <li>Planejamento de gastos</li>
@@ -28,7 +28,7 @@
 
         <div class="mb-4">
             <h2>2. Uso Adequado</h2>
-            <p>Você concorda em utilizar os serviços do FinPlain apenas para fins pessoais e legais, não devendo usar o sistema de forma fraudulenta, ofensiva ou que viole qualquer lei.</p>
+            <p>Você concorda em utilizar os serviços do FinPlan apenas para fins pessoais e legais, não devendo usar o sistema de forma fraudulenta, ofensiva ou que viole qualquer lei.</p>
         </div>
 
         <div class="mb-4">
@@ -38,7 +38,7 @@
 
         <div class="mb-4">
             <h2>4. Limitação de Responsabilidade</h2>
-            <p>FinPlain não se responsabiliza por perdas financeiras reais baseadas nas projeções da plataforma, uma vez que não operamos com dados bancários ou movimentações reais.</p>
+            <p>FinPlan não se responsabiliza por perdas financeiras reais baseadas nas projeções da plataforma, uma vez que não operamos com dados bancários ou movimentações reais.</p>
         </div>
 
         <div class="mb-4">

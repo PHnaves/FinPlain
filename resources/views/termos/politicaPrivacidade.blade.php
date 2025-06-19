@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade - FinPlain</title>
+    <title>Política de Privacidade - FinPlan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -22,10 +22,11 @@
                 <li>Nome</li>
                 <li>E-mail</li>
                 <li>Senha (armazenada de forma segura)</li>
-                <li>Saldo atual</li>
+                <li>Perfil de investidor</li>
+                <li>Renda atual</li>
                 <li>Salário</li>
                 <li>Frequência de pagamento</li>
-                <li>Perfil de investidor</li>
+                <li>Dia do pagamento</li>
             </ul>
         </div>
 

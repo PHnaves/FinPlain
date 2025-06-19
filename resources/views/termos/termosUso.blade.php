@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Uso - FinPlain</title>
+    <title>Termos de Uso - FinPlan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,22 +12,22 @@
         <p class="text-center text-muted mb-4">Última atualização: 08/06/2025</p>
 
         <div class="mb-4">
-            <p>Bem-vindo ao FinPlain! Ao acessar ou usar nossa aplicação, você concorda com os seguintes Termos de Uso. Leia-os com atenção.</p>
+            <p>Bem-vindo ao FinPlan! Ao acessar ou usar nossa aplicação, você concorda com os seguintes Termos de Uso. Leia-os com atenção.</p>
         </div>
 
         <div class="mb-4">
             <h2>1. Aceitação dos Termos</h2>
-            <p>Ao criar uma conta ou utilizar o FinPlain, você concorda em cumprir e se vincular a estes Termos de Uso. Se você não concorda com algum termo, por favor, não utilize o FinPlain.</p>
+            <p>Ao criar uma conta ou utilizar o FinPlan, você concorda em cumprir e se vincular a estes Termos de Uso. Se você não concorda com algum termo, por favor, não utilize o FinPlan.</p>
         </div>
 
         <div class="mb-4">
             <h2>2. Finalidade do Aplicativo</h2>
-            <p>O FinPlain é uma plataforma de gestão financeira voltada para pessoas de baixa renda. Oferecemos funcionalidades para controle de orçamento pessoal, assim ajudando o usuário a ter maior controle de suas transações e de suas metas financeiras.</p>
+            <p>O FinPlan é uma plataforma de gestão financeira voltada para pessoas de baixa renda. Oferecemos funcionalidades para controle de orçamento pessoal, assim ajudando o usuário a ter maior controle de suas transações e de suas metas financeiras.</p>
         </div>
 
         <div class="mb-4">
             <h2>3. Cadastro</h2>
-            <p>Para utilizar o FinPlain, é necessário criar uma conta fornecendo:</p>
+            <p>Para utilizar o FinPlan, é necessário criar uma conta fornecendo:</p>
             <ul>
                 <li>Nome</li>
                 <li>E-mail</li>
@@ -42,7 +42,7 @@
 
         <div class="mb-4">
             <h2>4. Simulações</h2>
-            <p>Todas as transações financeiras feitas no FinPlain são simulações. A plataforma não realiza movimentações financeiras reais. Você só será responsável por informar a aplicação sua renda atual e seu salário para simulações baseadas no real.</p>
+            <p>Todas as transações financeiras feitas no FinPlan são simulações. A plataforma não realiza movimentações financeiras reais. Você só será responsável por informar a aplicação sua renda atual e seu salário para simulações baseadas no real.</p>
         </div>
 
         <div class="mb-4">

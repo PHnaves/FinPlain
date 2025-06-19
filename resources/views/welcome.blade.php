@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index, follow">
-    <meta name="og:title" property="og:title" content="FinPlain - Sua Plataforma de Gestão Financeira">
+    <meta name="og:title" property="og:title" content="FinPlan - Sua Plataforma de Gestão Financeira">
 	<meta property="og:image" content="https://designtocodes.com/wp-content/uploads/2023/12/DataAI-Free-Data-Analytics-Tailwind-CSS-Dashboard-Template.jpg">
-	<meta name="og:description" content="FinPlain é uma plataforma profissional e amigável para gestão financeira. Comece a organizar suas finanças agora!">
+	<meta name="og:description" content="FinPlan é uma plataforma profissional e amigável para gestão financeira. Comece a organizar suas finanças agora!">
     <link rel="icon" href="../public/assets/images/logo/favicon.png" type="image/gif" sizes="16x16">
-    <title>FinPlain</title>
+    <title>FinPlan</title>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="../public/lib/fontawesome/css/all.min.css">
     <!-- Google Font -->
@@ -96,7 +96,7 @@
 <body class="landing">
     <!-- Preloader Start -->
     <div class="preloader h-screen fixed w-full z-50 bg-[#0A5B5E] transition duration-300">
-        <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
+        <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
     </div>
     <!-- Preloader End -->
 
@@ -106,7 +106,7 @@
             <div class="container mx-auto px-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="w-16 md:w-20" alt="Logo FinPlain">
+                        <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="w-16 md:w-20" alt="Logo FinPlan">
                     </div>
 
                     <div class="flex items-center">
@@ -133,7 +133,7 @@
     <div class="fixed right-0 top-0 h-full w-[280px] bg-[#0A5B5E] shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50" id="mobileNav">
         <div class="p-6">
             <div class="flex justify-between items-center mb-8">
-                <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="w-16" alt="Logo FinPlain">
+                <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="w-16" alt="Logo FinPlan">
                 <button class="text-white hover:text-primary-3 transition-colors duration-300 p-2" id="navCloser">
                     <i class="fas fa-times text-xl"></i>
                 </button>
@@ -155,7 +155,7 @@
                 <div class="text-center lg:text-left">
                     <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
                         Organize suas finanças com
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-1">FinPlain</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-1">FinPlan</span>
                     </h1>
                     <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                         A plataforma completa para gerenciar suas finanças pessoais e empresariais de forma simples e eficiente.
@@ -172,7 +172,7 @@
                 </div>
                 <div class="relative" style="z-index: 0;">
                     <div class="relative transform hover:scale-105 transition-transform duration-300">
-                        <img src="{{ asset('/images/Hero-Section.png') }}" alt="Dashboard FinPlain" class="w-full rounded-2xl shadow-2xl">
+                        <img src="{{ asset('/images/Hero-Section.png') }}" alt="Dashboard FinPlan" class="w-full rounded-2xl shadow-2xl">
                     </div>
                 </div>
             </div>
@@ -183,7 +183,7 @@
     <section class="py-20 bg-gray-50" id="sobre">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a FinPlain?</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a FinPlan?</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Nossa plataforma oferece todas as ferramentas necessárias para você controlar suas finanças de forma eficiente e segura.
                 </p>
@@ -247,15 +247,15 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span>Até 3 contas</span>
+                            <span>Até 3 metas criadas consecutivamente</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span>Relatórios mensais</span>
+                            <span>5 Relatórios mensais</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-500 mr-3"></i>
-                            <span>Suporte por email</span>
+                            <span>10 Transações financeiras</span>
                         </li>
                     </ul>
                     <a href="{{route('login')}}" class="block text-center bg-gray-100 text-gray-800 hover:bg-gray-200 font-semibold py-3 px-6 rounded-full transition-colors duration-300">
@@ -283,7 +283,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-white mr-3"></i>
-                            <span>Relatórios avançados</span>
+                            <span>Relatórios ilimitados</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-white mr-3"></i>
@@ -291,7 +291,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-white mr-3"></i>
-                            <span>Metas financeiras</span>
+                            <span>Metas financeiras ilimitadas</span>
                         </li>
                     </ul>
                     <a href="{{route('login')}}" class="block text-center bg-white text-indigo-600 hover:bg-indigo-50 font-semibold py-3 px-6 rounded-full transition-colors duration-300">
@@ -350,9 +350,9 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-1 md:col-span-2">
-                    <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="w-24 mb-4" alt="Logo FinPlain">
+                    <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="w-24 mb-4" alt="Logo FinPlan">
                     <p class="text-gray-300 text-sm mb-4">
-                        Simplifique sua vida financeira com a FinPlain. A plataforma completa para gerenciar suas finanças pessoais e empresariais.
+                        Simplifique sua vida financeira com a FinPlan. A plataforma completa para gerenciar suas finanças pessoais e empresariais.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-white transition-colors duration-300">
@@ -389,7 +389,7 @@
             </div>
             <div class="border-t border-gray-700 pt-6">
                 <div class="flex flex-col md:flex-row items-center justify-between">
-                    <p class="text-gray-300 text-sm mb-4 md:mb-0">© 2024 FinPlain. Todos os direitos reservados.</p>
+                    <p class="text-gray-300 text-sm mb-4 md:mb-0">© 2024 FinPlan. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>

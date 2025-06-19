@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'FinPlain') }}</title>
+        <title>{{ config('app.name', 'FinPlan') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         <!-- Preloader Start -->
         <div class="preloader h-full fixed w-full z-[9999] bg-[#0A5B5E] transition duration-300">
-            <img src="{{ asset('/images/Logo-FinPlain.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
+            <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
         </div>
         <!-- Preloader End -->
 

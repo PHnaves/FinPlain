@@ -9,7 +9,7 @@
 <body class="bg-primary-3 text-base">
     <!-- Preloader Start -->
     <div class="preloader h-full fixed w-full z-50 bg-white transition duration-300">
-        <img src="{{ asset('/images/Logo-FinPlain.png') }}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
+        <img src="{{ asset('/images/Logo-FinPlan.png') }}" class="max-w-[20rem] block absolute top-2/4 left-2/4 transform -translate-x-2/4 -translate-y-2/4" alt="Logo">
     </div>
     <!-- Preloader End -->
     <div class="grid grid-cols-1 lg:grid-cols-5 lg:gap-6">

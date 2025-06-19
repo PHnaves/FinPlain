@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'FinPlain') }}</title>
+        <title>{{ config('app.name', 'FinPlan') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,7 +19,7 @@
             <div class="mb-8">
                 <a href="/" class="flex items-center space-x-2">
                     <x-application-logo class="w-20 h-20 fill-current text-white" />
-                    <span class="text-2xl font-bold text-white">FinPlain</span>
+                    <span class="text-2xl font-bold text-white">FinPlan</span>
                 </a>
             </div>
 

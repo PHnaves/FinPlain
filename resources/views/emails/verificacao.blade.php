@@ -61,12 +61,12 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h1>FinPlain</h1>
+            <h1>FinPlan</h1>
         </div>
         <div class="content">
             <h2>Olá, {{ $usuario->name ?? 'usuário' }}!</h2>
             <p>
-                Obrigado por se registrar na <strong>FinPlain</strong>. Antes de começarmos, precisamos confirmar seu endereço de e-mail.
+                Obrigado por se registrar na <strong>FinPlan</strong>. Antes de começarmos, precisamos confirmar seu endereço de e-mail.
             </p>
             <p>
                 Clique no botão abaixo para verificar seu e-mail e liberar todas as funcionalidades da plataforma:
@@ -77,7 +77,7 @@
             </p>
         </div>
         <div class="footer">
-            © {{ date('Y') }} FinPlain. Todos os direitos reservados.
+            © {{ date('Y') }} FinPlan. Todos os direitos reservados.
         </div>
     </div>
 </body>
