@@ -135,8 +135,8 @@
                                         </div>
                                     </td>
                                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 group-hover:text-primary transition-colors">{{ \Carbon\Carbon::parse($expense->due_date)->format('d/m/Y') }}</td>
-                                    <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 group-hover:text-primary transition-colors">{{ $expense->expense_name }}</td>
-                                    <td class="hidden md:table-cell px-4 sm:px-6 py-4 text-gray-900 group-hover:text-primary transition-colors">{{ $expense->expense_description }}</td>
+                                    <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 group-hover:text-primary transition-colors">{{ \Illuminate\Support\Str::limit($expense->expense_name, 10) }}</td>
+                                    <td class="hidden md:table-cell px-4 sm:px-6 py-4 text-gray-900 group-hover:text-primary transition-colors">{{ \Illuminate\Support\Str::limit($expense->expense_description, 10) }}</td>
                                     <td class="hidden sm:table-cell px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 group-hover:text-primary transition-colors">{{ $expense->expense_category }}</td>
                                     <td class="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 font-medium group-hover:text-primary transition-colors">R$ {{ number_format($expense->expense_value, 2, ',', '.') }}</td>
                                     <td class="hidden sm:table-cell px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900">
