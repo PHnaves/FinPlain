@@ -32,6 +32,15 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages() : array
+    {
+        return [
+            'email.required' => 'O email é obrigatorio',
+            'password.required' => 'A senha é obrigatoria',
+
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -45,7 +54,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'As credenciais fornecidas estão incorretas.',
             ]);
         }
 
