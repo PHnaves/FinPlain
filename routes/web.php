@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\EarningController;
 
 // DEPOSITOS
 Route::middleware(['auth'])->group(function () {
@@ -60,6 +61,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/expense/{expense}/edit', [ExpenseController::class, 'edit'])->name('despesas.edit'); // Ver detalhes da despesa
     Route::patch('/expense/{expense}', [ExpenseController::class, 'update'])->name('despesas.update'); // Atualizar despesa
     Route::delete('/expense/{expense}', [ExpenseController::class, 'destroy'])->name('despesas.destroy'); // Deletar despesa
+});
+
+// GANHOS
+Route::middleware(['auth'])->group(function () {
+    Route::get('/earning', [EarningController::class, 'index'])->name('ganhos.index'); // Listar ganhos
+    Route::get('/earning/create', [EarningController::class, 'create'])->name('ganhos.create'); // Formulário de criação
+    Route::post('/earning', [EarningController::class, 'store'])->name('ganhos.store'); // Criar ganho
+    Route::get('/earning/{earning}/show', [EarningController::class, 'show'])->name('ganhos.show'); // Ver detalhes do ganho
+    Route::get('/earning/{earning}/edit', [EarningController::class, 'edit'])->name('ganhos.edit'); // Editar ganho
+    Route::patch('/earning/{earning}', [EarningController::class, 'update'])->name('ganhos.update'); // Atualizar ganho
+    Route::delete('/earning/{earning}', [EarningController::class, 'destroy'])->name('ganhos.destroy'); // Deletar ganho
 });
 
 //PAGINA BOAS VINDAS

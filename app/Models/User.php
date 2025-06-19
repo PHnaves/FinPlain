@@ -66,6 +66,11 @@ class User extends Authenticatable //implements MustVerifyEmail
         return $this->hasMany(Goal::class, 'user_id');
     }
 
+    public function earnings()
+    {
+        return $this->hasMany(Earning::class, 'user_id');
+    }
+
     public function sendEmailVerificationNotification()
     {
         $this->notify(new CustomVerifyEmail);
