@@ -25,8 +25,9 @@
 <div>
     <label for="value" class="block text-sm font-medium text-gray-700">Valor Recebido</label>
     <input type="number" id="value" name="value"
-        min="0"
+        min="1"
         max="99999999,99"
+        step='0.01'
         value="{{ old('value', isset($earning) ? $earning->value : '') }}"
         placeholder="Ex: 2500.00" step="0.01"
         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
