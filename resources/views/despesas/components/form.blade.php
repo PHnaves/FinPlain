@@ -41,7 +41,7 @@
 <div>
     <label for="expense_value" class="block text-sm font-medium text-gray-700">Valor das Parcelas da transação</label>
     <input type="number" id="expense_value" name="expense_value" 
-        min="0"
+        min="1"
         max="99999999,99"
         value="{{ old('expense_value', isset($expense) ? $expense->expense_value : '') }}"
         placeholder="Ex: 1200.00" step="0.01"
