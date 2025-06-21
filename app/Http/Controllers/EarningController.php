@@ -10,10 +10,40 @@ use Illuminate\Support\Facades\Auth;
 
 class EarningController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $earnings = Auth::user()->earnings()->latest()->get();
-        return view('ganhos.index', compact('earnings'));
+        //Renda do usuario
+        $user_rent = Auth::user()->rent;
+
+        $query = Auth::user()->earnings()->latest();
+        // Filtros
+        if ($request->filled('title')) {
+            $query->where('title', 'like', '%' . $request->title . '%');
+        }
+        if ($request->filled('recurrence')) {
+            $query->where('recurrence', $request->recurrence);
+        }
+        if ($request->filled('date_from')) {
+            $query->whereDate('received_at', '>=', $request->date_from);
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('received_at', '<=', $request->date_to);
+        }
+        $earnings = $query->paginate(10)->withQueryString();
+        // Dados para gráfico de ganhos por mês
+        $earningsByMonth = Auth::user()->earnings()
+            ->selectRaw('MONTH(received_at) as month, YEAR(received_at) as year, SUM(value) as total')
+            ->groupByRaw('YEAR(received_at), MONTH(received_at)')
+            ->orderByRaw('YEAR(received_at) DESC, MONTH(received_at) DESC')
+            ->get();
+        // Dados para gráfico de recorrência
+        $earningsByRecurrence = Auth::user()->earnings()
+            ->selectRaw('recurrence, SUM(value) as total')
+            ->groupBy('recurrence')
+            ->get();
+        // Recorrências distintas para o filtro
+        $recurrences = Auth::user()->earnings()->select('recurrence')->distinct()->pluck('recurrence');
+        return view('ganhos.index', compact('user_rent', 'earnings', 'earningsByMonth', 'earningsByRecurrence', 'recurrences'));
     }
 
     public function create()
@@ -23,13 +53,7 @@ class EarningController extends Controller
 
     public function store(EarningStoreRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'value' => 'required|numeric|min:0',
-            'recurrence' => 'required|string',
-            'received_at' => 'required|date',
-        ]);
+        $data = $request->validated();
         $data['user_id'] = Auth::id();
         Earning::create($data);
         // Atualizar a renda atual do usuário (rent)
@@ -60,13 +84,7 @@ class EarningController extends Controller
             abort(403, 'Você não tem permissão para atualizar este ganho.');
         }
 
-        $data = $request->validate([
-            'title' => 'required|string|max:100',
-            'description' => 'nullable|string',
-            'value' => 'required|numeric|min:0',
-            'recurrence' => 'required|string',
-            'received_at' => 'required|date',
-        ]);
+        $data = $request->validated();
         // Atualizar a renda do usuário (ajuste pela diferença de valor)
         $user = Auth::user();
         $user->monthly_income = $user->monthly_income - $earning->value + $data['value'];
