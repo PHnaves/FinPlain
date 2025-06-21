@@ -2,7 +2,7 @@
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
     <h2 class="text-3xl font-bold text-primary-1">
-        💰 Relatório de Gastos
+        📄 Relatório de Gastos
     </h2>
     <div class="text-right">
         <p class="text-sm text-gray-600">Seu saldo atual</p>

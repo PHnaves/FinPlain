@@ -42,7 +42,8 @@
            placeholder="Valor que deseja atingir"
            value="{{ old('target_value', isset($goal) ? $goal->target_value : '') }}"
            step="0.01"
-           min="0"
+           min="1"
+           max="99999999,99"
            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
            required>
 </div>
@@ -55,6 +56,7 @@
            value="{{ old('current_value', isset($goal) ? $goal->current_value : '') }}"
            step="0.01"
            min="0"
+           max="99999999,99"
            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
 </div>
 
@@ -76,7 +78,8 @@
            placeholder="Quanto pretende guardar a cada período"
            value="{{ old('recurring_value', isset($goal) ? $goal->recurring_value : '') }}"
            step="0.01"
-           min="0"
+           min="1"
+           max="99999999,99"
            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
            required>
 </div>

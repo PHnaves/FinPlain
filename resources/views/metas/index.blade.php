@@ -167,7 +167,7 @@
                                 @forelse($goals as $goal)
                                     <tr>
                                         <td class="px-4 py-4 whitespace-nowrap">
-                                            <div class="text-sm font-medium text-gray-900">{{ $goal->goal_title }}</div>
+                                            <div class="text-sm font-medium text-gray-900">{{ \Illuminate\Support\Str::limit($goal->goal_title) }}</div>
                                         </td>
                                         <td class="px-4 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ $goal->goal_category }}</div>

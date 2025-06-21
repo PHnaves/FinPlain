@@ -1,7 +1,7 @@
 <x-app-layout>
-
     <div class="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
             <!-- Card de publicidade (dicas e imagem maiores) -->
             <div class="lg:col-span-3 flex justify-center mb-2">
                 <div class="w-full max-w-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white rounded-lg shadow-md p-3 flex flex-col md:flex-row items-center justify-between h-auto">
@@ -45,16 +45,20 @@
                     </div>
                 </div>
             </div>
-            <!-- Formulário -->
-            <div class="lg:col-span-2 bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-3xl font-bold text-primary-1 p-4 md:p-6 border-b-2 border-primary-1 shadow-sm text-center">
-                    📝 Nova Meta
-                </h2>
 
-                <form action="{{ route('metas.store') }}" method="POST" class="space-y-6">
-                    @include('metas.components.form')
-                </form>
+            <!-- Formulário Centralizado -->
+            <div class="lg:col-span-3 flex justify-center">
+                <div class="w-full max-w-3xl bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-3xl font-bold text-primary-1 p-4 md:p-6 border-b-2 border-primary-1 shadow-sm text-center">
+                        📝 Nova Meta
+                    </h2>
+
+                    <form action="{{ route('metas.store') }}" method="POST" class="space-y-6">
+                        @include('metas.components.form')
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
 </x-app-layout>
