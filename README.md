@@ -3,7 +3,7 @@
 ## 🎯 Objetivo
 Criar uma aplicação web responsiva que ajude os usuários a organizarem suas finanças de forma prática, oferecendo controle de gastos, planejamento financeiro, alertas e recomendações personalizadas.
 
-🔥 Funcionalidades
+🔥 Algumas das Funcionalidades que a FinPlan irá Possuir...
 
 1️⃣ Cadastro de Usuário
 Registro via e-mail e senha.
@@ -22,12 +22,9 @@ Alertas para gastos excessivos.
 4️⃣ Notificações e Alertas
 Notificações no painel e envio de e-mails.
 Lembretes de vencimento de contas e metas financeiras.
-Integração opcional com Google Calendar e Outlook.
 
 5️⃣ Sugestões de Investimentos
 Recomendação de investimentos baseada no perfil.
-Integração com dados da Bolsa de Valores.
-Simulação de crescimento patrimonial.
 
 ## 🛠 Tecnologias Utilizadas
 - **Back-end:** PHP + Laravel Blade
@@ -38,12 +35,8 @@ Simulação de crescimento patrimonial.
 - **Agendamento de Tarefas:** Laravel Jobs
 
 ## 📩 Para o Envio de E-mails
-Para evitar custos extras, as opções recomendadas são:
-1. Mailgun (plano gratuito inicial) – Simples de configurar no Laravel.
-2. Postmark – Ótimo para e-mails transacionais.
-3. Amazon SES (AWS) – Baixo custo e alta confiabilidade.
-4. SMTP do Gmail – Pode ser usado com autenticação segura.
-5. Brevo - É a que esta sendo usada no momento no projeto, mas pode haver troca se houver necessidade.
+Para evitar custos extras, o serviço que optamos por utilizar foi:
+Brevo - É a que esta sendo usada no momento no projeto, mas pode haver troca se houver necessidade.
 
 ## 🚀 Conclusão
 A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
@@ -88,21 +81,21 @@ OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi pre
 
 ✅ Semana 8:
 - [X] Criar página de notificações e alertas.
-- [ ] Implementar cálculos e projeções de gastos futuros.
+- [Cancelado] Implementar cálculos e projeções de gastos futuros.
 
 ### 🎯 Mês 3: Testes, Ajustes e Lançamento
 ✅ Semana 9:
-- [ ] Revisão geral do código e otimizações.
-- [ ] Testes de usabilidade e ajustes de UI/UX.
+- [X] Revisão geral do código e otimizações.
+- [x] Testes de usabilidade e ajustes de UI/UX.
 
 ✅ Semana 10:
-- [ ] Implementação final do Planejador Inteligente.
-- [ ] Melhorias no sistema de sugestões de investimentos.
+- [x] Implementação final do Planejador Inteligente(FinBot).
+- [X] Melhorias no sistema de sugestões de investimentos.
 
 ✅ Semana 11:
-- [ ] Testes beta com usuários reais.
+- [X] Testes beta com usuários reais(foi realizado testes localmente).
 - [ ] Correção de bugs e refinamentos finais.
 
 ✅ Semana 12:
-- [ ] **Lançamento oficial da versão MVP! 🚀**
+- [Cancelado] **Lançamento oficial da versão MVP! 🚀**
 
