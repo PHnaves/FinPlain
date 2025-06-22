@@ -30,6 +30,7 @@ class RegisterUserRequest extends FormRequest
             'monthly_income' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
             'payment_frequency' => ['required', 'string', 'in:mensal,quinzenal,semanal'],
             'payment_day' => ['required', 'numeric', 'between:1,31'],
+            'terms' => ['accepted'],
         ];
     }
 
@@ -72,6 +73,7 @@ class RegisterUserRequest extends FormRequest
             'payment_day.required' => 'O dia de pagamento é obrigatório.',
             'payment_day.numeric' => 'O dia de pagamento deve ser numérico.',
             'payment_day.between' => 'O dia de pagamento deve estar entre 1 e 31.',
+            'terms.accepted' => 'Você deve aceitar os Termos de Serviço para se cadastrar.',
         ];
     }
 }

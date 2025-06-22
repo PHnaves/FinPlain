@@ -110,8 +110,9 @@
                         <div class="mb-5">
                             <label class="flex items-center mb-0">
                                 <input type="checkbox" name="terms" class="mr-2 relative appearance-none rounded-std-1/2 border border-1 cursor-pointer border-info-1 checked:border-primary checked:bg-primary checked:after:content-['\2713'] checked:after:text-white checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 h-4 w-4" required>
-                                <span class="text-info">Eu aceito os <a href="#" class="text-primary hover:text-primary-1 transition-colors duration-500 font-bold">Termos de Serviço</a></span>
+                                <span class="text-info">Eu aceito os <a href="{{ route('termos.termosServico') }}" class="text-primary hover:text-primary-1 transition-colors duration-500 font-bold">Termos de Serviço</a></span>
                             </label>
+                            <x-input-error :messages="$errors->get('terms')" class="mt-2" />
                         </div>
 
                         <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-std border border-primary hover:bg-primary-1 transition-colors duration-500 mb-5">Criar Agora</button>
