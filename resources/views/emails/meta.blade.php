@@ -224,7 +224,7 @@
             </div>
             
             <div style="text-align: center;">
-                <a href="{{ url('/goal') }}" class="cta-button">
+                <a href="{{ url('http://127.0.0.1:8000/') }}" class="cta-button">
                     📊 Ver Minhas Metas
                 </a>
             </div>
