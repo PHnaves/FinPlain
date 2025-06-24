@@ -13,7 +13,9 @@ class CustomVerifyEmail extends BaseVerifyEmail
     {
         $verificationUrl = $this->verificationUrl($notifiable);
 
-        return (new MailMessage)->view('emails.verificacao', ['url' => $verificationUrl]);
+        return (new MailMessage)
+        ->subject('Verificação de E-mail - FinPlan')
+        ->view('emails.verificacao', ['url' => $verificationUrl]);
     }
 
     protected function verificationUrl($notifiable)
