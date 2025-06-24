@@ -312,30 +312,45 @@
                         Estamos aqui para ajudar você a começar sua jornada de gestão financeira.
                     </p>
                 </div>
-                <form class="bg-white rounded-2xl shadow-lg p-8">
+                <form class="bg-white rounded-2xl shadow-lg p-8" method="POST" action="{{ route('contato.store') }}">
+                    @csrf
+                    @if (session('success'))
+                        <div class="mb-4 p-4 bg-green-100 text-green-800 rounded">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="mb-4 p-4 bg-red-100 text-red-800 rounded">
+                            <ul class="list-disc pl-5">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="firstName">Nome</label>
-                            <input type="text" id="firstName" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Seu nome">
+                            <input type="text" id="firstName" name="firstNameContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Seu nome">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="lastname">Sobrenome</label>
-                            <input type="text" id="lastname" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Seu sobrenome">
+                            <input type="text" id="lastname" name="lastnameContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Seu sobrenome">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="seu@email.com">
+                            <input type="email" id="email" name="emailContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="seu@email.com">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="phone">Telefone</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="(00) 00000-0000">
+                            <input type="tel" id="phone" name="phoneContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="(00) 00000-0000">
                         </div>
                     </div>
                     <div class="mb-6">
                         <label class="block text-gray-700 font-medium mb-2" for="message">Mensagem</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Digite sua mensagem"></textarea>
+                        <textarea id="message" name="messageContact" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Digite sua mensagem"></textarea>
                     </div>
                     <button type="submit" class="btn-gradient text-white w-full py-3 rounded-lg font-semibold shadow-lg">
                         Enviar Mensagem
