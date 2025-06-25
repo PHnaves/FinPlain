@@ -32,7 +32,7 @@
             <span class="font-medium">Relatórios</span>
         </a>
         <a href="{{ route('investiments.index') }}" class="flex items-center space-x-3 px-4 py-3 text-white rounded-lg transition-colors duration-200 {{ request()->routeIs('investiments.index') ? 'bg-white/20' : 'hover:bg-white/10' }}">
-            <img src="{{ asset('icons/dollar-sign.png') }}" alt="" class="w-5 h-5">
+            <img src="{{ asset('icons/briefcase.svg') }}" alt="" class="w-5 h-5">
             <span class="font-medium">Investimentos</span>
         </a>
     </nav>
