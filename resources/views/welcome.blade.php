@@ -149,7 +149,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-white to-gray-50 py-20 md:py-32 relative overflow-hidden" id="home" style="margin-top: 0; z-index: 0;">
+    <section class="bg-gradient-to-br from-white to-gray-50 py-20 pt-32 md:py-32 relative overflow-hidden" id="home" style="margin-top: 0; z-index: 0;">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
@@ -180,7 +180,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-20 bg-gray-50" id="sobre">
+    <section class="py-20 pt-32 bg-gray-50" id="sobre">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a FinPlan?</h2>
@@ -221,7 +221,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-20" id="precos">
+    <section class="py-20 pt-32" id="precos">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Planos que cabem no seu bolso</h2>
@@ -303,7 +303,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 bg-gray-50" id="contato">
+    <section class="py-20 pt-32 bg-gray-50" id="contato">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto">
                 <div class="text-center mb-16">
@@ -361,12 +361,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#0A5B5E] text-white py-12">
+    <footer class="bg-[#0A5B5E] text-white py-12 pt-32">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-1 md:col-span-2">
-                    <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="w-24 mb-4" alt="Logo FinPlan">
-                    <p class="text-gray-300 text-sm mb-4">
+                    {{-- <img src="{{ asset('/images/Logo-FinPlan.png')}}" class="w-24 mb-4" alt="Logo FinPlan"> --}}
+                    <h3 class="text-sm font-semibold mb-4">FinPlan</h3>
+                    <p class="text-gray-300 text-sm mb-4 pr-32">
                         Simplifique sua vida financeira com a FinPlan. A plataforma completa para gerenciar suas finanças pessoais e empresariais.
                     </p>
                     <div class="flex space-x-4">
@@ -402,7 +403,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-700 pt-6">
+            <div class="border-t border-gray-400 pt-6">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <p class="text-gray-300 text-sm mb-4 md:mb-0">© 2024 FinPlan. Todos os direitos reservados.</p>
                 </div>
