@@ -22,15 +22,15 @@
             <div class="text-center w-full md:w-3/4 xxl:w-2/4">
                 <div class="col-start-2 col-end-12 col-span-4">
                     <div class="mb-10">
-                        <h1 class="text-3xl md:text-4xl text-primary font-bold mb-3">Entrar Em Sua Conta</h1>
-                        <p class="text-base text-info">Bem vindo de volta!</p>
+                        <h1 class="text-3xl md:text-4xl text-primary font-bold mb-3">Acessar sua conta</h1>
+                        <p class="text-base text-info">Bem-vindo de volta!</p>
                     </div>
 
                     <form method="POST" action="{{ route('login') }}" class="w-full validation" novalidate>
                         @csrf
                         <div class="mb-5 text-left">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="seuEmail@gmail.com" required autofocus>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="email@mail.com" required autofocus>
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="mb-4 text-left">
