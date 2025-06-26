@@ -3,72 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termos de Uso - FinPlan</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Termos de Uso | FinPlan</title>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Termos de Uso</h1>
-        <p class="text-center text-muted mb-4">Última atualização: 08/06/2025</p>
-
-        <div class="mb-4">
-            <p>Bem-vindo ao FinPlan! Ao acessar ou usar nossa aplicação, você concorda com os seguintes Termos de Uso. Leia-os com atenção.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>1. Aceitação dos Termos</h2>
-            <p>Ao criar uma conta ou utilizar o FinPlan, você concorda em cumprir e se vincular a estes Termos de Uso. Se você não concorda com algum termo, por favor, não utilize o FinPlan.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>2. Finalidade do Aplicativo</h2>
-            <p>O FinPlan é uma plataforma de gestão financeira voltada para pessoas de baixa renda. Oferecemos funcionalidades para controle de orçamento pessoal, assim ajudando o usuário a ter maior controle de suas transações e de suas metas financeiras.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>3. Cadastro</h2>
-            <p>Para utilizar o FinPlan, é necessário criar uma conta fornecendo:</p>
-            <ul>
-                <li>Nome</li>
-                <li>E-mail</li>
-                <li>Senha</li>
-                <li>Salário</li>
-                <li>Saldo atual</li>
-                <li>Tipo de investidor</li>
-                <li>Frequência de pagamento</li>
-            </ul>
-            <p>O login é obrigatório após o cadastro.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>4. Simulações</h2>
-            <p>Todas as transações financeiras feitas no FinPlan são simulações. A plataforma não realiza movimentações financeiras reais. Você só será responsável por informar a aplicação sua renda atual e seu salário para simulações baseadas no real.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>5. Segurança e Privacidade</h2>
-            <p>Não compartilhamos seus dados com terceiros. Tomamos medidas para proteger suas informações.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>6. Assinaturas</h2>
-            <p>Oferecemos planos pagos com acesso ilimitado as funcionalidades. A adesão a esses planos é opcional.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>7. Responsabilidades do Usuário</h2>
-            <p>Você é responsável por manter a confidencialidade de suas informações de acesso. O uso indevido da plataforma é de sua responsabilidade.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>8. Modificações</h2>
-            <p>Os Termos de Uso podem ser alterados a qualquer momento. Notificações serão enviadas pela aplicação sempre que houver mudanças significativas.</p>
-        </div>
-
-        <div class="mb-4">
-            <h2>9. Fale Conosco</h2>
-            <p>Caso tenha dúvidas ou sugestões, entre em contato através da própria aplicação.</p>
-        </div>
+<<<<<<< HEAD
+<body class="bg-primary min-h-screen py-10 px-2">
+    <div class="flex flex-col items-center mb-8">
+        <img src="/images/Logo-FinPlan.png" alt="Logo FinPlan" class="h-24 w-auto mb-2 drop-shadow-lg">
+        <span class="text-3xl font-bold text-white">FinPlan</span>
+=======
+<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen py-10 px-2">
+    <div class="flex flex-col items-center mb-8">
+        <img src="/images/Logo-FinPlan.png" alt="Logo FinPlan" class="h-24 w-auto mb-2 drop-shadow-lg">
+        <span class="text-3xl font-bold text-primary-1">FinPlan</span>
+>>>>>>> 88629caca94c08b02f386e77c01886542d529f0a
+    </div>
+    <div class="mx-auto w-full max-w-4xl bg-white/90 rounded-2xl shadow-2xl p-6 sm:p-10 md:p-14 border border-blue-100">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center text-primary mb-10 tracking-tight drop-shadow">Termos de Uso</h1>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">1. Aceitação dos Termos</div>
+        <p class="text-gray-700 mb-6 text-base">Ao acessar ou utilizar a aplicação FinPlan, o usuário declara estar ciente e de acordo com os presentes Termos de Uso. A utilização da plataforma implica na aceitação integral das condições aqui dispostas. Caso não concorde com algum dos termos, recomenda-se a não utilização do sistema.</p>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">2. Finalidade da Aplicação</div>
+        <p class="text-gray-700 mb-6 text-base">FinPlan é um sistema web de gestão financeira pessoal, desenvolvido para fins educacionais no âmbito do curso técnico em Desenvolvimento de Sistemas. A plataforma oferece recursos como controle de gastos, metas financeiras, análises gráficas e sugestões de investimentos com base no perfil do usuário.</p>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">3. Cadastro e Uso</div>
+        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1 text-base">
+            <li>O sistema pode solicitar dados básicos, como nome, e-mail, renda e tipo de usuário, para personalização da experiência.</li>
+            <li>Todas as informações inseridas são de responsabilidade do usuário.</li>
+            <li>É proibida a inserção de dados falsos ou o uso da plataforma para atividades ilegais.</li>
+        </ul>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">4. Privacidade e Proteção de Dados</div>
+        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1 text-base">
+            <li>Os dados dos usuários são tratados conforme os princípios da Lei Geral de Proteção de Dados (LGPD).</li>
+            <li>Nenhuma informação pessoal será compartilhada com terceiros.</li>
+            <li>Como se trata de um projeto acadêmico, os dados coletados têm uso exclusivo para testes e análises internas.</li>
+        </ul>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">5. Responsabilidades e Limitações</div>
+        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1 text-base">
+            <li>FinPlan é um protótipo em desenvolvimento e não substitui consultorias financeiras profissionais.</li>
+            <li>A equipe não se responsabiliza por perdas financeiras decorrentes do uso do sistema.</li>
+            <li>O sistema poderá conter limitações técnicas, erros ou interrupções, típicas de versões de teste.</li>
+        </ul>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">6. Funcionalidades experimentais</div>
+        <p class="text-gray-700 mb-6 text-base">O sistema pode incluir funcionalidades em fase de testes, como o assistente virtual FinBoot e sugestões de investimento. A precisão dessas funcionalidades ainda está em validação e pode sofrer alterações.</p>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">7. Modificações e Atualizações</div>
+        <p class="text-gray-700 mb-6 text-base">A equipe desenvolvedora reserva-se o direito de modificar ou suspender funcionalidades do sistema sem aviso prévio, sempre visando a melhoria da aplicação.</p>
+ 
+        <div class="font-bold text-primary mt-8 mb-2 text-xl">8. Fale conosco</div>
+        <p class="text-gray-700 mb-2 text-base">Caso tenha dúvidas ou sugestões, entre em contato através da própria aplicação.</p>
     </div>
 </body>
 </html>

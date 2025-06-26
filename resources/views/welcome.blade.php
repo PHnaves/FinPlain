@@ -9,7 +9,12 @@
     <meta name="og:title" property="og:title" content="FinPlan - Sua Plataforma de Gestão Financeira">
 	<meta property="og:image" content="https://designtocodes.com/wp-content/uploads/2023/12/DataAI-Free-Data-Analytics-Tailwind-CSS-Dashboard-Template.jpg">
 	<meta name="og:description" content="FinPlan é uma plataforma profissional e amigável para gestão financeira. Comece a organizar suas finanças agora!">
-    <link rel="icon" href="../public/assets/images/logo/favicon.png" type="image/gif" sizes="16x16">
+    <!-- Favicons -->
+    <link rel="app-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site-webmanifest') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
     <title>FinPlan</title>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="../public/lib/fontawesome/css/all.min.css">
