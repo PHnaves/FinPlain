@@ -2,7 +2,7 @@
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
         <h2 class="text-3xl font-bold text-primary-1">
-            🎯 Metas Financeiras
+        Metas financeiras
         </h2>
         <div class="text-right">
             <p class="text-sm text-gray-600">Seu saldo atual</p>
@@ -30,7 +30,7 @@
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                     </svg>
-                    Nova Meta
+                    Nova meta
                 </a>
             </div>
 
@@ -45,7 +45,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Metas</p>
+                                <p class="text-sm font-medium text-gray-600">Total de metas</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ $goals->count() }}</p>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Em Andamento</p>
+                                <p class="text-sm font-medium text-gray-600">Em andamento</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ $goals->where('status', 'andamento')->count() }}</p>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                         </a>
                         <a href="{{ route('metas.index', ['status' => 'andamento']) }}" 
                            class="px-4 py-2 rounded-lg text-sm font-medium {{ request('status') === 'andamento' ? 'bg-yellow-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
-                            Em Andamento
+                            Em andamento
                         </a>
                         <a href="{{ route('metas.index', ['status' => 'concluída']) }}" 
                            class="px-4 py-2 rounded-lg text-sm font-medium {{ request('status') === 'concluída' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }}">
@@ -130,7 +130,7 @@
                 <!-- Distribuição de Valores -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Distribuição de Valores</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Distribuição de valores</h3>
                         <div class="h-64">
                             <canvas id="valueDistributionChart"></canvas>
                         </div>
@@ -140,7 +140,7 @@
                 <!-- Distribuição por Categoria -->
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-4">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Distribuição por Categoria</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Distribuição por categoria</h3>
                         <div class="h-64">
                             <canvas id="categoryDistributionChart"></canvas>
                         </div>
@@ -157,8 +157,8 @@
                                 <tr>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Meta</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Categoria</th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Atual</th>
-                                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Final</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor atual</th>
+                                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor final</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                     <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                                 </tr>
