@@ -2,7 +2,7 @@
     
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
         <h2 class="text-3xl font-bold text-primary-1">
-            💸 Transações
+            Transações
         </h2>
         <div class="text-right">
             <p class="text-sm text-gray-600">Seu saldo atual</p>
@@ -27,14 +27,14 @@
         {{-- Cards Topo --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="bg-white rounded-lg p-6 shadow">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Resumo do Mês</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Resumo do mês</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="text-center">
-                        <p class="text-sm text-gray-600">Total de Transações</p>
+                        <p class="text-sm text-gray-600">Total de transações</p>
                         <p class="text-2xl font-bold text-gray-800">R$ {{ number_format($metrics['total_expenses'], 2, ',', '.') }}</p>
                     </div>
                     <div class="text-center">
-                        <p class="text-sm text-gray-600">Média por Despesa</p>
+                        <p class="text-sm text-gray-600">Média por despesa</p>
                         <p class="text-2xl font-bold text-gray-800">R$ {{ number_format($metrics['average_expense'], 2, ',', '.') }}</p>
                     </div>
                     <div class="text-center">
@@ -167,7 +167,7 @@
         <div class="space-y-4">
             {{-- Status de Pagamento --}}
             <div class="bg-white rounded-lg p-4 shadow">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">Status de Pagamento</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Status de pagamento</h3>
                 <div class="flex items-center justify-center">
                     <div class="w-48 h-48">
                         <canvas id="paymentStatusChart"></canvas>
@@ -178,13 +178,13 @@
             {{-- Gráficos de Análise --}}
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg p-6 shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição por Categoria</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Distribuição por categoria</h3>
                     <div class="h-96 flex items-center justify-center">
                         <canvas id="categoryChart"></canvas>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg p-6 shadow">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Tendência Mensal</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Tendência mensal</h3>
                     <div class="h-96 flex items-center justify-center">
                         <canvas id="monthlyTrendChart"></canvas>
                     </div>
