@@ -2,7 +2,7 @@
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
         <div>
-            <h2 class="text-3xl font-bold text-primary-1">📊 Dashboard</h2>
+            <h2 class="text-3xl font-bold text-primary-1">Dashboard</h2>
             <p class="text-lg text-gray-600 mt-1">Bem-vindo, <span class="font-semibold text-gray-800">{{ $user->name }}</span> 👋</p>
         </div>
 
