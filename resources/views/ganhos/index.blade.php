@@ -1,3 +1,5 @@
+<title>FinPlan</title>
+
 <x-app-layout>
     <div class="max-w-6xl mx-auto py-8 px-2 md:px-0">
         <div class="flex justify-between items-center p-4 md:p-6 mb-8 border-b-2 border-primary-1 shadow-sm">

@@ -1,6 +1,8 @@
+<title>FinPlan | Recuperar senha</title>
+
 <x-guest-layout>
     <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ __('Recuperar Senha') }}</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ __('Recuperar senha') }}</h2>
         <p class="text-sm text-gray-600">
             {{ __('Esqueceu sua senha? Sem problemas. Informe seu e-mail e enviaremos um link para redefinir sua senha.') }}
         </p>
@@ -22,13 +24,13 @@
                 :value="old('email')" 
                 required 
                 autofocus 
-                placeholder="seu@email.com" />
+                placeholder="email@mail.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end">
             <x-primary-button class="w-full justify-center bg-primary hover:bg-primary-1 focus:ring-primary">
-                {{ __('Enviar Link de Recuperação') }}
+                {{ __('Enviar link de recuperação') }}
             </x-primary-button>
         </div>
 

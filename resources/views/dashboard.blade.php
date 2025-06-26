@@ -1,3 +1,5 @@
+<title>FinPlan  | Dashboard</title>
+
 <x-app-layout>
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
