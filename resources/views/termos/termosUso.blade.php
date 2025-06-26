@@ -12,17 +12,10 @@
     <link rel="shortcut icon" href="/favicon/favicon.ico">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<<<<<<< HEAD
 <body class="bg-primary min-h-screen py-10 px-2">
     <div class="flex flex-col items-center mb-8">
         <img src="/images/Logo-FinPlan.png" alt="Logo FinPlan" class="h-24 w-auto mb-2 drop-shadow-lg">
         <span class="text-3xl font-bold text-white">FinPlan</span>
-=======
-<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen py-10 px-2">
-    <div class="flex flex-col items-center mb-8">
-        <img src="/images/Logo-FinPlan.png" alt="Logo FinPlan" class="h-24 w-auto mb-2 drop-shadow-lg">
-        <span class="text-3xl font-bold text-primary-1">FinPlan</span>
->>>>>>> 88629caca94c08b02f386e77c01886542d529f0a
     </div>
     <div class="mx-auto w-full max-w-4xl bg-white/90 rounded-2xl shadow-2xl p-6 sm:p-10 md:p-14 border border-blue-100">
         <h1 class="text-4xl md:text-5xl font-extrabold text-center text-primary mb-10 tracking-tight drop-shadow">Termos de Uso</h1>
