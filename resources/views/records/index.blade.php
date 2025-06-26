@@ -2,7 +2,7 @@
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
     <h2 class="text-3xl font-bold text-primary-1">
-        📄 Relatório de Gastos
+        Relatório de gastos
     </h2>
     <div class="text-right">
         <p class="text-sm text-gray-600">Seu saldo atual</p>
@@ -36,7 +36,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Total de Gastos</h3>
+                                <h3 class="text-lg font-semibold text-gray-900">Total de gastos</h3>
                                 <p class="text-2xl font-bold text-gray-900">R$ {{ isset($total) ? number_format($total, 2, ',', '.') : '0,00' }}</p>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Gastos Pagos</h3>
+                                <h3 class="text-lg font-semibold text-gray-900">Gastos pagos</h3>
                                 <p class="text-2xl font-bold text-gray-900">R$ {{ isset($expenses) ? number_format($expenses->whereNotNull('payment_date')->sum('expense_value'), 2, ',', '.') : '0,00' }}</p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <h3 class="text-lg font-semibold text-gray-900">Gastos Pendentes</h3>
+                                <h3 class="text-lg font-semibold text-gray-900">Gastos pendentes</h3>
                                 <p class="text-2xl font-bold text-gray-900">R$ {{ isset($expenses) ? number_format($expenses->whereNull('payment_date')->sum('expense_value'), 2, ',', '.') : '0,00' }}</p>
                             </div>
                         </div>
@@ -80,17 +80,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6">
                     <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Filtrar Gastos</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Filtrar gastos</h3>
                         <form action="{{ route('records.filter') }}" method="POST" class="space-y-4">
                             @csrf
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700">Data de Vencimento</label>
+                                    <label class="block text-sm font-medium text-gray-700">Data de vencimento</label>
                                     <input type="date" name="due_date" value="{{ old('due_date', request('due_date')) }}"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700">Data de Pagamento</label>
+                                    <label class="block text-sm font-medium text-gray-700">Data de pagamento</label>
                                     <input type="date" name="payment_date" value="{{ old('payment_date', request('payment_date')) }}"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary">
                                 </div>
