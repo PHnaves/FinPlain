@@ -2,7 +2,7 @@
     
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
         <h2 class="text-3xl font-bold text-primary-1">
-            💼 Sugestão de Investimentos
+            Sugestão de investimentos
         </h2>
         <div class="text-right">
             <p class="text-sm text-gray-600">Seu saldo atual</p>
@@ -29,7 +29,7 @@
                 <div class="p-6">
                     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                         <div>
-                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Seu Perfil de Investidor</h3>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-1">Seu perfil de investidor</h3>
                             <p class="text-sm text-gray-600">
                                 @php
                                     $profileInfo = [
@@ -63,7 +63,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <div class="mb-6">
-                        <h3 class="text-lg font-medium text-gray-900 mb-2">Investimentos Recomendados</h3>
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Investimentos recomendados</h3>
                         <p class="text-sm text-gray-600">
                             Com base no seu perfil de investidor, selecionamos as melhores opções para você.
                         </p>
@@ -96,7 +96,7 @@
                                     <div class="text-sm text-gray-600 mb-1">{{ $investiment->investiment_description }}</div>
                                     <div class="flex flex-wrap gap-3 text-xs mt-2">
                                         <div class="flex items-center gap-1">
-                                            <span class="font-medium text-gray-500">Valor Mínimo:</span>
+                                            <span class="font-medium text-gray-500">Valor mínimo:</span>
                                             <span class="font-semibold text-gray-700">R$ {{ number_format($investiment->minimum_value, 2, ',', '.') }}</span>
                                         </div>
                                         <div class="flex items-center gap-1">
