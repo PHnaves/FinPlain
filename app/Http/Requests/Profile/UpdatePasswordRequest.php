@@ -4,6 +4,7 @@ namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdatePasswordRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class UpdatePasswordRequest extends FormRequest
     {
         return [
             'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'password' => ['required', Password::defaults(), 'confirmed', 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).+$/'],
         ];
     }
 
@@ -33,8 +34,18 @@ class UpdatePasswordRequest extends FormRequest
         return [
             'password.required' => 'A senha é obrigatória.',
             'password.confirmed' => 'As senhas não conferem.',
+            'password.regex' => 'A senha deve conter ao menos uma letra maiúscula, um número e um caractere especial.',
             'current_password.required' => 'A senha atual é obrigatória.',
             'current_password.current_password' => 'A senha atual está incorreta.',
         ];
+    }
+
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        throw new HttpResponseException(
+            redirect()->back()
+                ->withErrors($validator, 'updatePassword')
+                ->withInput()
+        );
     }
 }

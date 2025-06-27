@@ -24,7 +24,7 @@ class RegisterUserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).+$/'],
             'type_user' => ['required', 'string', 'in:conservador,moderado,arrojado'],
             'rent' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
             'monthly_income' => ['required', 'numeric', 'min:0', 'max:99999999,99'],
@@ -51,6 +51,7 @@ class RegisterUserRequest extends FormRequest
             'password.string' => 'A senha deve ser um texto.',
             'password.min' => 'A senha deve ter no mínimo 8 caracteres.',
             'password.confirmed' => 'As senhas não conferem.',
+            'password.regex' => 'A senha deve conter ao menos uma letra maiúscula, um número e um caractere especial.',
     
             'type_user.required' => 'O tipo de usuário é obrigatório.',
             'type_user.string' => 'O tipo de usuário deve ser um texto.',

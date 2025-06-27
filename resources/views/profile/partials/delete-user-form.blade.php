@@ -20,7 +20,7 @@
         {{ __('Excluir Conta') }}
     </x-danger-button>
 
-    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+    <x-modal name="confirm-user-deletion" :show="$errors->has('password')" focusable>
         <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
             @csrf
             @method('delete')
