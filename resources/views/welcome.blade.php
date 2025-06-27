@@ -115,7 +115,7 @@
                             <a href="#sobre" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Sobre</a>
                             <a href="#precos" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Planos</a>
                             <a href="#contato" class="nav-link text-white hover:text-primary-3 text-sm font-medium hidden md:inline-block">Contato</a>
-                            <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-4 md:px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg transition-colors duration-300 hidden md:inline-block">Começar Agora</a>
+                            <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-4 md:px-5 py-1.5 rounded-full text-sm font-semibold shadow-lg transition-colors duration-300 hidden md:inline-block">Entrar</a>
                         </div>
                         <button class="md:hidden text-white p-2 ml-4" id="navToggler">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +161,7 @@
                         A plataforma completa para gerenciar suas finanças pessoais de forma simples e eficiente.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-8 py-4 rounded-full font-semibold shadow-lg w-full sm:w-auto text-center transition-all duration-300 transform hover:scale-105">
+                        <a href="{{route('register')}}" class="bg-primary hover:bg-primary-1 text-white px-8 py-4 rounded-full font-semibold shadow-lg w-full sm:w-auto text-center transition-all duration-300 transform hover:scale-105">
                             Começar gratuitamente
                         </a>
                         <a href="#sobre" class="text-gray-900 hover:text-primary font-medium flex items-center group">
