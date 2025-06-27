@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Relatório de Gastos</title>
+    <title>Relatório de gastos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Relatório de Gastos</h1>
+        <h1>Relatório de gastos</h1>
         <p>Gerado em: {{ now()->format('d/m/Y H:i:s') }}</p>
     </div>
     
@@ -60,9 +60,9 @@
     
     <div class="resumo">
         <h3>Resumo</h3>
-        <p>Total de Gastos: R$ {{ number_format($total, 2, ',', '.') }}</p>
-        <p>Quantidade de Gastos: {{ $gastos->count() }}</p>
-        <p>Média por Gasto: R$ {{ number_format($gastos->count() > 0 ? $total / $gastos->count() : 0, 2, ',', '.') }}</p>
+        <p>Total de gastos: R$ {{ number_format($total, 2, ',', '.') }}</p>
+        <p>Quantidade de gastos: {{ $gastos->count() }}</p>
+        <p>Média por gasto: R$ {{ number_format($gastos->count() > 0 ? $total / $gastos->count() : 0, 2, ',', '.') }}</p>
     </div>
     
     <table class="table">

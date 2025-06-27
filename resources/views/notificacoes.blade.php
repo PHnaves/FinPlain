@@ -1,3 +1,5 @@
+<title>FinPlan</title>
+
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -5,7 +7,7 @@
                 <div class="p-6 text-gray-900">
 
                 <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
-                    <h2 class="text-3xl font-bold text-primary-1">🔔 Minhas Notificações</h2>
+                    <h2 class="text-3xl font-bold text-primary-1">Minhas notificações</h2>
 
                     <form method="GET" action="{{ route('notifications') }}" class="flex items-center justify-center md:justify-end">
                         <select name="type" onchange="this.form.submit()" 
@@ -13,7 +15,7 @@
                             <option value="">Todas as notificações</option>
                             <option value="despesa_vencida" {{ request('type') == 'despesa_vencida' ? 'selected' : '' }}>Despesas Vencidas</option>
                             <option value="deposito_meta" {{ request('type') == 'deposito_meta' ? 'selected' : '' }}>Depósitos de Metas</option>
-                            <option value="valor_limite_despesa" {{ request('type') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas Excedentes</option>
+                            <option value="valor_limite_despesa" {{ request('type') == 'valor_limite_despesa' ? 'selected' : '' }}>Despesas excedentes</option>
                         </select>
                     </form>
                 </div>

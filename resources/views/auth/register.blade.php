@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>FinPlan | Cadastro</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-primary-3 text-base">
@@ -22,7 +22,7 @@
             <div class="text-center w-full md:w-3/4 xxl:w-2/4">
                 <div class="col-start-2 col-end-12 col-span-4">
                     <div class="mb-10">
-                        <h1 class="text-3xl md:text-4xl text-primary font-bold mb-3">Criar Conta</h1>
+                        <h1 class="text-3xl md:text-4xl text-primary font-bold mb-3">Criar conta</h1>
                         <p class="text-base text-info">Veja seu crescimento e obtenha suporte de consultoria</p>
                     </div>
 
@@ -36,7 +36,7 @@
 
                         <div class="mb-5 text-left">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="seuEmail@email.com" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="email@mail.com" required>
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
@@ -47,20 +47,20 @@
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="password_confirmation">Confirmar Senha</label>
+                            <label for="password_confirmation">Confirmar senha</label>
                             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="***********" required>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
 
                         <div class="mb-5 text-left">
                             <label for="type_user" class="flex items-center gap-2">
-                                Tipo de Investidor
+                                Tipo de investidor
                                 <div class="relative group">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info cursor-help" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     <div class="absolute left-0 mt-2 w-64 p-4 bg-white rounded-lg shadow-lg hidden group-hover:block z-50">
-                                        <h4 class="font-bold mb-2">Tipos de Perfil de Investidor:</h4>
+                                        <h4 class="font-bold mb-2">Tipos de perfil de investidor:</h4>
                                         <ul class="text-sm space-y-2">
                                             <li><span class="font-semibold">Conservador:</span> Prefere segurança e baixo risco, aceitando retornos menores.</li>
                                             <li><span class="font-semibold">Moderado:</span> Equilibra risco e retorno, aceitando alguma volatilidade.</li>
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="rent">Saldo Atual</label>
+                            <label for="rent">Saldo atual</label>
                             <input type="number" class="form-control" id="rent" name="rent" min="0" max="99999999,99" placeholder="0.00" required>
                             <x-input-error :messages="$errors->get('rent')" class="mt-2" />
                         </div>
@@ -91,9 +91,9 @@
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="payment_frequency">Frequencia de Pagamento</label>
+                            <label for="payment_frequency">Frequencia de pagamento</label>
                             <select id="payment_frequency" name="payment_frequency" class="form-control" required>
-                                <option value="" disabled selected>Selecione uma Frequência</option>
+                                <option value="" disabled selected>Selecione uma frequência</option>
                                 <option value="mensal">Mensal</option>
                                 <option value="quinzenal">Quinzenal</option>
                                 <option value="semanal">Semanal</option>
@@ -102,20 +102,20 @@
                         </div>
 
                         <div class="mb-5 text-left">
-                            <label for="payment_day">Dia de Pagamento</label>
-                            <input type="number" class="form-control" id="payment_day" name="payment_day" min="1" max="31" placeholder="Dia do Mês" required>
+                            <label for="payment_day">Dia de pagamento</label>
+                            <input type="number" class="form-control" id="payment_day" name="payment_day" min="1" max="31" placeholder="Dia do mês" required>
                             <x-input-error :messages="$errors->get('payment_day')" class="mt-2" />
                         </div>
 
                         <div class="mb-5">
                             <label class="flex items-center mb-0">
                                 <input type="checkbox" name="terms" class="mr-2 relative appearance-none rounded-std-1/2 border border-1 cursor-pointer border-info-1 checked:border-primary checked:bg-primary checked:after:content-['\2713'] checked:after:text-white checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 h-4 w-4" required>
-                                <span class="text-info">Eu aceito os <a href="{{ route('termos.termosServico') }}" class="text-primary hover:text-primary-1 transition-colors duration-500 font-bold">Termos de Serviço</a></span>
+                                <span class="text-info">Eu aceito os <a href="{{ route('termos.termosServico') }}" class="text-primary hover:text-primary-1 transition-colors duration-500 font-bold">Termos de serviço</a></span>
                             </label>
                             <x-input-error :messages="$errors->get('terms')" class="mt-2" />
                         </div>
 
-                        <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-std border border-primary hover:bg-primary-1 transition-colors duration-500 mb-5">Criar Agora</button>
+                        <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-std border border-primary hover:bg-primary-1 transition-colors duration-500 mb-5">Criar agora</button>
 
                         <p class="text-info font-semibold">Já tem uma conta? 
                             <a class="text-primary hover:text-primary-1 font-bold transition-colors duration-500" href="{{ route('login') }}">

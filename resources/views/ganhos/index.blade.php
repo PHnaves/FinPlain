@@ -1,8 +1,10 @@
+<title>FinPlan</title>
+
 <x-app-layout>
     <div class="max-w-6xl mx-auto py-8 px-2 md:px-0">
         <div class="flex justify-between items-center p-4 md:p-6 mb-8 border-b-2 border-primary-1 shadow-sm">
             <h2 class="text-3xl font-bold text-primary-1">
-                💰 Ganhos
+                Ganhos
             </h2>
             <div class="text-right">
                 <p class="text-sm text-gray-600">Seu saldo atual</p>
@@ -28,7 +30,7 @@
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
-                Novo Ganho
+                Novo ganho
             </a>
         </div>
         <!-- Filtros -->
@@ -123,11 +125,11 @@
         <!-- Gráficos -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center">
-                <h3 class="font-bold text-lg mb-4 text-black">Ganhos por Mês</h3>
+                <h3 class="font-bold text-lg mb-4 text-black">Ganhos por mês</h3>
                 <canvas id="earningsByMonthChart" class="w-full max-w-xs md:max-w-full h-64"></canvas>
             </div>
             <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center">
-                <h3 class="font-bold text-lg mb-4 text-black">Ganhos por Recorrência</h3>
+                <h3 class="font-bold text-lg mb-4 text-black">Ganhos por recorrência</h3>
                 <canvas id="earningsByRecurrenceChart" class="w-full max-w-xs md:max-w-full h-64"></canvas>
             </div>
         </div>

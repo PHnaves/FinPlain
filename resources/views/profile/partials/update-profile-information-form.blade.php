@@ -1,7 +1,7 @@
 <section>
     <header class="mb-6 border-b-2 border-primary-1 pb-4">
         <h2 class="text-3xl font-bold text-primary-1">
-            👤 Informações do Perfil
+            Informações do perfil
         </h2>
         <p class="mt-2 text-gray-600 text-base">
             Atualize as informações do seu perfil e endereço de e-mail.
@@ -50,7 +50,7 @@
 
         <!-- Type User -->
         <div class="mt-4">
-            <x-input-label for="type_user" :value="__('Tipo de Usuário')" />
+            <x-input-label for="type_user" :value="__('Tipo de usuário')" />
             <select id="type_user" name="type_user" class="form-control" required>
                 <option value="" disabled {{ old('type_user', $user->type_user) == null ? 'selected' : '' }}>Selecione um tipo de usuário</option>
                 <option value="conservador" {{ old('type_user', $user->type_user) == 'conservador' ? 'selected' : '' }}>Conservador</option>
@@ -62,21 +62,21 @@
 
         <!-- Input Rent -->
         <div class="mt-4">
-            <x-input-label for="rent" :value="__('Renda Atual')" />
+            <x-input-label for="rent" :value="__('Renda atual')" />
             <x-text-input id="rent" class="form-control" type="number" name="rent" min="0" max="99999999,99" step="0.01" :value="old('rent', $user->rent)" required />
             <x-input-error class="mt-2" :messages="$errors->get('rent')" />
         </div>
 
         <!-- Monthly Income -->
         <div class="mt-4">
-            <x-input-label for="monthly_income" :value="__('Salário Mensal (R$)')" />
+            <x-input-label for="monthly_income" :value="__('Salário mensal (R$)')" />
             <x-text-input id="monthly_income" name="monthly_income" min="0" max="99999999,99" type="number" step="0.01" class="form-control" :value="old('monthly_income', $user->monthly_income)" required />
             <x-input-error class="mt-2" :messages="$errors->get('monthly_income')" />
         </div>
 
         <!-- Payment frequency -->
         <div class="mt-4">
-            <x-input-label for="payment_frequency" :value="__('Frequência de Pagamento')" />
+            <x-input-label for="payment_frequency" :value="__('Frequência de pagamento')" />
             <select id="payment_frequency" name="payment_frequency" class="form-control" required>
                 <option value="" disabled {{ old('payment_frequency', $user->payment_frequency) == null ? 'selected' : '' }}>Selecione uma Frequência</option>
                 <option value="mensal" {{ old('payment_frequency', $user->payment_frequency) == 'mensal' ? 'selected' : '' }}>Mensal</option>
@@ -88,7 +88,7 @@
 
         <!-- Payment Day -->
         <div class="mt-4">
-            <x-input-label for="payment_day" :value="__('Dia do Pagamento')" />
+            <x-input-label for="payment_day" :value="__('Dia do pagamento')" />
             <x-text-input id="payment_day" name="payment_day" type="number" class="form-control" :value="old('payment_day', $user->payment_day)" required min="1" max="31"/>
             <x-input-error class="mt-2" :messages="$errors->get('payment_day')" />
         </div>
