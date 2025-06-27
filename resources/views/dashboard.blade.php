@@ -1,4 +1,4 @@
-<title>FinPlan  | Dashboard</title>
+<title>FinPlan</title>
 
 <x-app-layout>
 
