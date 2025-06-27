@@ -1,8 +1,10 @@
+<title>FinPlan</title>
+
 <x-app-layout>
 
     <div class="flex justify-between items-center p-4 md:p-6 border-b-2 border-primary-1 shadow-sm">
         <div>
-            <h2 class="text-3xl font-bold text-primary-1">📊 Dashboard</h2>
+            <h2 class="text-3xl font-bold text-primary-1">Dashboard</h2>
             <p class="text-lg text-gray-600 mt-1">Bem-vindo, <span class="font-semibold text-gray-800">{{ $user->name }}</span> 👋</p>
         </div>
 
@@ -41,7 +43,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Transações</p>
+                                <p class="text-sm font-medium text-gray-600">Total de transações</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ count($expense_name) }}</p>
                             </div>
                         </div>
@@ -58,7 +60,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Transações Pendentes</p>
+                                <p class="text-sm font-medium text-gray-600">Transações pendentes</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ $expense_status->filter(function($status) { return $status === 'nao_pago'; })->count() }}</p>
                             </div>
                         </div>
@@ -75,7 +77,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Metas</p>
+                                <p class="text-sm font-medium text-gray-600">Total de metas</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ count($goal_title) }}</p>
                             </div>
                         </div>
@@ -92,7 +94,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Metas Concluídas</p>
+                                <p class="text-sm font-medium text-gray-600">Metas concluídas</p>
                                 <p class="text-lg font-semibold text-gray-900">{{ $goal_progress->filter(function($progress) { return $progress >= 100; })->count() }}</p>
                             </div>
                         </div>
@@ -165,7 +167,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Ganhos</p>
+                                <p class="text-sm font-medium text-gray-600">Total de ganhos</p>
                                 <p class="text-lg font-semibold text-green-600">R$ {{ number_format($totalEarnings, 2, ',', '.') }}</p>
                             </div>
                         </div>
@@ -182,7 +184,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-600">Total de Despesas</p>
+                                <p class="text-sm font-medium text-gray-600">Total de despesas</p>
                                 <p class="text-lg font-semibold text-red-600">R$ {{ number_format($totalExpenses, 2, ',', '.') }}</p>
                             </div>
                         </div>
@@ -228,7 +230,7 @@
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Evolução Mensal</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Evolução mensal</h3>
                             <span class="text-sm text-gray-500">Últimos 12 meses</span>
                         </div>
                         <div class="h-80">
@@ -244,7 +246,7 @@
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Progresso das Metas</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Progresso das metas</h3>
                             <a href="{{ route('metas.index') }}" class="text-sm text-primary hover:text-primary-1">Ver todas</a>
                         </div>
                         <div class="h-80">
@@ -257,7 +259,7 @@
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-gray-900">Gastos por Categoria</h3>
+                            <h3 class="text-lg font-semibold text-gray-900">Gastos por categoria</h3>
                             <a href="{{ route('despesas.index') }}" class="text-sm text-primary hover:text-primary-1">Ver todas</a>
                         </div>
                         <div class="h-80">
@@ -279,7 +281,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Nova Transação</p>
+                                <p class="text-sm font-medium text-gray-900">Nova transação</p>
                                 <p class="text-sm text-gray-500">Registrar gasto</p>
                             </div>
                         </div>
@@ -296,7 +298,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Novo Ganho</p>
+                                <p class="text-sm font-medium text-gray-900">Novo ganho</p>
                                 <p class="text-sm text-gray-500">Registrar receita</p>
                             </div>
                         </div>
@@ -313,7 +315,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Nova Meta</p>
+                                <p class="text-sm font-medium text-gray-900">Nova meta</p>
                                 <p class="text-sm text-gray-500">Criar objetivo</p>
                             </div>
                         </div>
@@ -330,7 +332,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Ver Transações</p>
+                                <p class="text-sm font-medium text-gray-900">Ver transações</p>
                                 <p class="text-sm text-gray-500">Lista completa</p>
                             </div>
                         </div>
@@ -347,7 +349,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Ver Ganhos</p>
+                                <p class="text-sm font-medium text-gray-900">Ver ganhos</p>
                                 <p class="text-sm text-gray-500">Lista completa</p>
                             </div>
                         </div>
@@ -364,7 +366,7 @@
                                 </svg>
                             </div>
                             <div class="ml-4">
-                                <p class="text-sm font-medium text-gray-900">Ver Metas</p>
+                                <p class="text-sm font-medium text-gray-900">Ver metas</p>
                                 <p class="text-sm text-gray-500">Lista completa</p>
                             </div>
                         </div>

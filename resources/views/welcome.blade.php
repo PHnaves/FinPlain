@@ -9,12 +9,7 @@
     <meta name="og:title" property="og:title" content="FinPlan - Sua Plataforma de Gestão Financeira">
 	<meta property="og:image" content="https://designtocodes.com/wp-content/uploads/2023/12/DataAI-Free-Data-Analytics-Tailwind-CSS-Dashboard-Template.jpg">
 	<meta name="og:description" content="FinPlan é uma plataforma profissional e amigável para gestão financeira. Comece a organizar suas finanças agora!">
-    <!-- Favicons -->
-    <link rel="app-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('favicon/site-webmanifest') }}">
-    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
+    <link rel="icon" href="../public/assets/images/logo/favicon.png" type="image/gif" sizes="16x16">
     <title>FinPlan</title>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="../public/lib/fontawesome/css/all.min.css">
@@ -148,7 +143,7 @@
                 <a href="#sobre" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Sobre</a>
                 <a href="#precos" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Planos</a>
                 <a href="#contato" class="nav-link block text-white hover:text-primary-3 text-base font-medium py-2">Contato</a>
-                <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-6 py-2.5 rounded-full text-base font-semibold shadow-lg inline-block transition-colors duration-300 w-full text-center md:hidden">Começar Agora</a>
+                <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-6 py-2.5 rounded-full text-base font-semibold shadow-lg inline-block transition-colors duration-300 w-full text-center md:hidden">Começar agora</a>
             </nav>
         </div>
     </div>
@@ -163,11 +158,11 @@
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-1">FinPlan</span>
                     </h1>
                     <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
-                        A plataforma completa para gerenciar suas finanças pessoais e empresariais de forma simples e eficiente.
+                        A plataforma completa para gerenciar suas finanças pessoais de forma simples e eficiente.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="{{route('login')}}" class="bg-primary hover:bg-primary-1 text-white px-8 py-4 rounded-full font-semibold shadow-lg w-full sm:w-auto text-center transition-all duration-300 transform hover:scale-105">
-                            Começar Gratuitamente
+                            Começar gratuitamente
                         </a>
                         <a href="#sobre" class="text-gray-900 hover:text-primary font-medium flex items-center group">
                             <i class="fas fa-play-circle mr-2 group-hover:animate-bounce"></i>
@@ -199,7 +194,7 @@
                     <div class="mb-8">
                         <img src="{{ asset('/images/Imagem-Welcome1.png') }}" alt="Análise Financeira" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">Visualize Seus Dados</h3>
+                    <h3 class="text-2xl font-semibold mb-4">Visualize seus dados</h3>
                     <p class="text-gray-600 text-lg">Transforme números em insights com painéis intuitivos e relatórios fáceis de entender.</p>
                 </div>
 
@@ -208,7 +203,7 @@
                     <div class="mb-8">
                         <img src="{{ asset('/images/Imagem-Welcome2.png') }}" alt="Metas Financeiras" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">Alcance Seus Objetivos</h3>
+                    <h3 class="text-2xl font-semibold mb-4">Alcance seus objetivos</h3>
                     <p class="text-gray-600 text-lg">Monitore seu progresso e mantenha o foco nas metas que importam para sua vida financeira.</p>
                 </div>
 
@@ -217,7 +212,7 @@
                     <div class="mb-8">
                         <img src="{{ asset('/images/Imagem-Welcome3.png') }}" alt="Segurança Financeira" class="w-full h-64 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4">Proteção em Primeiro Lugar</h3>
+                    <h3 class="text-2xl font-semibold mb-4">Proteção em primeiro lugar</h3>
                     <p class="text-gray-600 text-lg">Tenha tranquilidade com tecnologia de ponta cuidando da privacidade dos seus dados.</p>
                 </div>
             </div>
@@ -238,7 +233,7 @@
                 <!-- Free Plan -->
                 <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-2">Plano Gratuito</h3>
+                        <h3 class="text-2xl font-bold mb-2">Plano gratuito</h3>
                         <p class="text-gray-600">Perfeito para começar</p>
                     </div>
                     <div class="text-center mb-8">
@@ -264,13 +259,13 @@
                         </li>
                     </ul>
                     <a href="{{route('login')}}" class="block text-center bg-gray-100 text-gray-800 hover:bg-gray-200 font-semibold py-3 px-6 rounded-full transition-colors duration-300">
-                        Começar Agora
+                        Começar agora
                     </a>
                 </div>
                 <!-- Premium Plan -->
                 <div class="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl shadow-lg p-8 card-hover text-white">
                     <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold mb-2">Plano Premium</h3>
+                        <h3 class="text-2xl font-bold mb-2">Plano premium</h3>
                         <p class="text-indigo-100">Para quem quer mais</p>
                     </div>
                     <div class="text-center mb-8">
@@ -300,7 +295,7 @@
                         </li>
                     </ul>
                     <a href="{{route('login')}}" class="block text-center bg-white text-indigo-600 hover:bg-indigo-50 font-semibold py-3 px-6 rounded-full transition-colors duration-300">
-                        Assinar Agora
+                        Assinar agora
                     </a>
                 </div>
             </div>
@@ -312,7 +307,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Entre em Contato</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Entre em contato</h2>
                     <p class="text-lg text-gray-600">
                         Estamos aqui para ajudar você a começar sua jornada de gestão financeira.
                     </p>
@@ -346,7 +341,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
-                            <input type="email" id="email" name="emailContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="seu@email.com">
+                            <input type="email" id="email" name="emailContact" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="email@mail.com">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2" for="phone">Telefone</label>
@@ -358,7 +353,7 @@
                         <textarea id="message" name="messageContact" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors duration-300" placeholder="Digite sua mensagem"></textarea>
                     </div>
                     <button type="submit" class="btn-gradient text-white w-full py-3 rounded-lg font-semibold shadow-lg">
-                        Enviar Mensagem
+                        Enviar mensagem
                     </button>
                 </form>
             </div>
@@ -391,7 +386,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-sm font-semibold mb-4">Links Rápidos</h3>
+                    <h3 class="text-sm font-semibold mb-4">Links rápidos</h3>
                     <ul class="space-y-2">
                         <li><a href="#home" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Início</a></li>
                         <li><a href="#sobre" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Sobre</a></li>
@@ -402,9 +397,9 @@
                 <div>
                     <h3 class="text-sm font-semibold mb-4">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="{{route('termos.politicaPrivacidade')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Política de Privacidade</a></li>
-                        <li><a href="{{route('termos.termosServico')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Termos de Serviço</a></li>
-                        <li><a href="{{route('termos.termosUso')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Termos de Uso</a></li>
+                        <li><a href="{{route('termos.politicaPrivacidade')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Política de privacidade</a></li>
+                        <li><a href="{{route('termos.termosServico')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Termos de serviço</a></li>
+                        <li><a href="{{route('termos.termosUso')}}" class="text-gray-300 hover:text-white text-sm transition-colors duration-300">Termos de uso</a></li>
                     </ul>
                 </div>
             </div>
