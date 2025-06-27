@@ -38,12 +38,6 @@
                             <input type="password" class="form-control" id="password" name="password" placeholder="***********" required>
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
-                        <div class="mb-5">
-                            <label class="flex items-center mb-0">
-                                <input type="checkbox" name="remember" class="mr-2 relative appearance-none rounded-std-1/2 border border-1 cursor-pointer border-info-1 checked:border-primary checked:bg-primary checked:after:content-['\2713'] checked:after:text-white checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 h-4 w-4">
-                                <span class="text-info">Remember me</span>
-                            </label>
-                        </div>
                         <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-std border border-primary hover:bg-primary-1 transition-colors duration-500 mb-5">Entrar</button>
 
                         @if (Route::has('password.request'))
