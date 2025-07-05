@@ -1,101 +1,156 @@
-# 📌 FinPlan – Seu Planejador Financeiro Simples e Inteligente
+# 💰 FinPlan – Planejador Financeiro Simples e Inteligente
 
-## 🎯 Objetivo
-Criar uma aplicação web responsiva que ajude os usuários a organizarem suas finanças de forma prática, oferecendo controle de gastos, planejamento financeiro, alertas e recomendações personalizadas.
+## 🎯 Visão Geral
 
-🔥 Algumas das Funcionalidades que a FinPlan irá Possuir...
+**FinPlan** é uma aplicação web responsiva desenvolvida para ajudar usuários a **organizar suas finanças pessoais** de forma simples, prática e inteligente. A plataforma permite o controle de gastos, planejamento financeiro, geração de alertas e **recomendações personalizadas** com base nos hábitos do usuário.
 
-1️⃣ Cadastro de Usuário
-Registro via e-mail e senha.
-Definição do perfil financeiro (Básico, Moderado ou Arrojado).
-
-2️⃣ Planejamento Financeiro
-Criação de Metas (ex: viagem, reserva de emergência).
-Barra de progresso para acompanhar evolução.
-Sugestões para alcançar metas rapidamente.
-
-3️⃣ Análise de Gastos
-Gráficos interativos com categorias de despesas.
-Comparação entre meses anteriores.
-Alertas para gastos excessivos.
-
-4️⃣ Notificações e Alertas
-Notificações no painel e envio de e-mails.
-Lembretes de vencimento de contas e metas financeiras.
-
-5️⃣ Sugestões de Investimentos
-Recomendação de investimentos baseada no perfil.
-
-## 🛠 Tecnologias Utilizadas
-- **Back-end:** PHP + Laravel Blade
-- **Front-end:** Tailwind CSS
-- **Banco de Dados:** MySQL
-- **Notificações Internas:** Laravel Notifications
-- **Envio de E-mails:** Laravel Mail
-- **Agendamento de Tarefas:** Laravel Jobs
-
-## 📩 Para o Envio de E-mails
-Para evitar custos extras, o serviço que optamos por utilizar foi:
-Brevo - É a que esta sendo usada no momento no projeto, mas pode haver troca se houver necessidade.
-
-## 🚀 Conclusão
-A FinPlan se diferencia por trazer não apenas um controle financeiro tradicional, mas um **Planejador Inteligente** que aprende com os hábitos do usuário e sugere formas de economizar de maneira dinâmica. Com um metas animadoras e projeções financeiras, ela torna o gerenciamento de dinheiro mais envolvente e eficaz.
+Além disso, a aplicação conta com o **FinBot**, um chatbot interativo que responde dúvidas financeiras em tempo real, tornando a experiência mais acessível mesmo para quem não possui conhecimentos aprofundados sobre finanças.
 
 ---
 
-## 📅 Plano de Desenvolvimento (3 meses)
-### 🔥 Mês 1: Estruturação e Back-End
-✅ Semana 1:
-- [X] Configurar ambiente de desenvolvimento (Laravel, MySQL, Tailwind).
-- [X] Criar modelo de banco de dados (tabelas: usuários, despesas, metas, notificações).
-- [X] Implementar autenticação de usuários (cadastro e login).
+## 🌟 Funcionalidades Principais
 
-✅ Semana 2:
-- [X] Criar sistema de cadastro completo (renda, despesas, perfil).
-- [X] Implementar criação e gestão de metas financeiras.
-- [X] Criar lógica para cálculos de progresso das metas.
+* ✅ Controle de receitas e despesas
+* ✅ Planejamento de metas financeiras
+* ✅ Alertas personalizados por notificações internas e e-mail
+* ✅ Sugestões inteligentes de economia baseadas no tipo de usuario
+* ✅ **FinBot** – Chatbot de dúvidas financeiras
+* ✅ Relatórios e projeções com visualização clara
+* ✅ Interface 100% responsiva
+* ✅ Visualização em gráficos dinamicos
 
-✅ Semana 3:
-- [X] Criar sistema de despesas e análise básica de gastos.
-- [X] Implementar gráficos interativos com base nos dados financeiros.
+---
 
-✅ Semana 4:
-- [X] Criar sistema de notificações internas no painel.
-- [X] Implementar envio de e-mails de alerta (obtei por utilizar o brevo, pois o projeto inicialmente não ira precisar de uma quantidade de email muito grande).
-- [X] Implementar jobs e queues para envio de emails constante e a longo prazo.
+## ⚙️ Tecnologias Utilizadas
 
-OBS BONUS: Foi implementado um bot inteligente com o easy peasy ai, onde foi preciso configura-lo e alimenta-lo para ele conseguir da dicas financeiras mais dinamicas.
+| Camada         | Tecnologia                  |
+| -------------- | --------------------------- |
+| Back-end       | PHP com Laravel Blade       |
+| Front-end      | Tailwind CSS + JavaScript   |
+| Banco de Dados | MySQL                       |
+| Notificações   | Laravel Notifications       |
+| E-mails        | Laravel Mail (usando Brevo) |
+| Agendamentos   | Laravel Jobs                |
 
-✅ Semana 5:
-- [X] Recomendação de investimentos baseada no perfil.
-- [X] Implementar possibilidade do usuario gerar PDFs de gastos para ter melhor visao, ele podera selecionar o periodo que deseja gerar.
+---
 
-### 🚀 Mês 2: Front-End e Experiência do Usuário
-✅ Semana 6:
-- [X] Criar páginas principais (dashboard, metas, despesas, investimentos).
-- [X] Criar UI responsiva com Tailwind CSS.
+## 📧 Envio de E-mails
 
-✅ Semana 7:
-- [X] Implementar gráficos interativos (Chart.js ou Laravel Charts).
-- [X] Melhorar experiência do usuário nas interações.
+O serviço utilizado atualmente é o **Brevo** (antigo Sendinblue), escolhido por ser gratuito e eficiente. Pode ser trocado futuramente conforme a necessidade do projeto.
 
-✅ Semana 8:
-- [X] Criar página de notificações e alertas.
-- [Cancelado] Implementar cálculos e projeções de gastos futuros.
+---
 
-### 🎯 Mês 3: Testes, Ajustes e Lançamento
-✅ Semana 9:
-- [X] Revisão geral do código e otimizações.
-- [x] Testes de usabilidade e ajustes de UI/UX.
+## 🔧 Como Configurar o Projeto Localmente
 
-✅ Semana 10:
-- [x] Implementação final do Planejador Inteligente(FinBot).
-- [X] Melhorias no sistema de sugestões de investimentos.
+### ✅ Pré-requisitos
 
-✅ Semana 11:
-- [X] Testes beta com usuários reais(foi realizado testes localmente).
-- [ ] Correção de bugs e refinamentos finais.
+Antes de começar, você precisa ter instalado:
 
-✅ Semana 12:
-- [Cancelado] **Lançamento oficial da versão MVP! 🚀**
+* PHP >= 8.1
+* Laravel >= 11
+* Composer
+* MySQL
+* Node.js e NPM
+* Git
+
+---
+
+### 🚀 Passo a Passo de Instalação
+
+1. **Clone o repositório:**
+
+```bash
+git clone https://github.com/seu-usuario/finplan.git
+cd finplan
+```
+
+2. **Instale as dependências do Laravel:**
+
+```bash
+composer install
+```
+
+3. **Copie o arquivo `.env.example` e configure:**
+
+```bash
+cp .env.example .env
+```
+
+> Altere as configurações do banco de dados e do serviço de e-mail no arquivo `.env`:
+
+```env
+DB_DATABASE=finplan_db
+DB_USERNAME=root
+DB_PASSWORD=sua_senha
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp-relay.brevo.com
+MAIL_PORT=587
+MAIL_USERNAME=seu_usuario_brevo
+MAIL_PASSWORD=sua_senha_brevo
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=seu_email@dominio.com
+MAIL_FROM_NAME="FinPlan"
+```
+
+4. **Gere a chave da aplicação:**
+
+```bash
+php artisan key:generate
+```
+
+5. **Crie as tabelas no banco de dados:**
+
+```bash
+php artisan migrate
+```
+
+6. **Instale dependências front-end e compile o CSS com Tailwind:**
+
+```bash
+npm install
+npm run dev
+```
+
+7. **(Opcional) Popule o banco com dados com as sugestões de investimentos:**
+
+```bash
+php artisan db:seed
+```
+
+8. **Execute o servidor de desenvolvimento:**
+
+```bash
+php artisan serve
+```
+
+Acesse a aplicação em: [http://localhost:8000](http://localhost:8000)
+
+---
+
+### 🔔 E-mails e Notificações
+
+Para que o envio de e-mails e as notificações internas funcionem corretamente, é necessário executar os seguintes comandos em terminais separados (ou configurar como serviços no servidor de produção):
+
+```bash
+php artisan queue:work
+```
+
+```bash
+php artisan schedule:work
+```
+
+Esses comandos garantem que **tarefas agendadas** e **filas de envio** funcionem corretamente em tempo real.
+
+---
+
+## 🤖 Como usar o FinBot?
+
+O FinBot pode ser acessado através de qualquer pagina da aplicação, representado por um icone posicionado no canto inferior direito. Basta digitar sua pergunta relacionada a finanças pessoais (ex: "Como economizar no cartão de crédito?") e o assistente responderá com dicas automatizadas baseadas em regras simples de educação financeira.
+
+---
+
+## 📌 Conclusão
+
+A **FinPlan** vai além de um simples controle de gastos: ela é um **planejador financeiro inteligente** que aprende com você, evolui com seus hábitos e **te ajuda a economizar de verdade**. Com design intuitivo, foco na experiência do usuário e funcionalidades práticas, é uma ferramenta ideal para transformar o modo como você lida com seu dinheiro.
 
